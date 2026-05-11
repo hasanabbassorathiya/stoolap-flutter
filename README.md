@@ -126,7 +126,7 @@ StreamBuilder<List<StoolapRow>>(
 
 ## Join our community 🤝
 
-We're building the most powerful embedded database for Flutter. Join us on [GitHub](https://github.com/stoolap/stoolap-flutter) to report issues, suggest features, or contribute code.
+We're building the most powerful embedded database for Flutter. Join us on [GitHub](https://github.com/hasanabbassorathiya/stoolap-flutter) to report issues, suggest features, or contribute code.
 
 ## License
 
