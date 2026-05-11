@@ -16,53 +16,38 @@ abstract class DefaultStreamSinkString implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StoolapDb>>
 abstract class StoolapDb implements RustOpaqueInterface {
-  static Future<void> batchExecute({required List<String> sqls}) =>
-      RustLib.instance.api.crateApiDbStoolapDbBatchExecute(sqls: sqls);
+  Future<void> batchExecute({required List<String> sqls});
 
-  static Future<void> begin() =>
-      RustLib.instance.api.crateApiDbStoolapDbBegin();
+  Future<void> begin();
 
-  static Future<void> close() =>
-      RustLib.instance.api.crateApiDbStoolapDbClose();
+  Future<StoolapDb> cloneHandle();
 
-  static Future<void> commit() =>
-      RustLib.instance.api.crateApiDbStoolapDbCommit();
+  Future<void> commit();
 
-  static Future<void> execute(
-          {required String sql, required List<StoolapValue> params}) =>
-      RustLib.instance.api.crateApiDbStoolapDbExecute(sql: sql, params: params);
+  Future<void> execute(
+      {required String sql, required List<StoolapValue> params});
 
-  static Future<List<StoolapRow>> executeWithResults(
-          {required String sql, required List<StoolapValue> params}) =>
-      RustLib.instance.api
-          .crateApiDbStoolapDbExecuteWithResults(sql: sql, params: params);
+  Future<List<StoolapRow>> executeWithResults(
+      {required String sql, required List<StoolapValue> params});
 
-  static Future<String> explain(
-          {required String sql, required List<StoolapValue> params}) =>
-      RustLib.instance.api.crateApiDbStoolapDbExplain(sql: sql, params: params);
+  Future<String> explain(
+      {required String sql, required List<StoolapValue> params});
 
-  static Future<void> open({required String path}) =>
-      RustLib.instance.api.crateApiDbStoolapDbOpen(path: path);
+  static Future<StoolapDb> open({required String dsn}) =>
+      RustLib.instance.api.crateApiDbStoolapDbOpen(dsn: dsn);
 
-  static Future<List<StoolapRow>> pragma(
-          {required String name, String? value}) =>
-      RustLib.instance.api.crateApiDbStoolapDbPragma(name: name, value: value);
+  Future<List<StoolapRow>> pragma({required String name, String? value});
 
-  static Future<List<StoolapRow>> query(
-          {required String sql, required List<StoolapValue> params}) =>
-      RustLib.instance.api.crateApiDbStoolapDbQuery(sql: sql, params: params);
+  Future<List<StoolapRow>> query(
+      {required String sql, required List<StoolapValue> params});
 
-  static Future<void> releaseSavepoint({required String name}) =>
-      RustLib.instance.api.crateApiDbStoolapDbReleaseSavepoint(name: name);
+  Future<void> releaseSavepoint({required String name});
 
-  static Future<void> rollback() =>
-      RustLib.instance.api.crateApiDbStoolapDbRollback();
+  Future<void> rollback();
 
-  static Future<void> rollbackToSavepoint({required String name}) =>
-      RustLib.instance.api.crateApiDbStoolapDbRollbackToSavepoint(name: name);
+  Future<void> rollbackToSavepoint({required String name});
 
-  static Future<void> savepoint({required String name}) =>
-      RustLib.instance.api.crateApiDbStoolapDbSavepoint(name: name);
+  Future<void> savepoint({required String name});
 
   static Future<void> setupLogStream({required DefaultStreamSinkString sink}) =>
       RustLib.instance.api.crateApiDbStoolapDbSetupLogStream(sink: sink);

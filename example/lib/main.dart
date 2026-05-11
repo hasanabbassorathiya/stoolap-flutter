@@ -4,21 +4,22 @@ import 'package:stoolap_flutter/stoolap_flutter.dart';
 /// Stoolap Flutter SDK Example
 ///
 /// This example demonstrates every major feature of the Stoolap SDK:
-/// 1. Initialization & Logging
+/// 1. Initialization & Instance Management
 /// 2. Basic CRUD Operations (Type-Safe Parameters)
 /// 3. MVCC Transactions & Savepoints
-/// 4. High-Throughput Batch Execution
-/// 5. Native Vector Search & HNSW Indexing
-/// 6. Native JSON Support
-/// 7. Engine Tuning via Pragmas
-/// 8. Query Profiling via EXPLAIN
-/// 9. Schema Inspection
-/// 10. Reactive "Live" Queries with Streams
+/// 4. Handle Cloning for Independent Transactions
+/// 5. High-Throughput Batch Execution
+/// 6. Native Vector Search & HNSW Indexing
+/// 7. Native JSON Support
+/// 8. Engine Tuning via Pragmas
+/// 9. Query Profiling via EXPLAIN
+/// 10. Schema Inspection
+/// 11. Reactive "Live" Queries with Streams
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // FEATURE: Initialization
-  // The native Rust bridge must be initialized once before any DB operations.
+  // Initialize the bridge once at app startup.
   await StoolapDatabase.init();
 
   runApp(const StoolapExampleApp());
@@ -73,9 +74,14 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
 
   Future<void> _setupDatabase() async {
     try {
-      // FEATURE: Opening a Database
-      // Provide a local path. Stoolap creates the file if it doesn't exist.
+      // FEATURE: Instance Management
+      // Create a dedicated database instance for this page.
       await _db.open('showcase.db');
+
+      // FEATURE: Handle Cloning
+      // Each clone has independent transaction state but shared data.
+      final backgroundDb = await _db.clone();
+      // use backgroundDb for secondary tasks...
 
       // FEATURE: Basic SQL Execution
       // Create tables for our different features
@@ -108,8 +114,6 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
     }
   }
 
-  // FEATURE: CRUD Operations (Type-Safe)
-  // Pass native Dart types like int, bool, and DateTime directly as parameters.
   Future<void> _addNote() async {
     await _db.execute(
       'INSERT INTO notes (content, category) VALUES (?, ?)',

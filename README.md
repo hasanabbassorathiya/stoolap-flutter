@@ -39,7 +39,7 @@ Add `stoolap_flutter` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  stoolap_flutter: ^0.6.0
+  stoolap_flutter: ^0.7.0
 ```
 
 ### 2. Initialization

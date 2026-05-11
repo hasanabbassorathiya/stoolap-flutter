@@ -1,3 +1,11 @@
+## 0.7.0
+
+* **Source-Of-Truth Release**: Completed absolute architectural alignment with the official Stoolap Rust repository.
+* **Object-Oriented API**: Refactored to instance-based database handles, allowing multiple independent connections.
+* **Handle Cloning**: Added `clone()` support for independent transaction isolates with shared data.
+* **Native DSN Support**: Enhanced `open()` to support full Stoolap connection strings (e.g., `:memory:`, `test-filedb:`).
+* **Improved Safety**: Switched to Opaque Rust handles managed by the Dart Garbage Collector.
+
 ## 0.6.0
 
 * **Professional Parity**: Full audit of Stoolap docs complete.

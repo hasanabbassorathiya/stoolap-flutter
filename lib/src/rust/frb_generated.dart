@@ -71,7 +71,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.12.0';
 
   @override
-  int get rustContentHash => 1379717263;
+  int get rustContentHash => -1871523213;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -83,38 +83,50 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> crateApiDbStoolapDbBatchExecute({required List<String> sqls});
+  Future<void> crateApiDbStoolapDbBatchExecute(
+      {required StoolapDb that, required List<String> sqls});
 
-  Future<void> crateApiDbStoolapDbBegin();
+  Future<void> crateApiDbStoolapDbBegin({required StoolapDb that});
 
-  Future<void> crateApiDbStoolapDbClose();
+  Future<StoolapDb> crateApiDbStoolapDbCloneHandle({required StoolapDb that});
 
-  Future<void> crateApiDbStoolapDbCommit();
+  Future<void> crateApiDbStoolapDbCommit({required StoolapDb that});
 
   Future<void> crateApiDbStoolapDbExecute(
-      {required String sql, required List<StoolapValue> params});
+      {required StoolapDb that,
+      required String sql,
+      required List<StoolapValue> params});
 
   Future<List<StoolapRow>> crateApiDbStoolapDbExecuteWithResults(
-      {required String sql, required List<StoolapValue> params});
+      {required StoolapDb that,
+      required String sql,
+      required List<StoolapValue> params});
 
   Future<String> crateApiDbStoolapDbExplain(
-      {required String sql, required List<StoolapValue> params});
+      {required StoolapDb that,
+      required String sql,
+      required List<StoolapValue> params});
 
-  Future<void> crateApiDbStoolapDbOpen({required String path});
+  Future<StoolapDb> crateApiDbStoolapDbOpen({required String dsn});
 
   Future<List<StoolapRow>> crateApiDbStoolapDbPragma(
-      {required String name, String? value});
+      {required StoolapDb that, required String name, String? value});
 
   Future<List<StoolapRow>> crateApiDbStoolapDbQuery(
-      {required String sql, required List<StoolapValue> params});
+      {required StoolapDb that,
+      required String sql,
+      required List<StoolapValue> params});
 
-  Future<void> crateApiDbStoolapDbReleaseSavepoint({required String name});
+  Future<void> crateApiDbStoolapDbReleaseSavepoint(
+      {required StoolapDb that, required String name});
 
-  Future<void> crateApiDbStoolapDbRollback();
+  Future<void> crateApiDbStoolapDbRollback({required StoolapDb that});
 
-  Future<void> crateApiDbStoolapDbRollbackToSavepoint({required String name});
+  Future<void> crateApiDbStoolapDbRollbackToSavepoint(
+      {required StoolapDb that, required String name});
 
-  Future<void> crateApiDbStoolapDbSavepoint({required String name});
+  Future<void> crateApiDbStoolapDbSavepoint(
+      {required StoolapDb that, required String name});
 
   Future<void> crateApiDbStoolapDbSetupLogStream(
       {required DefaultStreamSinkString sink});
@@ -150,10 +162,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<void> crateApiDbStoolapDbBatchExecute({required List<String> sqls}) {
+  Future<void> crateApiDbStoolapDbBatchExecute(
+      {required StoolapDb that, required List<String> sqls}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         sse_encode_list_String(sqls, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 1, port: port_);
@@ -163,7 +178,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbBatchExecuteConstMeta,
-      argValues: [sqls],
+      argValues: [that, sqls],
       apiImpl: this,
     ));
   }
@@ -171,14 +186,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateApiDbStoolapDbBatchExecuteConstMeta =>
       const TaskConstMeta(
         debugName: "StoolapDb_batch_execute",
-        argNames: ["sqls"],
+        argNames: ["that", "sqls"],
       );
 
   @override
-  Future<void> crateApiDbStoolapDbBegin() {
+  Future<void> crateApiDbStoolapDbBegin({required StoolapDb that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 2, port: port_);
       },
@@ -187,44 +204,50 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbBeginConstMeta,
-      argValues: [],
+      argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta get kCrateApiDbStoolapDbBeginConstMeta => const TaskConstMeta(
         debugName: "StoolapDb_begin",
-        argNames: [],
+        argNames: ["that"],
       );
 
   @override
-  Future<void> crateApiDbStoolapDbClose() {
+  Future<StoolapDb> crateApiDbStoolapDbCloneHandle({required StoolapDb that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 3, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb,
         decodeErrorData: sse_decode_AnyhowException,
       ),
-      constMeta: kCrateApiDbStoolapDbCloseConstMeta,
-      argValues: [],
+      constMeta: kCrateApiDbStoolapDbCloneHandleConstMeta,
+      argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiDbStoolapDbCloseConstMeta => const TaskConstMeta(
-        debugName: "StoolapDb_close",
-        argNames: [],
+  TaskConstMeta get kCrateApiDbStoolapDbCloneHandleConstMeta =>
+      const TaskConstMeta(
+        debugName: "StoolapDb_clone_handle",
+        argNames: ["that"],
       );
 
   @override
-  Future<void> crateApiDbStoolapDbCommit() {
+  Future<void> crateApiDbStoolapDbCommit({required StoolapDb that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 4, port: port_);
       },
@@ -233,22 +256,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbCommitConstMeta,
-      argValues: [],
+      argValues: [that],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta get kCrateApiDbStoolapDbCommitConstMeta => const TaskConstMeta(
         debugName: "StoolapDb_commit",
-        argNames: [],
+        argNames: ["that"],
       );
 
   @override
   Future<void> crateApiDbStoolapDbExecute(
-      {required String sql, required List<StoolapValue> params}) {
+      {required StoolapDb that,
+      required String sql,
+      required List<StoolapValue> params}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         sse_encode_String(sql, serializer);
         sse_encode_list_stoolap_value(params, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
@@ -259,22 +286,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbExecuteConstMeta,
-      argValues: [sql, params],
+      argValues: [that, sql, params],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta get kCrateApiDbStoolapDbExecuteConstMeta => const TaskConstMeta(
         debugName: "StoolapDb_execute",
-        argNames: ["sql", "params"],
+        argNames: ["that", "sql", "params"],
       );
 
   @override
   Future<List<StoolapRow>> crateApiDbStoolapDbExecuteWithResults(
-      {required String sql, required List<StoolapValue> params}) {
+      {required StoolapDb that,
+      required String sql,
+      required List<StoolapValue> params}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         sse_encode_String(sql, serializer);
         sse_encode_list_stoolap_value(params, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
@@ -285,7 +316,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbExecuteWithResultsConstMeta,
-      argValues: [sql, params],
+      argValues: [that, sql, params],
       apiImpl: this,
     ));
   }
@@ -293,15 +324,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateApiDbStoolapDbExecuteWithResultsConstMeta =>
       const TaskConstMeta(
         debugName: "StoolapDb_execute_with_results",
-        argNames: ["sql", "params"],
+        argNames: ["that", "sql", "params"],
       );
 
   @override
   Future<String> crateApiDbStoolapDbExplain(
-      {required String sql, required List<StoolapValue> params}) {
+      {required StoolapDb that,
+      required String sql,
+      required List<StoolapValue> params}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         sse_encode_String(sql, serializer);
         sse_encode_list_stoolap_value(params, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
@@ -312,46 +347,49 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbExplainConstMeta,
-      argValues: [sql, params],
+      argValues: [that, sql, params],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta get kCrateApiDbStoolapDbExplainConstMeta => const TaskConstMeta(
         debugName: "StoolapDb_explain",
-        argNames: ["sql", "params"],
+        argNames: ["that", "sql", "params"],
       );
 
   @override
-  Future<void> crateApiDbStoolapDbOpen({required String path}) {
+  Future<StoolapDb> crateApiDbStoolapDbOpen({required String dsn}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_String(path, serializer);
+        sse_encode_String(dsn, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 8, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
+        decodeSuccessData:
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb,
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbOpenConstMeta,
-      argValues: [path],
+      argValues: [dsn],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta get kCrateApiDbStoolapDbOpenConstMeta => const TaskConstMeta(
         debugName: "StoolapDb_open",
-        argNames: ["path"],
+        argNames: ["dsn"],
       );
 
   @override
   Future<List<StoolapRow>> crateApiDbStoolapDbPragma(
-      {required String name, String? value}) {
+      {required StoolapDb that, required String name, String? value}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         sse_encode_String(name, serializer);
         sse_encode_opt_String(value, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
@@ -362,22 +400,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbPragmaConstMeta,
-      argValues: [name, value],
+      argValues: [that, name, value],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta get kCrateApiDbStoolapDbPragmaConstMeta => const TaskConstMeta(
         debugName: "StoolapDb_pragma",
-        argNames: ["name", "value"],
+        argNames: ["that", "name", "value"],
       );
 
   @override
   Future<List<StoolapRow>> crateApiDbStoolapDbQuery(
-      {required String sql, required List<StoolapValue> params}) {
+      {required StoolapDb that,
+      required String sql,
+      required List<StoolapValue> params}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         sse_encode_String(sql, serializer);
         sse_encode_list_stoolap_value(params, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
@@ -388,21 +430,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbQueryConstMeta,
-      argValues: [sql, params],
+      argValues: [that, sql, params],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta get kCrateApiDbStoolapDbQueryConstMeta => const TaskConstMeta(
         debugName: "StoolapDb_query",
-        argNames: ["sql", "params"],
+        argNames: ["that", "sql", "params"],
       );
 
   @override
-  Future<void> crateApiDbStoolapDbReleaseSavepoint({required String name}) {
+  Future<void> crateApiDbStoolapDbReleaseSavepoint(
+      {required StoolapDb that, required String name}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         sse_encode_String(name, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 11, port: port_);
@@ -412,7 +457,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbReleaseSavepointConstMeta,
-      argValues: [name],
+      argValues: [that, name],
       apiImpl: this,
     ));
   }
@@ -420,14 +465,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateApiDbStoolapDbReleaseSavepointConstMeta =>
       const TaskConstMeta(
         debugName: "StoolapDb_release_savepoint",
-        argNames: ["name"],
+        argNames: ["that", "name"],
       );
 
   @override
-  Future<void> crateApiDbStoolapDbRollback() {
+  Future<void> crateApiDbStoolapDbRollback({required StoolapDb that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 12, port: port_);
       },
@@ -436,7 +483,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbRollbackConstMeta,
-      argValues: [],
+      argValues: [that],
       apiImpl: this,
     ));
   }
@@ -444,14 +491,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateApiDbStoolapDbRollbackConstMeta =>
       const TaskConstMeta(
         debugName: "StoolapDb_rollback",
-        argNames: [],
+        argNames: ["that"],
       );
 
   @override
-  Future<void> crateApiDbStoolapDbRollbackToSavepoint({required String name}) {
+  Future<void> crateApiDbStoolapDbRollbackToSavepoint(
+      {required StoolapDb that, required String name}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         sse_encode_String(name, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 13, port: port_);
@@ -461,7 +511,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbRollbackToSavepointConstMeta,
-      argValues: [name],
+      argValues: [that, name],
       apiImpl: this,
     ));
   }
@@ -469,14 +519,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateApiDbStoolapDbRollbackToSavepointConstMeta =>
       const TaskConstMeta(
         debugName: "StoolapDb_rollback_to_savepoint",
-        argNames: ["name"],
+        argNames: ["that", "name"],
       );
 
   @override
-  Future<void> crateApiDbStoolapDbSavepoint({required String name}) {
+  Future<void> crateApiDbStoolapDbSavepoint(
+      {required StoolapDb that, required String name}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+            that, serializer);
         sse_encode_String(name, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 14, port: port_);
@@ -486,7 +539,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: sse_decode_AnyhowException,
       ),
       constMeta: kCrateApiDbStoolapDbSavepointConstMeta,
-      argValues: [name],
+      argValues: [that, name],
       apiImpl: this,
     ));
   }
@@ -494,7 +547,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateApiDbStoolapDbSavepointConstMeta =>
       const TaskConstMeta(
         debugName: "StoolapDb_savepoint",
-        argNames: ["name"],
+        argNames: ["that", "name"],
       );
 
   @override
@@ -604,6 +657,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StoolapDb
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return StoolapDbImpl.frbInternalDcoDecode(raw as List<dynamic>);
+  }
+
+  @protected
+  StoolapDb
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StoolapDbImpl.frbInternalDcoDecode(raw as List<dynamic>);
@@ -784,6 +845,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   StoolapDb
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return StoolapDbImpl.frbInternalSseDecode(
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+  }
+
+  @protected
+  StoolapDb
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return StoolapDbImpl.frbInternalSseDecode(
@@ -997,6 +1067,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          StoolapDb self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_usize(
+        (self as StoolapDbImpl).frbInternalSseEncode(move: false), serializer);
+  }
+
+  @protected
+  void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDefaultStreamSinkString(
           DefaultStreamSinkString self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -1203,4 +1282,59 @@ class StoolapDbImpl extends RustOpaque implements StoolapDb {
     rustArcDecrementStrongCountPtr:
         RustLib.instance.api.rust_arc_decrement_strong_count_StoolapDbPtr,
   );
+
+  Future<void> batchExecute({required List<String> sqls}) =>
+      RustLib.instance.api
+          .crateApiDbStoolapDbBatchExecute(that: this, sqls: sqls);
+
+  Future<void> begin() => RustLib.instance.api.crateApiDbStoolapDbBegin(
+        that: this,
+      );
+
+  Future<StoolapDb> cloneHandle() =>
+      RustLib.instance.api.crateApiDbStoolapDbCloneHandle(
+        that: this,
+      );
+
+  Future<void> commit() => RustLib.instance.api.crateApiDbStoolapDbCommit(
+        that: this,
+      );
+
+  Future<void> execute(
+          {required String sql, required List<StoolapValue> params}) =>
+      RustLib.instance.api
+          .crateApiDbStoolapDbExecute(that: this, sql: sql, params: params);
+
+  Future<List<StoolapRow>> executeWithResults(
+          {required String sql, required List<StoolapValue> params}) =>
+      RustLib.instance.api.crateApiDbStoolapDbExecuteWithResults(
+          that: this, sql: sql, params: params);
+
+  Future<String> explain(
+          {required String sql, required List<StoolapValue> params}) =>
+      RustLib.instance.api
+          .crateApiDbStoolapDbExplain(that: this, sql: sql, params: params);
+
+  Future<List<StoolapRow>> pragma({required String name, String? value}) =>
+      RustLib.instance.api
+          .crateApiDbStoolapDbPragma(that: this, name: name, value: value);
+
+  Future<List<StoolapRow>> query(
+          {required String sql, required List<StoolapValue> params}) =>
+      RustLib.instance.api
+          .crateApiDbStoolapDbQuery(that: this, sql: sql, params: params);
+
+  Future<void> releaseSavepoint({required String name}) => RustLib.instance.api
+      .crateApiDbStoolapDbReleaseSavepoint(that: this, name: name);
+
+  Future<void> rollback() => RustLib.instance.api.crateApiDbStoolapDbRollback(
+        that: this,
+      );
+
+  Future<void> rollbackToSavepoint({required String name}) =>
+      RustLib.instance.api
+          .crateApiDbStoolapDbRollbackToSavepoint(that: this, name: name);
+
+  Future<void> savepoint({required String name}) =>
+      RustLib.instance.api.crateApiDbStoolapDbSavepoint(that: this, name: name);
 }
