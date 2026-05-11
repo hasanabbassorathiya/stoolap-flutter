@@ -1,0 +1,15 @@
+# Run with `dart run ffigen --config ffigen.yaml`.
+name: StoolapFlutterBindings
+description: |
+  Bindings for `src/stoolap_flutter.h`.
+
+  Regenerate bindings with `dart run ffigen --config ffigen.yaml`.
+output: 'lib/stoolap_flutter_bindings_generated.dart'
+headers:
+  entry-points:
+    - 'src/stoolap_flutter.h'
+  include-directives:
+    - 'src/stoolap_flutter.h'
+comments:
+  style: any
+  length: full
