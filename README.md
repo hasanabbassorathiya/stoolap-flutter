@@ -71,6 +71,12 @@ StreamBuilder<List<StoolapRow>>(
 
 Stoolap automatically uses a Rayon work-stealing scheduler to parallelize large queries. For mobile, it is optimized to use SIMD instructions on ARM64 (M1/M2 and modern Android chips) for lightning-fast vector distance calculations.
 
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to get started with both Rust and Dart changes.
+
+Anyone can use, modify, and distribute their own version of this SDK.
+
 ## License
 
 Apache 2.0
