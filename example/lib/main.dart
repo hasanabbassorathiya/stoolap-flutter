@@ -4,13 +4,14 @@ import 'package:stoolap_flutter/stoolap_flutter.dart';
 /// Stoolap Flutter SDK Example
 ///
 /// This example demonstrates every major feature of the Stoolap SDK:
-/// 1. Initialization
+/// 1. Initialization & Logging
 /// 2. Basic CRUD Operations
 /// 3. MVCC Transactions & Savepoints
 /// 4. Native Vector Search & HNSW Indexing
 /// 5. Native JSON Support
-/// 6. Reactive "Live" Queries with Streams
-/// 7. Advanced SQL (CTEs and Window Functions)
+/// 6. Engine Tuning via Pragmas
+/// 7. Reactive "Live" Queries with Streams
+/// 8. Advanced SQL (CTEs and Window Functions)
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -49,11 +50,23 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
   final StoolapDatabase _db = StoolapDatabase();
   bool _isInitialized = false;
   String _status = "Initializing...";
+  final List<String> _logs = [];
 
   @override
   void initState() {
     super.initState();
     _setupDatabase();
+    _listenToLogs();
+  }
+
+  // FEATURE: Initialization & Logging
+  // Subscribe to internal Rust engine events for debugging and observability.
+  void _listenToLogs() {
+    _db.watchLogs().listen((log) {
+      if (mounted) {
+        setState(() => _logs.add("[RUST] $log"));
+      }
+    });
   }
 
   Future<void> _setupDatabase() async {
@@ -187,6 +200,7 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
       appBar: AppBar(
         title: const Text('Stoolap Feature Showcase'),
         actions: [
+          IconButton(icon: const Icon(Icons.settings), onPressed: _runPragmaDemo, tooltip: 'Pragma Demo'),
           IconButton(icon: const Icon(Icons.code), onPressed: _jsonDemo, tooltip: 'JSON Demo'),
           IconButton(icon: const Icon(Icons.psychology), onPressed: _semanticSearch, tooltip: 'Semantic Search'),
           IconButton(icon: const Icon(Icons.layers), onPressed: _runRecursiveCTE, tooltip: 'Recursive CTE'),
@@ -195,6 +209,15 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
       ),
       body: Column(
         children: [
+          if (_logs.isNotEmpty)
+            Container(
+              height: 40,
+              width: double.infinity,
+              color: Colors.black26,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              alignment: Alignment.centerLeft,
+              child: Text(_logs.last, style: const TextStyle(fontSize: 10, color: Colors.greenAccent, fontFamily: 'monospace')),
+            ),
           Container(
             padding: const EdgeInsets.all(8),
             color: Colors.blueGrey.withOpacity(0.2),

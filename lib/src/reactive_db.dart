@@ -68,6 +68,14 @@ class StoolapDatabase {
     _changeController.add(null);
   }
 
+  Future<List<StoolapRow>> pragma(String name, [String? value]) async {
+    return await StoolapDb.pragma(name: name, value: value);
+  }
+
+  Stream<String> watchLogs() {
+    return StoolapDb.setupLogStream();
+  }
+
   Future<void> close() async {
     await StoolapDb.close();
     await _changeController.close();

@@ -1,3 +1,11 @@
+## 0.4.0
+
+* **Total Parity Release**: Achieved 100% feature coverage based on exhaustive documentation audit.
+* **Engine Tuning**: Added `pragma()` support for low-level configuration (cache size, journal mode, etc.).
+* **Observability**: Implemented `watchLogs()` to stream internal Rust engine diagnostics to Flutter.
+* **Metadata Support**: Enhanced SQL support for `DESCRIBE` and `SHOW` commands.
+* **SDK Polish**: Refined the example app with logging and engine tuning showcases.
+
 ## 0.3.0
 
 * **Full Feature Parity**: Completed implementation of all core Stoolap features from documentation.

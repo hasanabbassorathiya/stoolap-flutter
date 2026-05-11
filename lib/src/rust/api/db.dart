@@ -11,6 +11,9 @@ part 'db.freezed.dart';
 // These functions are ignored because they are not marked as `pub`: `convert_params`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`, `fmt`
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DefaultStreamSink < String >>>
+abstract class DefaultStreamSinkString implements RustOpaqueInterface {}
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StoolapDb>>
 abstract class StoolapDb implements RustOpaqueInterface {
   static Future<void> begin() =>
@@ -29,6 +32,10 @@ abstract class StoolapDb implements RustOpaqueInterface {
   static Future<void> open({required String path}) =>
       RustLib.instance.api.crateApiDbStoolapDbOpen(path: path);
 
+  static Future<List<StoolapRow>> pragma(
+          {required String name, String? value}) =>
+      RustLib.instance.api.crateApiDbStoolapDbPragma(name: name, value: value);
+
   static Future<List<StoolapRow>> query(
           {required String sql, required List<String> params}) =>
       RustLib.instance.api.crateApiDbStoolapDbQuery(sql: sql, params: params);
@@ -44,6 +51,9 @@ abstract class StoolapDb implements RustOpaqueInterface {
 
   static Future<void> savepoint({required String name}) =>
       RustLib.instance.api.crateApiDbStoolapDbSavepoint(name: name);
+
+  static Future<void> setupLogStream({required DefaultStreamSinkString sink}) =>
+      RustLib.instance.api.crateApiDbStoolapDbSetupLogStream(sink: sink);
 }
 
 class StoolapRow {

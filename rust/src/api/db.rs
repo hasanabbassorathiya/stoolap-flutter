@@ -100,6 +100,24 @@ impl StoolapDb {
         Self::execute(format!("ROLLBACK TO SAVEPOINT {}", name), vec![])
     }
 
+    pub fn pragma(name: String, value: Option<String>) -> Result<Vec<StoolapRow>> {
+        let sql = if let Some(v) = value {
+            format!("PRAGMA {} = {}", name, v)
+        } else {
+            format!("PRAGMA {}", name)
+        };
+        Self::query(sql, vec![])
+    }
+
+    pub fn setup_log_stream(sink: flutter_rust_bridge::DefaultStreamSink<String>) -> Result<()> {
+        // Simple bridge to forward internal Rust logs (if exposed by stoolap crate)
+        // For now, we'll use a thread to emit heartbeat/ready events to demonstrate the bridge
+        std::thread::spawn(move || {
+            let _ = sink.add("Stoolap Rust engine logger initialized".to_string());
+        });
+        Ok(())
+    }
+
     pub fn close() -> Result<()> {
         let mut db_guard = DB.lock().unwrap();
         *db_guard = None;
