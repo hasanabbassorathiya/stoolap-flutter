@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 import 'package:stoolap_flutter/src/rust/api/db.dart';
 import 'package:stoolap_flutter/src/rust/frb_generated.dart';
 
@@ -13,32 +14,54 @@ class StoolapDatabase {
     await StoolapDb.open(path: path);
   }
 
-  Future<void> execute(String sql, {List<String> params = const []}) async {
-    await StoolapDb.execute(sql: sql, params: params);
+  List<StoolapValue> _convertParams(List<Object?> params) {
+    return params.map((p) {
+      if (p == null) return const StoolapValue.null_();
+      if (p is int) return StoolapValue.integer(p);
+      if (p is double) return StoolapValue.float(p);
+      if (p is bool) return StoolapValue.boolean(p);
+      if (p is String) return StoolapValue.text(p);
+      if (p is Float32List) return StoolapValue.vector(p);
+      if (p is DateTime) return StoolapValue.timestamp(p.millisecondsSinceEpoch);
+      return StoolapValue.text(p.toString());
+    }).toList();
+  }
+
+  Future<void> execute(String sql, {List<Object?> params = const []}) async {
+    await StoolapDb.execute(sql: sql, params: _convertParams(params));
     _changeController.add(null);
   }
 
-  Future<List<StoolapRow>> executeWithResults(String sql, {List<String> params = const []}) async {
-    final results = await StoolapDb.executeWithResults(sql: sql, params: params);
+  Future<void> batchExecute(List<String> sqls) async {
+    await StoolapDb.batchExecute(sqls: sqls);
+    _changeController.add(null);
+  }
+
+  Future<List<StoolapRow>> executeWithResults(String sql, {List<Object?> params = const []}) async {
+    final results = await StoolapDb.executeWithResults(sql: sql, params: _convertParams(params));
     _changeController.add(null);
     return results;
   }
 
-  Future<List<StoolapRow>> query(String sql, {List<String> params = const []}) async {
-    return await StoolapDb.query(sql: sql, params: params);
+  Future<List<StoolapRow>> query(String sql, {List<Object?> params = const []}) async {
+    return await StoolapDb.query(sql: sql, params: _convertParams(params));
   }
 
-  Future<String> explain(String sql, {List<String> params = const []}) async {
-    return await StoolapDb.explain(sql: sql, params: params);
+  Future<String> explain(String sql, {List<Object?> params = const []}) async {
+    return await StoolapDb.explain(sql: sql, params: _convertParams(params));
   }
 
-  Stream<List<StoolapRow>> watch(String sql, {List<String> params = const []}) {
+  Future<List<String>> tables() async {
+    final results = await query("SHOW TABLES");
+    return results.map((r) => r.values[0].toString()).toList();
+  }
+
+  Stream<List<StoolapRow>> watch(String sql, {List<Object?> params = const []}) {
     late StreamController<List<StoolapRow>> controller;
     StreamSubscription? subscription;
 
     controller = StreamController<List<StoolapRow>>(
       onListen: () async {
-        // Initial fetch
         try {
           final results = await query(sql, params: params);
           controller.add(results);
@@ -46,7 +69,6 @@ class StoolapDatabase {
           controller.addError(e);
         }
 
-        // Listen for changes
         subscription = _changeController.stream.listen((_) async {
           try {
             final results = await query(sql, params: params);

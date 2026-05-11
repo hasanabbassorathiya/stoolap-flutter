@@ -10,9 +10,11 @@ pub enum StoolapValue {
     Integer(i64),
     Float(f64),
     Text(String),
+    Boolean(bool),
     Vector(Vec<f32>),
     Json(String),
     Timestamp(i64),
+    Date(i64),
     Null,
 }
 
@@ -33,11 +35,21 @@ impl StoolapDb {
         Ok(())
     }
 
-    fn convert_params(params: Vec<String>) -> Vec<Value> {
-        params.into_iter().map(|p| Value::Text(p)).collect()
+    fn convert_params(params: Vec<StoolapValue>) -> Vec<Value> {
+        params.into_iter().map(|p| match p {
+            StoolapValue::Integer(i) => Value::Integer(i),
+            StoolapValue::Float(f) => Value::Float(f),
+            StoolapValue::Text(s) => Value::Text(s),
+            StoolapValue::Boolean(b) => Value::Boolean(b),
+            StoolapValue::Vector(v) => Value::Vector(v.into()),
+            StoolapValue::Json(j) => Value::Json(j.into()),
+            StoolapValue::Timestamp(t) => Value::Timestamp(t),
+            StoolapValue::Date(d) => Value::Date(d),
+            StoolapValue::Null => Value::Null,
+        }).collect()
     }
 
-    pub fn execute(sql: String, params: Vec<String>) -> Result<()> {
+    pub fn execute(sql: String, params: Vec<StoolapValue>) -> Result<()> {
         let db_guard = DB.lock().unwrap();
         if let Some(db) = db_guard.as_ref() {
             let stoolap_params = Self::convert_params(params);
@@ -48,7 +60,19 @@ impl StoolapDb {
         }
     }
 
-    pub fn query(sql: String, params: Vec<String>) -> Result<Vec<StoolapRow>> {
+    pub fn batch_execute(sqls: Vec<String>) -> Result<()> {
+        let db_guard = DB.lock().unwrap();
+        if let Some(db) = db_guard.as_ref() {
+            for sql in sqls {
+                db.execute(&sql, ())?;
+            }
+            Ok(())
+        } else {
+            Err(anyhow::anyhow!("Database not open"))
+        }
+    }
+
+    pub fn query(sql: String, params: Vec<StoolapValue>) -> Result<Vec<StoolapRow>> {
         let db_guard = DB.lock().unwrap();
         if let Some(db) = db_guard.as_ref() {
             let stoolap_params = Self::convert_params(params);
@@ -63,9 +87,11 @@ impl StoolapDb {
                         Value::Integer(i) => StoolapValue::Integer(*i),
                         Value::Float(f) => StoolapValue::Float(*f),
                         Value::Text(s) => StoolapValue::Text(s.clone()),
+                        Value::Boolean(b) => StoolapValue::Boolean(*b),
                         Value::Vector(v) => StoolapValue::Vector(v.to_vec()),
                         Value::Json(j) => StoolapValue::Json(j.to_string()),
                         Value::Timestamp(t) => StoolapValue::Timestamp(*t),
+                        Value::Date(d) => StoolapValue::Date(*d),
                         Value::Null => StoolapValue::Null,
                         _ => StoolapValue::Text(format!("{:?}", val)),
                     });
@@ -112,19 +138,17 @@ impl StoolapDb {
     }
 
     pub fn setup_log_stream(sink: flutter_rust_bridge::DefaultStreamSink<String>) -> Result<()> {
-        // Simple bridge to forward internal Rust logs (if exposed by stoolap crate)
-        // For now, we'll use a thread to emit heartbeat/ready events to demonstrate the bridge
         std::thread::spawn(move || {
             let _ = sink.add("Stoolap Rust engine logger initialized".to_string());
         });
         Ok(())
     }
 
-    pub fn execute_with_results(sql: String, params: Vec<String>) -> Result<Vec<StoolapRow>> {
+    pub fn execute_with_results(sql: String, params: Vec<StoolapValue>) -> Result<Vec<StoolapRow>> {
         Self::query(sql, params)
     }
 
-    pub fn explain(sql: String, params: Vec<String>) -> Result<String> {
+    pub fn explain(sql: String, params: Vec<StoolapValue>) -> Result<String> {
         let explain_sql = format!("EXPLAIN ANALYZE {}", sql);
         let results = Self::query(explain_sql, params)?;
         let mut output = String::new();

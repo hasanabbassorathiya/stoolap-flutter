@@ -71,7 +71,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.12.0';
 
   @override
-  int get rustContentHash => 1145234201;
+  int get rustContentHash => 1379717263;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -83,6 +83,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<void> crateApiDbStoolapDbBatchExecute({required List<String> sqls});
+
   Future<void> crateApiDbStoolapDbBegin();
 
   Future<void> crateApiDbStoolapDbClose();
@@ -90,13 +92,13 @@ abstract class RustLibApi extends BaseApi {
   Future<void> crateApiDbStoolapDbCommit();
 
   Future<void> crateApiDbStoolapDbExecute(
-      {required String sql, required List<String> params});
+      {required String sql, required List<StoolapValue> params});
 
   Future<List<StoolapRow>> crateApiDbStoolapDbExecuteWithResults(
-      {required String sql, required List<String> params});
+      {required String sql, required List<StoolapValue> params});
 
   Future<String> crateApiDbStoolapDbExplain(
-      {required String sql, required List<String> params});
+      {required String sql, required List<StoolapValue> params});
 
   Future<void> crateApiDbStoolapDbOpen({required String path});
 
@@ -104,7 +106,7 @@ abstract class RustLibApi extends BaseApi {
       {required String name, String? value});
 
   Future<List<StoolapRow>> crateApiDbStoolapDbQuery(
-      {required String sql, required List<String> params});
+      {required String sql, required List<StoolapValue> params});
 
   Future<void> crateApiDbStoolapDbReleaseSavepoint({required String name});
 
@@ -148,12 +150,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
+  Future<void> crateApiDbStoolapDbBatchExecute({required List<String> sqls}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_list_String(sqls, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta: kCrateApiDbStoolapDbBatchExecuteConstMeta,
+      argValues: [sqls],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiDbStoolapDbBatchExecuteConstMeta =>
+      const TaskConstMeta(
+        debugName: "StoolapDb_batch_execute",
+        argNames: ["sqls"],
+      );
+
+  @override
   Future<void> crateApiDbStoolapDbBegin() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+            funcId: 2, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -176,7 +203,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+            funcId: 3, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -199,7 +226,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+            funcId: 4, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -218,14 +245,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> crateApiDbStoolapDbExecute(
-      {required String sql, required List<String> params}) {
+      {required String sql, required List<StoolapValue> params}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(sql, serializer);
-        sse_encode_list_String(params, serializer);
+        sse_encode_list_stoolap_value(params, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+            funcId: 5, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -244,14 +271,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<List<StoolapRow>> crateApiDbStoolapDbExecuteWithResults(
-      {required String sql, required List<String> params}) {
+      {required String sql, required List<StoolapValue> params}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(sql, serializer);
-        sse_encode_list_String(params, serializer);
+        sse_encode_list_stoolap_value(params, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 5, port: port_);
+            funcId: 6, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_stoolap_row,
@@ -271,14 +298,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<String> crateApiDbStoolapDbExplain(
-      {required String sql, required List<String> params}) {
+      {required String sql, required List<StoolapValue> params}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(sql, serializer);
-        sse_encode_list_String(params, serializer);
+        sse_encode_list_stoolap_value(params, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 6, port: port_);
+            funcId: 7, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -302,7 +329,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(path, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 7, port: port_);
+            funcId: 8, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -328,7 +355,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(name, serializer);
         sse_encode_opt_String(value, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 8, port: port_);
+            funcId: 9, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_stoolap_row,
@@ -347,14 +374,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<List<StoolapRow>> crateApiDbStoolapDbQuery(
-      {required String sql, required List<String> params}) {
+      {required String sql, required List<StoolapValue> params}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(sql, serializer);
-        sse_encode_list_String(params, serializer);
+        sse_encode_list_stoolap_value(params, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 9, port: port_);
+            funcId: 10, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_list_stoolap_row,
@@ -378,7 +405,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(name, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 10, port: port_);
+            funcId: 11, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -402,7 +429,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 11, port: port_);
+            funcId: 12, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -427,7 +454,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(name, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 12, port: port_);
+            funcId: 13, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -452,7 +479,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(name, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 13, port: port_);
+            funcId: 14, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -479,7 +506,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDefaultStreamSinkString(
             sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 14, port: port_);
+            funcId: 15, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -503,7 +530,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(name, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 15)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 16)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -526,7 +553,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 16, port: port_);
+            funcId: 17, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -603,6 +630,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   String dco_decode_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as String;
+  }
+
+  @protected
+  bool dco_decode_bool(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw as bool;
   }
 
   @protected
@@ -688,18 +721,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dco_decode_String(raw[1]),
         );
       case 3:
+        return StoolapValue_Boolean(
+          dco_decode_bool(raw[1]),
+        );
+      case 4:
         return StoolapValue_Vector(
           dco_decode_list_prim_f_32_strict(raw[1]),
         );
-      case 4:
+      case 5:
         return StoolapValue_Json(
           dco_decode_String(raw[1]),
         );
-      case 5:
+      case 6:
         return StoolapValue_Timestamp(
           dco_decode_i_64(raw[1]),
         );
-      case 6:
+      case 7:
+        return StoolapValue_Date(
+          dco_decode_i_64(raw[1]),
+        );
+      case 8:
         return StoolapValue_Null();
       default:
         throw Exception("unreachable");
@@ -772,6 +813,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_prim_u_8_strict(deserializer);
     return utf8.decoder.convert(inner);
+  }
+
+  @protected
+  bool sse_decode_bool(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getUint8() != 0;
   }
 
   @protected
@@ -878,15 +925,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field0 = sse_decode_String(deserializer);
         return StoolapValue_Text(var_field0);
       case 3:
+        var var_field0 = sse_decode_bool(deserializer);
+        return StoolapValue_Boolean(var_field0);
+      case 4:
         var var_field0 = sse_decode_list_prim_f_32_strict(deserializer);
         return StoolapValue_Vector(var_field0);
-      case 4:
+      case 5:
         var var_field0 = sse_decode_String(deserializer);
         return StoolapValue_Json(var_field0);
-      case 5:
+      case 6:
         var var_field0 = sse_decode_i_64(deserializer);
         return StoolapValue_Timestamp(var_field0);
-      case 6:
+      case 7:
+        var var_field0 = sse_decode_i_64(deserializer);
+        return StoolapValue_Date(var_field0);
+      case 8:
         return StoolapValue_Null();
       default:
         throw UnimplementedError('');
@@ -914,12 +967,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
-  }
-
-  @protected
-  bool sse_decode_bool(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getUint8() != 0;
   }
 
   @protected
@@ -971,6 +1018,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_String(String self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_prim_u_8_strict(utf8.encoder.convert(self), serializer);
+  }
+
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putUint8(self ? 1 : 0);
   }
 
   @protected
@@ -1066,17 +1119,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case StoolapValue_Text(field0: final field0):
         sse_encode_i_32(2, serializer);
         sse_encode_String(field0, serializer);
-      case StoolapValue_Vector(field0: final field0):
+      case StoolapValue_Boolean(field0: final field0):
         sse_encode_i_32(3, serializer);
+        sse_encode_bool(field0, serializer);
+      case StoolapValue_Vector(field0: final field0):
+        sse_encode_i_32(4, serializer);
         sse_encode_list_prim_f_32_strict(field0, serializer);
       case StoolapValue_Json(field0: final field0):
-        sse_encode_i_32(4, serializer);
+        sse_encode_i_32(5, serializer);
         sse_encode_String(field0, serializer);
       case StoolapValue_Timestamp(field0: final field0):
-        sse_encode_i_32(5, serializer);
+        sse_encode_i_32(6, serializer);
+        sse_encode_i_64(field0, serializer);
+      case StoolapValue_Date(field0: final field0):
+        sse_encode_i_32(7, serializer);
         sse_encode_i_64(field0, serializer);
       case StoolapValue_Null():
-        sse_encode_i_32(6, serializer);
+        sse_encode_i_32(8, serializer);
     }
   }
 
@@ -1101,12 +1160,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
-  }
-
-  @protected
-  void sse_encode_bool(bool self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putUint8(self ? 1 : 0);
   }
 }
 

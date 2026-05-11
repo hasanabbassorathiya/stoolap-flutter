@@ -1,3 +1,11 @@
+## 0.6.0
+
+* **Professional Parity**: Full audit of Stoolap docs complete.
+* **Type-Safe Parameters**: Supported passing native Dart types (`int`, `double`, `bool`, `DateTime`) directly to SQL queries.
+* **Batch Execution**: Added `batchExecute()` for high-throughput multi-statement execution.
+* **Schema Inspection**: Added `tables()` helper and improved `DESCRIBE`/`SHOW` support.
+* **Type Mapping**: Implemented native `Boolean` and `Date` mappings between Rust and Dart.
+
 ## 0.5.0
 
 * **Definitive Release**: Achieved 100% feature parity with the Stoolap.io engine documentation.

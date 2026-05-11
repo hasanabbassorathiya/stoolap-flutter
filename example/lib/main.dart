@@ -5,15 +5,15 @@ import 'package:stoolap_flutter/stoolap_flutter.dart';
 ///
 /// This example demonstrates every major feature of the Stoolap SDK:
 /// 1. Initialization & Logging
-/// 2. Basic CRUD Operations
+/// 2. Basic CRUD Operations (Type-Safe Parameters)
 /// 3. MVCC Transactions & Savepoints
-/// 4. Native Vector Search & HNSW Indexing
-/// 5. Native JSON Support
-/// 6. Engine Tuning via Pragmas
-/// 7. Query Profiling via EXPLAIN
-/// 8. Mutations with RETURNING
-/// 9. Reactive "Live" Queries with Streams
-/// 10. Advanced SQL (CTEs and Window Functions)
+/// 4. High-Throughput Batch Execution
+/// 5. Native Vector Search & HNSW Indexing
+/// 6. Native JSON Support
+/// 7. Engine Tuning via Pragmas
+/// 8. Query Profiling via EXPLAIN
+/// 9. Schema Inspection
+/// 10. Reactive "Live" Queries with Streams
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -108,14 +108,37 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
     }
   }
 
-  // FEATURE: CRUD Operations
+  // FEATURE: CRUD Operations (Type-Safe)
+  // Pass native Dart types like int, bool, and DateTime directly as parameters.
   Future<void> _addNote() async {
-    final timestamp = DateTime.now().toIso8601String();
     await _db.execute(
       'INSERT INTO notes (content, category) VALUES (?, ?)',
-      params: ['New note at $timestamp', 'General'],
+      params: ['Note created at ${DateTime.now()}', 'General'],
     );
-    // Note: No need to call setState() if using .watch()! The UI updates automatically.
+  }
+
+  // FEATURE: Batch Execution
+  // Execute multiple SQL commands efficiently in a single FFI call.
+  Future<void> _runBatch() async {
+    await _db.batchExecute([
+      "INSERT INTO notes (content, category) VALUES ('Batch 1', 'Work')",
+      "INSERT INTO notes (content, category) VALUES ('Batch 2', 'Personal')",
+    ]);
+    ScaffoldMessenger.of(context).showSnackBar(const ApiResponseSnackBar(message: 'Batch Executed Successfully'));
+  }
+
+  // FEATURE: Schema Inspection
+  // Inspect existing tables and database metadata.
+  Future<void> _showTables() async {
+    final tables = await _db.tables();
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Database Tables'),
+        content: Text(tables.join('\n')),
+        actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('Close'))],
+      ),
+    );
   }
 
   // FEATURE: MVCC Transactions & Savepoints
@@ -229,6 +252,8 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
       appBar: AppBar(
         title: const Text('Stoolap Feature Showcase'),
         actions: [
+          IconButton(icon: const Icon(Icons.table_rows), onPressed: _showTables, tooltip: 'Show Tables'),
+          IconButton(icon: const Icon(Icons.bolt), onPressed: _runBatch, tooltip: 'Batch Execute'),
           IconButton(icon: const Icon(Icons.analytics), onPressed: _explainQuery, tooltip: 'Explain Query'),
           IconButton(icon: const Icon(Icons.reply), onPressed: _addAndReturn, tooltip: 'Insert Returning'),
           IconButton(icon: const Icon(Icons.settings), onPressed: _runPragmaDemo, tooltip: 'Pragma Demo'),

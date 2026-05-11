@@ -16,6 +16,9 @@ abstract class DefaultStreamSinkString implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StoolapDb>>
 abstract class StoolapDb implements RustOpaqueInterface {
+  static Future<void> batchExecute({required List<String> sqls}) =>
+      RustLib.instance.api.crateApiDbStoolapDbBatchExecute(sqls: sqls);
+
   static Future<void> begin() =>
       RustLib.instance.api.crateApiDbStoolapDbBegin();
 
@@ -26,16 +29,16 @@ abstract class StoolapDb implements RustOpaqueInterface {
       RustLib.instance.api.crateApiDbStoolapDbCommit();
 
   static Future<void> execute(
-          {required String sql, required List<String> params}) =>
+          {required String sql, required List<StoolapValue> params}) =>
       RustLib.instance.api.crateApiDbStoolapDbExecute(sql: sql, params: params);
 
   static Future<List<StoolapRow>> executeWithResults(
-          {required String sql, required List<String> params}) =>
+          {required String sql, required List<StoolapValue> params}) =>
       RustLib.instance.api
           .crateApiDbStoolapDbExecuteWithResults(sql: sql, params: params);
 
   static Future<String> explain(
-          {required String sql, required List<String> params}) =>
+          {required String sql, required List<StoolapValue> params}) =>
       RustLib.instance.api.crateApiDbStoolapDbExplain(sql: sql, params: params);
 
   static Future<void> open({required String path}) =>
@@ -46,7 +49,7 @@ abstract class StoolapDb implements RustOpaqueInterface {
       RustLib.instance.api.crateApiDbStoolapDbPragma(name: name, value: value);
 
   static Future<List<StoolapRow>> query(
-          {required String sql, required List<String> params}) =>
+          {required String sql, required List<StoolapValue> params}) =>
       RustLib.instance.api.crateApiDbStoolapDbQuery(sql: sql, params: params);
 
   static Future<void> releaseSavepoint({required String name}) =>
@@ -99,6 +102,9 @@ sealed class StoolapValue with _$StoolapValue {
   const factory StoolapValue.text(
     String field0,
   ) = StoolapValue_Text;
+  const factory StoolapValue.boolean(
+    bool field0,
+  ) = StoolapValue_Boolean;
   const factory StoolapValue.vector(
     Float32List field0,
   ) = StoolapValue_Vector;
@@ -108,5 +114,8 @@ sealed class StoolapValue with _$StoolapValue {
   const factory StoolapValue.timestamp(
     PlatformInt64 field0,
   ) = StoolapValue_Timestamp;
+  const factory StoolapValue.date(
+    PlatformInt64 field0,
+  ) = StoolapValue_Date;
   const factory StoolapValue.null_() = StoolapValue_Null;
 }
