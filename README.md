@@ -10,6 +10,12 @@ Stoolap is a high-performance, embedded SQL database written entirely in Rust. I
 
 ---
 
+## What is Stoolap?
+
+Stoolap is a modern embedded SQL database that provides full ACID transactions with MVCC, a sophisticated cost-based query optimizer, and features that rival established databases like PostgreSQL and DuckDB. Built entirely in Rust with minimal unsafe code (only for FFI and performance-critical hot paths), Stoolap features multiple index types (B-tree, Hash, Bitmap, HNSW), native vector search with semantic search support, parallel query execution, and comprehensive SQL support including window functions, CTEs, and temporal queries.
+
+---
+
 ## Features 📦
 
 *   🦀 **Pure Rust Core:** Memory-safe and lightning-fast database engine.
