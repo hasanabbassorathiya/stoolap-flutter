@@ -18,8 +18,18 @@ class StoolapDatabase {
     _changeController.add(null);
   }
 
+  Future<List<StoolapRow>> executeWithResults(String sql, {List<String> params = const []}) async {
+    final results = await StoolapDb.executeWithResults(sql: sql, params: params);
+    _changeController.add(null);
+    return results;
+  }
+
   Future<List<StoolapRow>> query(String sql, {List<String> params = const []}) async {
     return await StoolapDb.query(sql: sql, params: params);
+  }
+
+  Future<String> explain(String sql, {List<String> params = const []}) async {
+    return await StoolapDb.explain(sql: sql, params: params);
   }
 
   Stream<List<StoolapRow>> watch(String sql, {List<String> params = const []}) {

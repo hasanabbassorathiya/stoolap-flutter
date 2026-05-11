@@ -29,6 +29,15 @@ abstract class StoolapDb implements RustOpaqueInterface {
           {required String sql, required List<String> params}) =>
       RustLib.instance.api.crateApiDbStoolapDbExecute(sql: sql, params: params);
 
+  static Future<List<StoolapRow>> executeWithResults(
+          {required String sql, required List<String> params}) =>
+      RustLib.instance.api
+          .crateApiDbStoolapDbExecuteWithResults(sql: sql, params: params);
+
+  static Future<String> explain(
+          {required String sql, required List<String> params}) =>
+      RustLib.instance.api.crateApiDbStoolapDbExplain(sql: sql, params: params);
+
   static Future<void> open({required String path}) =>
       RustLib.instance.api.crateApiDbStoolapDbOpen(path: path);
 
@@ -96,5 +105,8 @@ sealed class StoolapValue with _$StoolapValue {
   const factory StoolapValue.json(
     String field0,
   ) = StoolapValue_Json;
+  const factory StoolapValue.timestamp(
+    PlatformInt64 field0,
+  ) = StoolapValue_Timestamp;
   const factory StoolapValue.null_() = StoolapValue_Null;
 }

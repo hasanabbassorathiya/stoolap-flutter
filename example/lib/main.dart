@@ -10,8 +10,10 @@ import 'package:stoolap_flutter/stoolap_flutter.dart';
 /// 4. Native Vector Search & HNSW Indexing
 /// 5. Native JSON Support
 /// 6. Engine Tuning via Pragmas
-/// 7. Reactive "Live" Queries with Streams
-/// 8. Advanced SQL (CTEs and Window Functions)
+/// 7. Query Profiling via EXPLAIN
+/// 8. Mutations with RETURNING
+/// 9. Reactive "Live" Queries with Streams
+/// 10. Advanced SQL (CTEs and Window Functions)
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -190,6 +192,33 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
     ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Recursive CTE output: $output'));
   }
 
+  // FEATURE: Query Profiling via EXPLAIN
+  // Use EXPLAIN ANALYZE to inspect how the Stoolap optimizer plans and executes your query.
+  Future<void> _explainQuery() async {
+    final plan = await _db.explain('SELECT * FROM notes WHERE category = ?', params: ['General']);
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Query Plan'),
+        content: SingleChildScrollView(child: Text(plan, style: const TextStyle(fontFamily: 'monospace', fontSize: 12))),
+        actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('Close'))],
+      ),
+    );
+  }
+
+  // FEATURE: Mutations with RETURNING
+  // Perform an insert and get the generated values back in a single atomic step.
+  Future<void> _addAndReturn() async {
+    final results = await _db.executeWithResults(
+      'INSERT INTO notes (content, category) VALUES (?, ?) RETURNING id, content',
+      params: ['Returned note', 'Analytics'],
+    );
+    if (results.isNotEmpty) {
+      final id = results.first.values[0];
+      ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Inserted with ID: $id'));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (!_isInitialized) {
@@ -200,6 +229,8 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
       appBar: AppBar(
         title: const Text('Stoolap Feature Showcase'),
         actions: [
+          IconButton(icon: const Icon(Icons.analytics), onPressed: _explainQuery, tooltip: 'Explain Query'),
+          IconButton(icon: const Icon(Icons.reply), onPressed: _addAndReturn, tooltip: 'Insert Returning'),
           IconButton(icon: const Icon(Icons.settings), onPressed: _runPragmaDemo, tooltip: 'Pragma Demo'),
           IconButton(icon: const Icon(Icons.code), onPressed: _jsonDemo, tooltip: 'JSON Demo'),
           IconButton(icon: const Icon(Icons.psychology), onPressed: _semanticSearch, tooltip: 'Semantic Search'),

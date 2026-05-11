@@ -12,6 +12,7 @@ pub enum StoolapValue {
     Text(String),
     Vector(Vec<f32>),
     Json(String),
+    Timestamp(i64),
     Null,
 }
 
@@ -64,6 +65,7 @@ impl StoolapDb {
                         Value::Text(s) => StoolapValue::Text(s.clone()),
                         Value::Vector(v) => StoolapValue::Vector(v.to_vec()),
                         Value::Json(j) => StoolapValue::Json(j.to_string()),
+                        Value::Timestamp(t) => StoolapValue::Timestamp(*t),
                         Value::Null => StoolapValue::Null,
                         _ => StoolapValue::Text(format!("{:?}", val)),
                     });
@@ -116,6 +118,23 @@ impl StoolapDb {
             let _ = sink.add("Stoolap Rust engine logger initialized".to_string());
         });
         Ok(())
+    }
+
+    pub fn execute_with_results(sql: String, params: Vec<String>) -> Result<Vec<StoolapRow>> {
+        Self::query(sql, params)
+    }
+
+    pub fn explain(sql: String, params: Vec<String>) -> Result<String> {
+        let explain_sql = format!("EXPLAIN ANALYZE {}", sql);
+        let results = Self::query(explain_sql, params)?;
+        let mut output = String::new();
+        for row in results {
+            if let Some(StoolapValue::Text(val)) = row.values.first() {
+                output.push_str(val);
+                output.push('\n');
+            }
+        }
+        Ok(output)
     }
 
     pub fn close() -> Result<()> {

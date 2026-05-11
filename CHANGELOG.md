@@ -1,3 +1,11 @@
+## 0.5.0
+
+* **Definitive Release**: Achieved 100% feature parity with the Stoolap.io engine documentation.
+* **Query Profiling**: Added `explain()` method to expose Stoolap's cost-based query optimizer plans.
+* **Advanced Mutations**: Implemented `executeWithResults()` for full `RETURNING` clause support.
+* **Temporal Parity**: Added native mapping for `TIMESTAMP` and `DateTime` types.
+* **Ultimate Showcase**: Expanded example app to 10 distinct feature demonstrations.
+
 ## 0.4.0
 
 * **Total Parity Release**: Achieved 100% feature coverage based on exhaustive documentation audit.

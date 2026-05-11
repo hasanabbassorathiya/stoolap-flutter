@@ -23,6 +23,7 @@ mixin _$StoolapValue {
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
     required TResult Function(String field0) json,
+    required TResult Function(int field0) timestamp,
     required TResult Function() null_,
   }) =>
       throw _privateConstructorUsedError;
@@ -33,6 +34,7 @@ mixin _$StoolapValue {
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
     TResult? Function(String field0)? json,
+    TResult? Function(int field0)? timestamp,
     TResult? Function()? null_,
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +45,7 @@ mixin _$StoolapValue {
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
     TResult Function(String field0)? json,
+    TResult Function(int field0)? timestamp,
     TResult Function()? null_,
     required TResult orElse(),
   }) =>
@@ -54,6 +57,7 @@ mixin _$StoolapValue {
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
     required TResult Function(StoolapValue_Json value) json,
+    required TResult Function(StoolapValue_Timestamp value) timestamp,
     required TResult Function(StoolapValue_Null value) null_,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +68,7 @@ mixin _$StoolapValue {
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
     TResult? Function(StoolapValue_Json value)? json,
+    TResult? Function(StoolapValue_Timestamp value)? timestamp,
     TResult? Function(StoolapValue_Null value)? null_,
   }) =>
       throw _privateConstructorUsedError;
@@ -74,6 +79,7 @@ mixin _$StoolapValue {
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
     TResult Function(StoolapValue_Json value)? json,
+    TResult Function(StoolapValue_Timestamp value)? timestamp,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) =>
@@ -176,6 +182,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
     required TResult Function(String field0) json,
+    required TResult Function(int field0) timestamp,
     required TResult Function() null_,
   }) {
     return integer(field0);
@@ -189,6 +196,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
     TResult? Function(String field0)? json,
+    TResult? Function(int field0)? timestamp,
     TResult? Function()? null_,
   }) {
     return integer?.call(field0);
@@ -202,6 +210,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
     TResult Function(String field0)? json,
+    TResult Function(int field0)? timestamp,
     TResult Function()? null_,
     required TResult orElse(),
   }) {
@@ -219,6 +228,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
     required TResult Function(StoolapValue_Json value) json,
+    required TResult Function(StoolapValue_Timestamp value) timestamp,
     required TResult Function(StoolapValue_Null value) null_,
   }) {
     return integer(this);
@@ -232,6 +242,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
     TResult? Function(StoolapValue_Json value)? json,
+    TResult? Function(StoolapValue_Timestamp value)? timestamp,
     TResult? Function(StoolapValue_Null value)? null_,
   }) {
     return integer?.call(this);
@@ -245,6 +256,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
     TResult Function(StoolapValue_Json value)? json,
+    TResult Function(StoolapValue_Timestamp value)? timestamp,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) {
@@ -343,6 +355,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
     required TResult Function(String field0) json,
+    required TResult Function(int field0) timestamp,
     required TResult Function() null_,
   }) {
     return float(field0);
@@ -356,6 +369,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
     TResult? Function(String field0)? json,
+    TResult? Function(int field0)? timestamp,
     TResult? Function()? null_,
   }) {
     return float?.call(field0);
@@ -369,6 +383,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
     TResult Function(String field0)? json,
+    TResult Function(int field0)? timestamp,
     TResult Function()? null_,
     required TResult orElse(),
   }) {
@@ -386,6 +401,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
     required TResult Function(StoolapValue_Json value) json,
+    required TResult Function(StoolapValue_Timestamp value) timestamp,
     required TResult Function(StoolapValue_Null value) null_,
   }) {
     return float(this);
@@ -399,6 +415,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
     TResult? Function(StoolapValue_Json value)? json,
+    TResult? Function(StoolapValue_Timestamp value)? timestamp,
     TResult? Function(StoolapValue_Null value)? null_,
   }) {
     return float?.call(this);
@@ -412,6 +429,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
     TResult Function(StoolapValue_Json value)? json,
+    TResult Function(StoolapValue_Timestamp value)? timestamp,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) {
@@ -510,6 +528,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
     required TResult Function(String field0) json,
+    required TResult Function(int field0) timestamp,
     required TResult Function() null_,
   }) {
     return text(field0);
@@ -523,6 +542,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
     TResult? Function(String field0)? json,
+    TResult? Function(int field0)? timestamp,
     TResult? Function()? null_,
   }) {
     return text?.call(field0);
@@ -536,6 +556,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
     TResult Function(String field0)? json,
+    TResult Function(int field0)? timestamp,
     TResult Function()? null_,
     required TResult orElse(),
   }) {
@@ -553,6 +574,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
     required TResult Function(StoolapValue_Json value) json,
+    required TResult Function(StoolapValue_Timestamp value) timestamp,
     required TResult Function(StoolapValue_Null value) null_,
   }) {
     return text(this);
@@ -566,6 +588,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
     TResult? Function(StoolapValue_Json value)? json,
+    TResult? Function(StoolapValue_Timestamp value)? timestamp,
     TResult? Function(StoolapValue_Null value)? null_,
   }) {
     return text?.call(this);
@@ -579,6 +602,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
     TResult Function(StoolapValue_Json value)? json,
+    TResult Function(StoolapValue_Timestamp value)? timestamp,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) {
@@ -678,6 +702,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
     required TResult Function(String field0) json,
+    required TResult Function(int field0) timestamp,
     required TResult Function() null_,
   }) {
     return vector(field0);
@@ -691,6 +716,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
     TResult? Function(String field0)? json,
+    TResult? Function(int field0)? timestamp,
     TResult? Function()? null_,
   }) {
     return vector?.call(field0);
@@ -704,6 +730,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
     TResult Function(String field0)? json,
+    TResult Function(int field0)? timestamp,
     TResult Function()? null_,
     required TResult orElse(),
   }) {
@@ -721,6 +748,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
     required TResult Function(StoolapValue_Json value) json,
+    required TResult Function(StoolapValue_Timestamp value) timestamp,
     required TResult Function(StoolapValue_Null value) null_,
   }) {
     return vector(this);
@@ -734,6 +762,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
     TResult? Function(StoolapValue_Json value)? json,
+    TResult? Function(StoolapValue_Timestamp value)? timestamp,
     TResult? Function(StoolapValue_Null value)? null_,
   }) {
     return vector?.call(this);
@@ -747,6 +776,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
     TResult Function(StoolapValue_Json value)? json,
+    TResult Function(StoolapValue_Timestamp value)? timestamp,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) {
@@ -845,6 +875,7 @@ class _$StoolapValue_JsonImpl extends StoolapValue_Json {
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
     required TResult Function(String field0) json,
+    required TResult Function(int field0) timestamp,
     required TResult Function() null_,
   }) {
     return json(field0);
@@ -858,6 +889,7 @@ class _$StoolapValue_JsonImpl extends StoolapValue_Json {
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
     TResult? Function(String field0)? json,
+    TResult? Function(int field0)? timestamp,
     TResult? Function()? null_,
   }) {
     return json?.call(field0);
@@ -871,6 +903,7 @@ class _$StoolapValue_JsonImpl extends StoolapValue_Json {
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
     TResult Function(String field0)? json,
+    TResult Function(int field0)? timestamp,
     TResult Function()? null_,
     required TResult orElse(),
   }) {
@@ -888,6 +921,7 @@ class _$StoolapValue_JsonImpl extends StoolapValue_Json {
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
     required TResult Function(StoolapValue_Json value) json,
+    required TResult Function(StoolapValue_Timestamp value) timestamp,
     required TResult Function(StoolapValue_Null value) null_,
   }) {
     return json(this);
@@ -901,6 +935,7 @@ class _$StoolapValue_JsonImpl extends StoolapValue_Json {
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
     TResult? Function(StoolapValue_Json value)? json,
+    TResult? Function(StoolapValue_Timestamp value)? timestamp,
     TResult? Function(StoolapValue_Null value)? null_,
   }) {
     return json?.call(this);
@@ -914,6 +949,7 @@ class _$StoolapValue_JsonImpl extends StoolapValue_Json {
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
     TResult Function(StoolapValue_Json value)? json,
+    TResult Function(StoolapValue_Timestamp value)? timestamp,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) {
@@ -936,6 +972,181 @@ abstract class StoolapValue_Json extends StoolapValue {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoolapValue_JsonImplCopyWith<_$StoolapValue_JsonImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StoolapValue_TimestampImplCopyWith<$Res> {
+  factory _$$StoolapValue_TimestampImplCopyWith(
+          _$StoolapValue_TimestampImpl value,
+          $Res Function(_$StoolapValue_TimestampImpl) then) =
+      __$$StoolapValue_TimestampImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int field0});
+}
+
+/// @nodoc
+class __$$StoolapValue_TimestampImplCopyWithImpl<$Res>
+    extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_TimestampImpl>
+    implements _$$StoolapValue_TimestampImplCopyWith<$Res> {
+  __$$StoolapValue_TimestampImplCopyWithImpl(
+      _$StoolapValue_TimestampImpl _value,
+      $Res Function(_$StoolapValue_TimestampImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$StoolapValue_TimestampImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StoolapValue_TimestampImpl extends StoolapValue_Timestamp {
+  const _$StoolapValue_TimestampImpl(this.field0) : super._();
+
+  @override
+  final int field0;
+
+  @override
+  String toString() {
+    return 'StoolapValue.timestamp(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StoolapValue_TimestampImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StoolapValue_TimestampImplCopyWith<_$StoolapValue_TimestampImpl>
+      get copyWith => __$$StoolapValue_TimestampImplCopyWithImpl<
+          _$StoolapValue_TimestampImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int field0) integer,
+    required TResult Function(double field0) float,
+    required TResult Function(String field0) text,
+    required TResult Function(Float32List field0) vector,
+    required TResult Function(String field0) json,
+    required TResult Function(int field0) timestamp,
+    required TResult Function() null_,
+  }) {
+    return timestamp(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int field0)? integer,
+    TResult? Function(double field0)? float,
+    TResult? Function(String field0)? text,
+    TResult? Function(Float32List field0)? vector,
+    TResult? Function(String field0)? json,
+    TResult? Function(int field0)? timestamp,
+    TResult? Function()? null_,
+  }) {
+    return timestamp?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int field0)? integer,
+    TResult Function(double field0)? float,
+    TResult Function(String field0)? text,
+    TResult Function(Float32List field0)? vector,
+    TResult Function(String field0)? json,
+    TResult Function(int field0)? timestamp,
+    TResult Function()? null_,
+    required TResult orElse(),
+  }) {
+    if (timestamp != null) {
+      return timestamp(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StoolapValue_Integer value) integer,
+    required TResult Function(StoolapValue_Float value) float,
+    required TResult Function(StoolapValue_Text value) text,
+    required TResult Function(StoolapValue_Vector value) vector,
+    required TResult Function(StoolapValue_Json value) json,
+    required TResult Function(StoolapValue_Timestamp value) timestamp,
+    required TResult Function(StoolapValue_Null value) null_,
+  }) {
+    return timestamp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StoolapValue_Integer value)? integer,
+    TResult? Function(StoolapValue_Float value)? float,
+    TResult? Function(StoolapValue_Text value)? text,
+    TResult? Function(StoolapValue_Vector value)? vector,
+    TResult? Function(StoolapValue_Json value)? json,
+    TResult? Function(StoolapValue_Timestamp value)? timestamp,
+    TResult? Function(StoolapValue_Null value)? null_,
+  }) {
+    return timestamp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StoolapValue_Integer value)? integer,
+    TResult Function(StoolapValue_Float value)? float,
+    TResult Function(StoolapValue_Text value)? text,
+    TResult Function(StoolapValue_Vector value)? vector,
+    TResult Function(StoolapValue_Json value)? json,
+    TResult Function(StoolapValue_Timestamp value)? timestamp,
+    TResult Function(StoolapValue_Null value)? null_,
+    required TResult orElse(),
+  }) {
+    if (timestamp != null) {
+      return timestamp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StoolapValue_Timestamp extends StoolapValue {
+  const factory StoolapValue_Timestamp(final int field0) =
+      _$StoolapValue_TimestampImpl;
+  const StoolapValue_Timestamp._() : super._();
+
+  int get field0;
+
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StoolapValue_TimestampImplCopyWith<_$StoolapValue_TimestampImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -984,6 +1195,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
     required TResult Function(String field0) json,
+    required TResult Function(int field0) timestamp,
     required TResult Function() null_,
   }) {
     return null_();
@@ -997,6 +1209,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
     TResult? Function(String field0)? json,
+    TResult? Function(int field0)? timestamp,
     TResult? Function()? null_,
   }) {
     return null_?.call();
@@ -1010,6 +1223,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
     TResult Function(String field0)? json,
+    TResult Function(int field0)? timestamp,
     TResult Function()? null_,
     required TResult orElse(),
   }) {
@@ -1027,6 +1241,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
     required TResult Function(StoolapValue_Json value) json,
+    required TResult Function(StoolapValue_Timestamp value) timestamp,
     required TResult Function(StoolapValue_Null value) null_,
   }) {
     return null_(this);
@@ -1040,6 +1255,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
     TResult? Function(StoolapValue_Json value)? json,
+    TResult? Function(StoolapValue_Timestamp value)? timestamp,
     TResult? Function(StoolapValue_Null value)? null_,
   }) {
     return null_?.call(this);
@@ -1053,6 +1269,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
     TResult Function(StoolapValue_Json value)? json,
+    TResult Function(StoolapValue_Timestamp value)? timestamp,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) {
