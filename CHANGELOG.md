@@ -1,3 +1,10 @@
+## 0.8.0
+
+* **Reliability Release**: Established a robust automated quality framework.
+* **Integration Tests**: Added `test/` suite covering CRUD, Transactions, Vectors, and Schema.
+* **CI/CD Pipeline**: Integrated GitHub Actions to automate Rust builds and Dart tests on every push.
+* **Structural Polish**: Finalized project directory for production-grade SDK distribution.
+
 ## 0.7.0
 
 * **Source-Of-Truth Release**: Completed absolute architectural alignment with the official Stoolap Rust repository.
