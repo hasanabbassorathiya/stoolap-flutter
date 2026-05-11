@@ -2,9 +2,11 @@
 > The high-performance SQL database that ships with your app.
 
 [![pub package](https://img.shields.io/pub/v/stoolap_flutter.svg)](https://pub.dev/packages/stoolap_flutter)
-[![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/stoolap/stoolap-flutter/blob/main/LICENSE)
+[![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/hasanabbassorathiya/stoolap-flutter/blob/main/LICENSE)
 
 Stoolap is a high-performance, embedded SQL database written entirely in Rust. It brings enterprise-grade features like MVCC transactions, parallel execution, and native vector search directly to your Flutter applications.
+
+**Official Reference:** [https://stoolap.io/](https://stoolap.io/)
 
 ---
 
@@ -31,7 +33,7 @@ Add `stoolap_flutter` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  stoolap_flutter: ^0.1.0
+  stoolap_flutter: ^0.2.0
 ```
 
 ### 2. Initialization
