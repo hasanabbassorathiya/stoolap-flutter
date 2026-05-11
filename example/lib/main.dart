@@ -6,10 +6,11 @@ import 'package:stoolap_flutter/stoolap_flutter.dart';
 /// This example demonstrates every major feature of the Stoolap SDK:
 /// 1. Initialization
 /// 2. Basic CRUD Operations
-/// 3. MVCC Transactions
+/// 3. MVCC Transactions & Savepoints
 /// 4. Native Vector Search & HNSW Indexing
-/// 5. Reactive "Live" Queries with Streams
-/// 6. Advanced SQL (CTEs and Window Functions)
+/// 5. Native JSON Support
+/// 6. Reactive "Live" Queries with Streams
+/// 7. Advanced SQL (CTEs and Window Functions)
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -64,6 +65,7 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
       // FEATURE: Basic SQL Execution
       // Create tables for our different features
       await _db.execute('CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY, content TEXT, category TEXT)');
+      await _db.execute('CREATE TABLE IF NOT EXISTS metadata (id INTEGER PRIMARY KEY, data JSON)');
 
       // FEATURE: Vector Search Setup
       // Stoolap supports native VECTOR types. Here we use a 384-dim vector for semantic search.
@@ -101,18 +103,39 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
     // Note: No need to call setState() if using .watch()! The UI updates automatically.
   }
 
-  // FEATURE: MVCC Transactions
-  // Atomic multi-step operations. If any fail, none are applied.
+  // FEATURE: MVCC Transactions & Savepoints
+  // Atomic multi-step operations with fine-grained rollback control.
   Future<void> _runTransaction() async {
     await _db.begin();
     try {
       await _db.execute('INSERT INTO notes (content) VALUES (?)', params: ['Tx Step 1']);
-      await _db.execute('INSERT INTO notes (content) VALUES (?)', params: ['Tx Step 2']);
-      await _db.commit(); // Only now are the notes visible to others
-      ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Transaction Committed'));
+
+      // Create a savepoint
+      await _db.savepoint('sp1');
+      await _db.execute('INSERT INTO notes (content) VALUES (?)', params: ['Tx Step 2 (will be rolled back)']);
+
+      // Roll back to savepoint (Step 2 is undone, Step 1 remains)
+      await _db.rollbackTo('sp1');
+
+      await _db.execute('INSERT INTO notes (content) VALUES (?)', params: ['Tx Step 3']);
+      await _db.commit();
+      ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Transaction Committed (Steps 1 & 3 applied)'));
     } catch (e) {
       await _db.rollback();
       ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Transaction Failed & Rolled Back: $e'));
+    }
+  }
+
+  // FEATURE: Native JSON Support
+  // Stoolap supports native JSON columns for flexible schema-less data.
+  Future<void> _jsonDemo() async {
+    final jsonData = '{"user": "Alice", "settings": {"theme": "dark", "notifications": true}}';
+    await _db.execute('INSERT INTO metadata (data) VALUES (?)', params: [jsonData]);
+
+    final results = await _db.query('SELECT data FROM metadata ORDER BY id DESC LIMIT 1');
+    if (results.isNotEmpty) {
+      final data = results.first.values[0];
+      ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Retrieved JSON: $data'));
     }
   }
 
@@ -164,9 +187,10 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
       appBar: AppBar(
         title: const Text('Stoolap Feature Showcase'),
         actions: [
+          IconButton(icon: const Icon(Icons.code), onPressed: _jsonDemo, tooltip: 'JSON Demo'),
           IconButton(icon: const Icon(Icons.psychology), onPressed: _semanticSearch, tooltip: 'Semantic Search'),
           IconButton(icon: const Icon(Icons.layers), onPressed: _runRecursiveCTE, tooltip: 'Recursive CTE'),
-          IconButton(icon: const Icon(Icons.account_balance), onPressed: _runTransaction, tooltip: 'Transaction'),
+          IconButton(icon: const Icon(Icons.account_balance), onPressed: _runTransaction, tooltip: 'Transaction & Savepoints'),
         ],
       ),
       body: Column(

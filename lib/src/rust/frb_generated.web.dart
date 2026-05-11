@@ -21,24 +21,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
-  CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_StoolapDbPtr => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StoolapDbPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
 
   @protected
   StoolapDb
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    dynamic raw,
-  );
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          dynamic raw);
 
   @protected
   StoolapDb
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    dynamic raw,
-  );
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -87,15 +84,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   StoolapDb
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    SseDeserializer deserializer,
-  );
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          SseDeserializer deserializer);
 
   @protected
   StoolapDb
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    SseDeserializer deserializer,
-  );
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          SseDeserializer deserializer);
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
@@ -123,8 +118,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<StoolapValue> sse_decode_list_stoolap_value(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   StoolapRow sse_decode_stoolap_row(SseDeserializer deserializer);
@@ -149,23 +143,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_AnyhowException(
-    AnyhowException self,
-    SseSerializer serializer,
-  );
+      AnyhowException self, SseSerializer serializer);
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    StoolapDb self,
-    SseSerializer serializer,
-  );
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          StoolapDb self, SseSerializer serializer);
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    StoolapDb self,
-    SseSerializer serializer,
-  );
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          StoolapDb self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -184,27 +172,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_list_prim_f_32_strict(
-    Float32List self,
-    SseSerializer serializer,
-  );
+      Float32List self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_u_8_strict(
-    Uint8List self,
-    SseSerializer serializer,
-  );
+      Uint8List self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_stoolap_row(
-    List<StoolapRow> self,
-    SseSerializer serializer,
-  );
+      List<StoolapRow> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_stoolap_value(
-    List<StoolapValue> self,
-    SseSerializer serializer,
-  );
+      List<StoolapValue> self, SseSerializer serializer);
 
   @protected
   void sse_encode_stoolap_row(StoolapRow self, SseSerializer serializer);
@@ -233,21 +213,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void
-  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    int ptr,
-  ) => wasmModule
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-        ptr,
-      );
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+              ptr);
 
-  void
-  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    int ptr,
-  ) => wasmModule
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-        ptr,
-      );
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+              ptr);
 }
 
 @JS('wasm_bindgen')
@@ -257,12 +233,10 @@ external RustLibWasmModule get wasmModule;
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
-  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    int ptr,
-  );
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          int ptr);
 
   external void
-  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    int ptr,
-  );
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          int ptr);
 }

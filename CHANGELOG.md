@@ -1,3 +1,11 @@
+## 0.3.0
+
+* **Full Feature Parity**: Completed implementation of all core Stoolap features from documentation.
+* **Safe Parameter Binding**: Implemented real positional parameter binding (`$1`, `$2`) to prevent SQL injection.
+* **Native JSON Support**: Added support for `JSON` data type with type-safe Dart mapping.
+* **Savepoints**: Added granular transaction control via `savepoint()`, `release()`, and `rollbackTo()`.
+* **Example Expansion**: Updated example app to demonstrate JSON columns and nested savepoints.
+
 ## 0.2.0
 
 * **Comprehensive Examples**: Added a full-featured example app demonstrating all Stoolap capabilities.

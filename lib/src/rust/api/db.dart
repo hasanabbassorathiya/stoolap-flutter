@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'db.freezed.dart';
 
+// These functions are ignored because they are not marked as `pub`: `convert_params`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`, `fmt`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StoolapDb>>
@@ -21,29 +22,38 @@ abstract class StoolapDb implements RustOpaqueInterface {
   static Future<void> commit() =>
       RustLib.instance.api.crateApiDbStoolapDbCommit();
 
-  static Future<void> execute({
-    required String sql,
-    required List<String> params,
-  }) =>
+  static Future<void> execute(
+          {required String sql, required List<String> params}) =>
       RustLib.instance.api.crateApiDbStoolapDbExecute(sql: sql, params: params);
 
   static Future<void> open({required String path}) =>
       RustLib.instance.api.crateApiDbStoolapDbOpen(path: path);
 
-  static Future<List<StoolapRow>> query({
-    required String sql,
-    required List<String> params,
-  }) => RustLib.instance.api.crateApiDbStoolapDbQuery(sql: sql, params: params);
+  static Future<List<StoolapRow>> query(
+          {required String sql, required List<String> params}) =>
+      RustLib.instance.api.crateApiDbStoolapDbQuery(sql: sql, params: params);
+
+  static Future<void> releaseSavepoint({required String name}) =>
+      RustLib.instance.api.crateApiDbStoolapDbReleaseSavepoint(name: name);
 
   static Future<void> rollback() =>
       RustLib.instance.api.crateApiDbStoolapDbRollback();
+
+  static Future<void> rollbackToSavepoint({required String name}) =>
+      RustLib.instance.api.crateApiDbStoolapDbRollbackToSavepoint(name: name);
+
+  static Future<void> savepoint({required String name}) =>
+      RustLib.instance.api.crateApiDbStoolapDbSavepoint(name: name);
 }
 
 class StoolapRow {
   final List<String> columns;
   final List<StoolapValue> values;
 
-  const StoolapRow({required this.columns, required this.values});
+  const StoolapRow({
+    required this.columns,
+    required this.values,
+  });
 
   @override
   int get hashCode => columns.hashCode ^ values.hashCode;
@@ -61,10 +71,20 @@ class StoolapRow {
 sealed class StoolapValue with _$StoolapValue {
   const StoolapValue._();
 
-  const factory StoolapValue.integer(PlatformInt64 field0) =
-      StoolapValue_Integer;
-  const factory StoolapValue.float(double field0) = StoolapValue_Float;
-  const factory StoolapValue.text(String field0) = StoolapValue_Text;
-  const factory StoolapValue.vector(Float32List field0) = StoolapValue_Vector;
+  const factory StoolapValue.integer(
+    PlatformInt64 field0,
+  ) = StoolapValue_Integer;
+  const factory StoolapValue.float(
+    double field0,
+  ) = StoolapValue_Float;
+  const factory StoolapValue.text(
+    String field0,
+  ) = StoolapValue_Text;
+  const factory StoolapValue.vector(
+    Float32List field0,
+  ) = StoolapValue_Vector;
+  const factory StoolapValue.json(
+    String field0,
+  ) = StoolapValue_Json;
   const factory StoolapValue.null_() = StoolapValue_Null;
 }

@@ -61,6 +61,13 @@ class StoolapDatabase {
   }
   Future<void> rollback() async => await StoolapDb.rollback();
 
+  Future<void> savepoint(String name) async => await StoolapDb.savepoint(name: name);
+  Future<void> release(String name) async => await StoolapDb.releaseSavepoint(name: name);
+  Future<void> rollbackTo(String name) async {
+    await StoolapDb.rollbackToSavepoint(name: name);
+    _changeController.add(null);
+  }
+
   Future<void> close() async {
     await StoolapDb.close();
     await _changeController.close();

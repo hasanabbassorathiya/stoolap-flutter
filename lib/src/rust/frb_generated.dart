@@ -36,8 +36,12 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   /// Initialize flutter_rust_bridge in mock mode.
   /// No libraries for FFI are loaded.
-  static void initMock({required RustLibApi api}) {
-    instance.initMockImpl(api: api);
+  static void initMock({
+    required RustLibApi api,
+  }) {
+    instance.initMockImpl(
+      api: api,
+    );
   }
 
   /// Dispose flutter_rust_bridge
@@ -67,15 +71,15 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.12.0';
 
   @override
-  int get rustContentHash => -265175124;
+  int get rustContentHash => -828928458;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
-        stem: 'rust_lib_rust',
-        ioDirectory: 'rust/target/release/',
-        webPrefix: 'pkg/',
-        wasmBindgenName: 'wasm_bindgen',
-      );
+    stem: 'rust_lib_stoolap_flutter',
+    ioDirectory: 'rust/target/release/',
+    webPrefix: 'pkg/',
+    wasmBindgenName: 'wasm_bindgen',
+  );
 }
 
 abstract class RustLibApi extends BaseApi {
@@ -85,29 +89,31 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> crateApiDbStoolapDbCommit();
 
-  Future<void> crateApiDbStoolapDbExecute({
-    required String sql,
-    required List<String> params,
-  });
+  Future<void> crateApiDbStoolapDbExecute(
+      {required String sql, required List<String> params});
 
   Future<void> crateApiDbStoolapDbOpen({required String path});
 
-  Future<List<StoolapRow>> crateApiDbStoolapDbQuery({
-    required String sql,
-    required List<String> params,
-  });
+  Future<List<StoolapRow>> crateApiDbStoolapDbQuery(
+      {required String sql, required List<String> params});
+
+  Future<void> crateApiDbStoolapDbReleaseSavepoint({required String name});
 
   Future<void> crateApiDbStoolapDbRollback();
+
+  Future<void> crateApiDbStoolapDbRollbackToSavepoint({required String name});
+
+  Future<void> crateApiDbStoolapDbSavepoint({required String name});
 
   String crateApiSimpleGreet({required String name});
 
   Future<void> crateApiSimpleInitApp();
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_StoolapDb;
+      get rust_arc_increment_strong_count_StoolapDb;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_StoolapDb;
+      get rust_arc_decrement_strong_count_StoolapDb;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_StoolapDbPtr;
 }
@@ -122,265 +128,301 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> crateApiDbStoolapDbBegin() {
-    return handler.executeNormal(
-      NormalTask(
-        callFfi: (port_) {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          pdeCallFfi(
-            generalizedFrbRustBinding,
-            serializer,
-            funcId: 1,
-            port: port_,
-          );
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: sse_decode_AnyhowException,
-        ),
-        constMeta: kCrateApiDbStoolapDbBeginConstMeta,
-        argValues: [],
-        apiImpl: this,
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
-    );
+      constMeta: kCrateApiDbStoolapDbBeginConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
   }
 
-  TaskConstMeta get kCrateApiDbStoolapDbBeginConstMeta =>
-      const TaskConstMeta(debugName: "StoolapDb_begin", argNames: []);
+  TaskConstMeta get kCrateApiDbStoolapDbBeginConstMeta => const TaskConstMeta(
+        debugName: "StoolapDb_begin",
+        argNames: [],
+      );
 
   @override
   Future<void> crateApiDbStoolapDbClose() {
-    return handler.executeNormal(
-      NormalTask(
-        callFfi: (port_) {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          pdeCallFfi(
-            generalizedFrbRustBinding,
-            serializer,
-            funcId: 2,
-            port: port_,
-          );
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: sse_decode_AnyhowException,
-        ),
-        constMeta: kCrateApiDbStoolapDbCloseConstMeta,
-        argValues: [],
-        apiImpl: this,
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 2, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
-    );
+      constMeta: kCrateApiDbStoolapDbCloseConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
   }
 
-  TaskConstMeta get kCrateApiDbStoolapDbCloseConstMeta =>
-      const TaskConstMeta(debugName: "StoolapDb_close", argNames: []);
+  TaskConstMeta get kCrateApiDbStoolapDbCloseConstMeta => const TaskConstMeta(
+        debugName: "StoolapDb_close",
+        argNames: [],
+      );
 
   @override
   Future<void> crateApiDbStoolapDbCommit() {
-    return handler.executeNormal(
-      NormalTask(
-        callFfi: (port_) {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          pdeCallFfi(
-            generalizedFrbRustBinding,
-            serializer,
-            funcId: 3,
-            port: port_,
-          );
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: sse_decode_AnyhowException,
-        ),
-        constMeta: kCrateApiDbStoolapDbCommitConstMeta,
-        argValues: [],
-        apiImpl: this,
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 3, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
-    );
+      constMeta: kCrateApiDbStoolapDbCommitConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
   }
 
-  TaskConstMeta get kCrateApiDbStoolapDbCommitConstMeta =>
-      const TaskConstMeta(debugName: "StoolapDb_commit", argNames: []);
+  TaskConstMeta get kCrateApiDbStoolapDbCommitConstMeta => const TaskConstMeta(
+        debugName: "StoolapDb_commit",
+        argNames: [],
+      );
 
   @override
-  Future<void> crateApiDbStoolapDbExecute({
-    required String sql,
-    required List<String> params,
-  }) {
-    return handler.executeNormal(
-      NormalTask(
-        callFfi: (port_) {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          sse_encode_String(sql, serializer);
-          sse_encode_list_String(params, serializer);
-          pdeCallFfi(
-            generalizedFrbRustBinding,
-            serializer,
-            funcId: 4,
-            port: port_,
-          );
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: sse_decode_AnyhowException,
-        ),
-        constMeta: kCrateApiDbStoolapDbExecuteConstMeta,
-        argValues: [sql, params],
-        apiImpl: this,
+  Future<void> crateApiDbStoolapDbExecute(
+      {required String sql, required List<String> params}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(sql, serializer);
+        sse_encode_list_String(params, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 4, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
-    );
+      constMeta: kCrateApiDbStoolapDbExecuteConstMeta,
+      argValues: [sql, params],
+      apiImpl: this,
+    ));
   }
 
   TaskConstMeta get kCrateApiDbStoolapDbExecuteConstMeta => const TaskConstMeta(
-    debugName: "StoolapDb_execute",
-    argNames: ["sql", "params"],
-  );
+        debugName: "StoolapDb_execute",
+        argNames: ["sql", "params"],
+      );
 
   @override
   Future<void> crateApiDbStoolapDbOpen({required String path}) {
-    return handler.executeNormal(
-      NormalTask(
-        callFfi: (port_) {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          sse_encode_String(path, serializer);
-          pdeCallFfi(
-            generalizedFrbRustBinding,
-            serializer,
-            funcId: 5,
-            port: port_,
-          );
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: sse_decode_AnyhowException,
-        ),
-        constMeta: kCrateApiDbStoolapDbOpenConstMeta,
-        argValues: [path],
-        apiImpl: this,
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(path, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 5, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
-    );
+      constMeta: kCrateApiDbStoolapDbOpenConstMeta,
+      argValues: [path],
+      apiImpl: this,
+    ));
   }
 
-  TaskConstMeta get kCrateApiDbStoolapDbOpenConstMeta =>
-      const TaskConstMeta(debugName: "StoolapDb_open", argNames: ["path"]);
+  TaskConstMeta get kCrateApiDbStoolapDbOpenConstMeta => const TaskConstMeta(
+        debugName: "StoolapDb_open",
+        argNames: ["path"],
+      );
 
   @override
-  Future<List<StoolapRow>> crateApiDbStoolapDbQuery({
-    required String sql,
-    required List<String> params,
-  }) {
-    return handler.executeNormal(
-      NormalTask(
-        callFfi: (port_) {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          sse_encode_String(sql, serializer);
-          sse_encode_list_String(params, serializer);
-          pdeCallFfi(
-            generalizedFrbRustBinding,
-            serializer,
-            funcId: 6,
-            port: port_,
-          );
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_list_stoolap_row,
-          decodeErrorData: sse_decode_AnyhowException,
-        ),
-        constMeta: kCrateApiDbStoolapDbQueryConstMeta,
-        argValues: [sql, params],
-        apiImpl: this,
+  Future<List<StoolapRow>> crateApiDbStoolapDbQuery(
+      {required String sql, required List<String> params}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(sql, serializer);
+        sse_encode_list_String(params, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 6, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_list_stoolap_row,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
-    );
+      constMeta: kCrateApiDbStoolapDbQueryConstMeta,
+      argValues: [sql, params],
+      apiImpl: this,
+    ));
   }
 
   TaskConstMeta get kCrateApiDbStoolapDbQueryConstMeta => const TaskConstMeta(
-    debugName: "StoolapDb_query",
-    argNames: ["sql", "params"],
-  );
+        debugName: "StoolapDb_query",
+        argNames: ["sql", "params"],
+      );
+
+  @override
+  Future<void> crateApiDbStoolapDbReleaseSavepoint({required String name}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(name, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 7, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta: kCrateApiDbStoolapDbReleaseSavepointConstMeta,
+      argValues: [name],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiDbStoolapDbReleaseSavepointConstMeta =>
+      const TaskConstMeta(
+        debugName: "StoolapDb_release_savepoint",
+        argNames: ["name"],
+      );
 
   @override
   Future<void> crateApiDbStoolapDbRollback() {
-    return handler.executeNormal(
-      NormalTask(
-        callFfi: (port_) {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          pdeCallFfi(
-            generalizedFrbRustBinding,
-            serializer,
-            funcId: 7,
-            port: port_,
-          );
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: sse_decode_AnyhowException,
-        ),
-        constMeta: kCrateApiDbStoolapDbRollbackConstMeta,
-        argValues: [],
-        apiImpl: this,
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 8, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_AnyhowException,
       ),
-    );
+      constMeta: kCrateApiDbStoolapDbRollbackConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
   }
 
   TaskConstMeta get kCrateApiDbStoolapDbRollbackConstMeta =>
-      const TaskConstMeta(debugName: "StoolapDb_rollback", argNames: []);
+      const TaskConstMeta(
+        debugName: "StoolapDb_rollback",
+        argNames: [],
+      );
+
+  @override
+  Future<void> crateApiDbStoolapDbRollbackToSavepoint({required String name}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(name, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 9, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta: kCrateApiDbStoolapDbRollbackToSavepointConstMeta,
+      argValues: [name],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiDbStoolapDbRollbackToSavepointConstMeta =>
+      const TaskConstMeta(
+        debugName: "StoolapDb_rollback_to_savepoint",
+        argNames: ["name"],
+      );
+
+  @override
+  Future<void> crateApiDbStoolapDbSavepoint({required String name}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(name, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 10, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: sse_decode_AnyhowException,
+      ),
+      constMeta: kCrateApiDbStoolapDbSavepointConstMeta,
+      argValues: [name],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiDbStoolapDbSavepointConstMeta =>
+      const TaskConstMeta(
+        debugName: "StoolapDb_savepoint",
+        argNames: ["name"],
+      );
 
   @override
   String crateApiSimpleGreet({required String name}) {
-    return handler.executeSync(
-      SyncTask(
-        callFfi: () {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          sse_encode_String(name, serializer);
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 8)!;
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_String,
-          decodeErrorData: null,
-        ),
-        constMeta: kCrateApiSimpleGreetConstMeta,
-        argValues: [name],
-        apiImpl: this,
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(name, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 11)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_String,
+        decodeErrorData: null,
       ),
-    );
+      constMeta: kCrateApiSimpleGreetConstMeta,
+      argValues: [name],
+      apiImpl: this,
+    ));
   }
 
-  TaskConstMeta get kCrateApiSimpleGreetConstMeta =>
-      const TaskConstMeta(debugName: "greet", argNames: ["name"]);
+  TaskConstMeta get kCrateApiSimpleGreetConstMeta => const TaskConstMeta(
+        debugName: "greet",
+        argNames: ["name"],
+      );
 
   @override
   Future<void> crateApiSimpleInitApp() {
-    return handler.executeNormal(
-      NormalTask(
-        callFfi: (port_) {
-          final serializer = SseSerializer(generalizedFrbRustBinding);
-          pdeCallFfi(
-            generalizedFrbRustBinding,
-            serializer,
-            funcId: 9,
-            port: port_,
-          );
-        },
-        codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
-          decodeErrorData: null,
-        ),
-        constMeta: kCrateApiSimpleInitAppConstMeta,
-        argValues: [],
-        apiImpl: this,
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 12, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
       ),
-    );
+      constMeta: kCrateApiSimpleInitAppConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
   }
 
-  TaskConstMeta get kCrateApiSimpleInitAppConstMeta =>
-      const TaskConstMeta(debugName: "init_app", argNames: []);
+  TaskConstMeta get kCrateApiSimpleInitAppConstMeta => const TaskConstMeta(
+        debugName: "init_app",
+        argNames: [],
+      );
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_StoolapDb => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb;
+      get rust_arc_increment_strong_count_StoolapDb => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_StoolapDb => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb;
+      get rust_arc_decrement_strong_count_StoolapDb => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
@@ -390,18 +432,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StoolapDb
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    dynamic raw,
-  ) {
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StoolapDbImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   StoolapDb
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    dynamic raw,
-  ) {
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return StoolapDbImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
@@ -477,14 +517,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     switch (raw[0]) {
       case 0:
-        return StoolapValue_Integer(dco_decode_i_64(raw[1]));
+        return StoolapValue_Integer(
+          dco_decode_i_64(raw[1]),
+        );
       case 1:
-        return StoolapValue_Float(dco_decode_f_64(raw[1]));
+        return StoolapValue_Float(
+          dco_decode_f_64(raw[1]),
+        );
       case 2:
-        return StoolapValue_Text(dco_decode_String(raw[1]));
+        return StoolapValue_Text(
+          dco_decode_String(raw[1]),
+        );
       case 3:
-        return StoolapValue_Vector(dco_decode_list_prim_f_32_strict(raw[1]));
+        return StoolapValue_Vector(
+          dco_decode_list_prim_f_32_strict(raw[1]),
+        );
       case 4:
+        return StoolapValue_Json(
+          dco_decode_String(raw[1]),
+        );
+      case 5:
         return StoolapValue_Null();
       default:
         throw Exception("unreachable");
@@ -518,26 +570,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StoolapDb
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    SseDeserializer deserializer,
-  ) {
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return StoolapDbImpl.frbInternalSseDecode(
-      sse_decode_usize(deserializer),
-      sse_decode_i_32(deserializer),
-    );
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
   StoolapDb
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    SseDeserializer deserializer,
-  ) {
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return StoolapDbImpl.frbInternalSseDecode(
-      sse_decode_usize(deserializer),
-      sse_decode_i_32(deserializer),
-    );
+        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
@@ -605,8 +651,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   List<StoolapValue> sse_decode_list_stoolap_value(
-    SseDeserializer deserializer,
-  ) {
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     var len_ = sse_decode_i_32(deserializer);
@@ -644,6 +689,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field0 = sse_decode_list_prim_f_32_strict(deserializer);
         return StoolapValue_Vector(var_field0);
       case 4:
+        var var_field0 = sse_decode_String(deserializer);
+        return StoolapValue_Json(var_field0);
+      case 5:
         return StoolapValue_Null();
       default:
         throw UnimplementedError('');
@@ -681,37 +729,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_AnyhowException(
-    AnyhowException self,
-    SseSerializer serializer,
-  ) {
+      AnyhowException self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.message, serializer);
   }
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    StoolapDb self,
-    SseSerializer serializer,
-  ) {
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          StoolapDb self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-      (self as StoolapDbImpl).frbInternalSseEncode(move: true),
-      serializer,
-    );
+        (self as StoolapDbImpl).frbInternalSseEncode(move: true), serializer);
   }
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
-    StoolapDb self,
-    SseSerializer serializer,
-  ) {
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStoolapDb(
+          StoolapDb self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-      (self as StoolapDbImpl).frbInternalSseEncode(move: null),
-      serializer,
-    );
+        (self as StoolapDbImpl).frbInternalSseEncode(move: null), serializer);
   }
 
   @protected
@@ -749,9 +787,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_list_prim_f_32_strict(
-    Float32List self,
-    SseSerializer serializer,
-  ) {
+      Float32List self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putFloat32List(self);
@@ -759,9 +795,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_list_prim_u_8_strict(
-    Uint8List self,
-    SseSerializer serializer,
-  ) {
+      Uint8List self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);
@@ -769,9 +803,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_list_stoolap_row(
-    List<StoolapRow> self,
-    SseSerializer serializer,
-  ) {
+      List<StoolapRow> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
@@ -781,9 +813,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_list_stoolap_value(
-    List<StoolapValue> self,
-    SseSerializer serializer,
-  ) {
+      List<StoolapValue> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
@@ -814,8 +844,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case StoolapValue_Vector(field0: final field0):
         sse_encode_i_32(3, serializer);
         sse_encode_list_prim_f_32_strict(field0, serializer);
-      case StoolapValue_Null():
+      case StoolapValue_Json(field0: final field0):
         sse_encode_i_32(4, serializer);
+        sse_encode_String(field0, serializer);
+      case StoolapValue_Null():
+        sse_encode_i_32(5, serializer);
     }
   }
 
@@ -853,11 +886,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 class StoolapDbImpl extends RustOpaque implements StoolapDb {
   // Not to be used by end users
   StoolapDbImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   StoolapDbImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:

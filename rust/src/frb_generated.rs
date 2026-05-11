@@ -39,7 +39,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.12.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -265175124;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -828928458;
 
 // Section: executor
 
@@ -256,6 +256,41 @@ fn wire__crate__api__db__StoolapDb_query_impl(
         },
     )
 }
+fn wire__crate__api__db__StoolapDb_release_savepoint_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "StoolapDb_release_savepoint",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_name = <String>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, flutter_rust_bridge::for_generated::anyhow::Error>(
+                    (move || {
+                        let output_ok = crate::api::db::StoolapDb::release_savepoint(api_name)?;
+                        Ok(output_ok)
+                    })(),
+                )
+            }
+        },
+    )
+}
 fn wire__crate__api__db__StoolapDb_rollback_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -283,6 +318,76 @@ fn wire__crate__api__db__StoolapDb_rollback_impl(
                 transform_result_sse::<_, flutter_rust_bridge::for_generated::anyhow::Error>(
                     (move || {
                         let output_ok = crate::api::db::StoolapDb::rollback()?;
+                        Ok(output_ok)
+                    })(),
+                )
+            }
+        },
+    )
+}
+fn wire__crate__api__db__StoolapDb_rollback_to_savepoint_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "StoolapDb_rollback_to_savepoint",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_name = <String>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, flutter_rust_bridge::for_generated::anyhow::Error>(
+                    (move || {
+                        let output_ok = crate::api::db::StoolapDb::rollback_to_savepoint(api_name)?;
+                        Ok(output_ok)
+                    })(),
+                )
+            }
+        },
+    )
+}
+fn wire__crate__api__db__StoolapDb_savepoint_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "StoolapDb_savepoint",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_name = <String>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, flutter_rust_bridge::for_generated::anyhow::Error>(
+                    (move || {
+                        let output_ok = crate::api::db::StoolapDb::savepoint(api_name)?;
                         Ok(output_ok)
                     })(),
                 )
@@ -514,6 +619,10 @@ impl SseDecode for crate::api::db::StoolapValue {
                 return crate::api::db::StoolapValue::Vector(var_field0);
             }
             4 => {
+                let mut var_field0 = <String>::sse_decode(deserializer);
+                return crate::api::db::StoolapValue::Json(var_field0);
+            }
+            5 => {
                 return crate::api::db::StoolapValue::Null;
             }
             _ => {
@@ -571,8 +680,21 @@ fn pde_ffi_dispatcher_primary_impl(
         4 => wire__crate__api__db__StoolapDb_execute_impl(port, ptr, rust_vec_len, data_len),
         5 => wire__crate__api__db__StoolapDb_open_impl(port, ptr, rust_vec_len, data_len),
         6 => wire__crate__api__db__StoolapDb_query_impl(port, ptr, rust_vec_len, data_len),
-        7 => wire__crate__api__db__StoolapDb_rollback_impl(port, ptr, rust_vec_len, data_len),
-        9 => wire__crate__api__simple__init_app_impl(port, ptr, rust_vec_len, data_len),
+        7 => wire__crate__api__db__StoolapDb_release_savepoint_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        8 => wire__crate__api__db__StoolapDb_rollback_impl(port, ptr, rust_vec_len, data_len),
+        9 => wire__crate__api__db__StoolapDb_rollback_to_savepoint_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        10 => wire__crate__api__db__StoolapDb_savepoint_impl(port, ptr, rust_vec_len, data_len),
+        12 => wire__crate__api__simple__init_app_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -585,7 +707,7 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        8 => wire__crate__api__simple__greet_impl(ptr, rust_vec_len, data_len),
+        11 => wire__crate__api__simple__greet_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -639,7 +761,10 @@ impl flutter_rust_bridge::IntoDart for crate::api::db::StoolapValue {
             crate::api::db::StoolapValue::Vector(field0) => {
                 [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            crate::api::db::StoolapValue::Null => [4.into_dart()].into_dart(),
+            crate::api::db::StoolapValue::Json(field0) => {
+                [4.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            crate::api::db::StoolapValue::Null => [5.into_dart()].into_dart(),
             _ => {
                 unimplemented!("");
             }
@@ -786,8 +911,12 @@ impl SseEncode for crate::api::db::StoolapValue {
                 <i32>::sse_encode(3, serializer);
                 <Vec<f32>>::sse_encode(field0, serializer);
             }
-            crate::api::db::StoolapValue::Null => {
+            crate::api::db::StoolapValue::Json(field0) => {
                 <i32>::sse_encode(4, serializer);
+                <String>::sse_encode(field0, serializer);
+            }
+            crate::api::db::StoolapValue::Null => {
+                <i32>::sse_encode(5, serializer);
             }
             _ => {
                 unimplemented!("");

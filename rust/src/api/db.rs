@@ -11,6 +11,7 @@ pub enum StoolapValue {
     Float(f64),
     Text(String),
     Vector(Vec<f32>),
+    Json(String),
     Null,
 }
 
@@ -31,11 +32,15 @@ impl StoolapDb {
         Ok(())
     }
 
+    fn convert_params(params: Vec<String>) -> Vec<Value> {
+        params.into_iter().map(|p| Value::Text(p)).collect()
+    }
+
     pub fn execute(sql: String, params: Vec<String>) -> Result<()> {
         let db_guard = DB.lock().unwrap();
         if let Some(db) = db_guard.as_ref() {
-            // Placeholder for parameter conversion logic
-            db.execute(&sql, ())?;
+            let stoolap_params = Self::convert_params(params);
+            db.execute(&sql, &stoolap_params)?;
             Ok(())
         } else {
             Err(anyhow::anyhow!("Database not open"))
@@ -45,8 +50,9 @@ impl StoolapDb {
     pub fn query(sql: String, params: Vec<String>) -> Result<Vec<StoolapRow>> {
         let db_guard = DB.lock().unwrap();
         if let Some(db) = db_guard.as_ref() {
+            let stoolap_params = Self::convert_params(params);
             let mut results = Vec::new();
-            for row in db.query(&sql, ())? {
+            for row in db.query(&sql, &stoolap_params)? {
                 let row = row?;
                 let columns: Vec<String> = row.columns().iter().map(|c| c.name().to_string()).collect();
                 let mut values = Vec::new();
@@ -57,6 +63,7 @@ impl StoolapDb {
                         Value::Float(f) => StoolapValue::Float(*f),
                         Value::Text(s) => StoolapValue::Text(s.clone()),
                         Value::Vector(v) => StoolapValue::Vector(v.to_vec()),
+                        Value::Json(j) => StoolapValue::Json(j.to_string()),
                         Value::Null => StoolapValue::Null,
                         _ => StoolapValue::Text(format!("{:?}", val)),
                     });
@@ -79,6 +86,18 @@ impl StoolapDb {
 
     pub fn rollback() -> Result<()> {
         Self::execute("ROLLBACK".to_string(), vec![])
+    }
+
+    pub fn savepoint(name: String) -> Result<()> {
+        Self::execute(format!("SAVEPOINT {}", name), vec![])
+    }
+
+    pub fn release_savepoint(name: String) -> Result<()> {
+        Self::execute(format!("RELEASE SAVEPOINT {}", name), vec![])
+    }
+
+    pub fn rollback_to_savepoint(name: String) -> Result<()> {
+        Self::execute(format!("ROLLBACK TO SAVEPOINT {}", name), vec![])
     }
 
     pub fn close() -> Result<()> {

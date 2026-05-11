@@ -1,6 +1,6 @@
 name: stoolap_flutter
 description: High-performance, pure Rust embedded SQL database for Flutter with native Vector Search, MVCC transactions, and reactive Streams.
-version: 0.2.0
+version: 0.3.0
 homepage: https://stoolap.io
 repository: https://github.com/stoolap/stoolap-flutter
 issue_tracker: https://github.com/stoolap/stoolap-flutter/issues

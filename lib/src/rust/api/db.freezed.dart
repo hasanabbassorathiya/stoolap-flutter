@@ -12,8 +12,7 @@ part of 'db.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$StoolapValue {
@@ -23,58 +22,69 @@ mixin _$StoolapValue {
     required TResult Function(double field0) float,
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
+    required TResult Function(String field0) json,
     required TResult Function() null_,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int field0)? integer,
     TResult? Function(double field0)? float,
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
+    TResult? Function(String field0)? json,
     TResult? Function()? null_,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int field0)? integer,
     TResult Function(double field0)? float,
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
+    TResult Function(String field0)? json,
     TResult Function()? null_,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(StoolapValue_Integer value) integer,
     required TResult Function(StoolapValue_Float value) float,
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
+    required TResult Function(StoolapValue_Json value) json,
     required TResult Function(StoolapValue_Null value) null_,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StoolapValue_Integer value)? integer,
     TResult? Function(StoolapValue_Float value)? float,
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
+    TResult? Function(StoolapValue_Json value)? json,
     TResult? Function(StoolapValue_Null value)? null_,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StoolapValue_Integer value)? integer,
     TResult Function(StoolapValue_Float value)? float,
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
+    TResult Function(StoolapValue_Json value)? json,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $StoolapValueCopyWith<$Res> {
   factory $StoolapValueCopyWith(
-    StoolapValue value,
-    $Res Function(StoolapValue) then,
-  ) = _$StoolapValueCopyWithImpl<$Res, StoolapValue>;
+          StoolapValue value, $Res Function(StoolapValue) then) =
+      _$StoolapValueCopyWithImpl<$Res, StoolapValue>;
 }
 
 /// @nodoc
@@ -93,10 +103,9 @@ class _$StoolapValueCopyWithImpl<$Res, $Val extends StoolapValue>
 
 /// @nodoc
 abstract class _$$StoolapValue_IntegerImplCopyWith<$Res> {
-  factory _$$StoolapValue_IntegerImplCopyWith(
-    _$StoolapValue_IntegerImpl value,
-    $Res Function(_$StoolapValue_IntegerImpl) then,
-  ) = __$$StoolapValue_IntegerImplCopyWithImpl<$Res>;
+  factory _$$StoolapValue_IntegerImplCopyWith(_$StoolapValue_IntegerImpl value,
+          $Res Function(_$StoolapValue_IntegerImpl) then) =
+      __$$StoolapValue_IntegerImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
@@ -105,24 +114,23 @@ abstract class _$$StoolapValue_IntegerImplCopyWith<$Res> {
 class __$$StoolapValue_IntegerImplCopyWithImpl<$Res>
     extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_IntegerImpl>
     implements _$$StoolapValue_IntegerImplCopyWith<$Res> {
-  __$$StoolapValue_IntegerImplCopyWithImpl(
-    _$StoolapValue_IntegerImpl _value,
-    $Res Function(_$StoolapValue_IntegerImpl) _then,
-  ) : super(_value, _then);
+  __$$StoolapValue_IntegerImplCopyWithImpl(_$StoolapValue_IntegerImpl _value,
+      $Res Function(_$StoolapValue_IntegerImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of StoolapValue
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$StoolapValue_IntegerImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                  as int,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$StoolapValue_IntegerImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -156,11 +164,9 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
   @override
   @pragma('vm:prefer-inline')
   _$$StoolapValue_IntegerImplCopyWith<_$StoolapValue_IntegerImpl>
-  get copyWith =>
-      __$$StoolapValue_IntegerImplCopyWithImpl<_$StoolapValue_IntegerImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith =>
+          __$$StoolapValue_IntegerImplCopyWithImpl<_$StoolapValue_IntegerImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -169,6 +175,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     required TResult Function(double field0) float,
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
+    required TResult Function(String field0) json,
     required TResult Function() null_,
   }) {
     return integer(field0);
@@ -181,6 +188,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     TResult? Function(double field0)? float,
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
+    TResult? Function(String field0)? json,
     TResult? Function()? null_,
   }) {
     return integer?.call(field0);
@@ -193,6 +201,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     TResult Function(double field0)? float,
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
+    TResult Function(String field0)? json,
     TResult Function()? null_,
     required TResult orElse(),
   }) {
@@ -209,6 +218,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     required TResult Function(StoolapValue_Float value) float,
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
+    required TResult Function(StoolapValue_Json value) json,
     required TResult Function(StoolapValue_Null value) null_,
   }) {
     return integer(this);
@@ -221,6 +231,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     TResult? Function(StoolapValue_Float value)? float,
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
+    TResult? Function(StoolapValue_Json value)? json,
     TResult? Function(StoolapValue_Null value)? null_,
   }) {
     return integer?.call(this);
@@ -233,6 +244,7 @@ class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
     TResult Function(StoolapValue_Float value)? float,
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
+    TResult Function(StoolapValue_Json value)? json,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) {
@@ -254,15 +266,14 @@ abstract class StoolapValue_Integer extends StoolapValue {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoolapValue_IntegerImplCopyWith<_$StoolapValue_IntegerImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$StoolapValue_FloatImplCopyWith<$Res> {
-  factory _$$StoolapValue_FloatImplCopyWith(
-    _$StoolapValue_FloatImpl value,
-    $Res Function(_$StoolapValue_FloatImpl) then,
-  ) = __$$StoolapValue_FloatImplCopyWithImpl<$Res>;
+  factory _$$StoolapValue_FloatImplCopyWith(_$StoolapValue_FloatImpl value,
+          $Res Function(_$StoolapValue_FloatImpl) then) =
+      __$$StoolapValue_FloatImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
@@ -271,24 +282,23 @@ abstract class _$$StoolapValue_FloatImplCopyWith<$Res> {
 class __$$StoolapValue_FloatImplCopyWithImpl<$Res>
     extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_FloatImpl>
     implements _$$StoolapValue_FloatImplCopyWith<$Res> {
-  __$$StoolapValue_FloatImplCopyWithImpl(
-    _$StoolapValue_FloatImpl _value,
-    $Res Function(_$StoolapValue_FloatImpl) _then,
-  ) : super(_value, _then);
+  __$$StoolapValue_FloatImplCopyWithImpl(_$StoolapValue_FloatImpl _value,
+      $Res Function(_$StoolapValue_FloatImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of StoolapValue
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$StoolapValue_FloatImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                  as double,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$StoolapValue_FloatImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }
 
@@ -323,9 +333,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
   @pragma('vm:prefer-inline')
   _$$StoolapValue_FloatImplCopyWith<_$StoolapValue_FloatImpl> get copyWith =>
       __$$StoolapValue_FloatImplCopyWithImpl<_$StoolapValue_FloatImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -334,6 +342,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     required TResult Function(double field0) float,
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
+    required TResult Function(String field0) json,
     required TResult Function() null_,
   }) {
     return float(field0);
@@ -346,6 +355,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     TResult? Function(double field0)? float,
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
+    TResult? Function(String field0)? json,
     TResult? Function()? null_,
   }) {
     return float?.call(field0);
@@ -358,6 +368,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     TResult Function(double field0)? float,
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
+    TResult Function(String field0)? json,
     TResult Function()? null_,
     required TResult orElse(),
   }) {
@@ -374,6 +385,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     required TResult Function(StoolapValue_Float value) float,
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
+    required TResult Function(StoolapValue_Json value) json,
     required TResult Function(StoolapValue_Null value) null_,
   }) {
     return float(this);
@@ -386,6 +398,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     TResult? Function(StoolapValue_Float value)? float,
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
+    TResult? Function(StoolapValue_Json value)? json,
     TResult? Function(StoolapValue_Null value)? null_,
   }) {
     return float?.call(this);
@@ -398,6 +411,7 @@ class _$StoolapValue_FloatImpl extends StoolapValue_Float {
     TResult Function(StoolapValue_Float value)? float,
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
+    TResult Function(StoolapValue_Json value)? json,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) {
@@ -424,10 +438,9 @@ abstract class StoolapValue_Float extends StoolapValue {
 
 /// @nodoc
 abstract class _$$StoolapValue_TextImplCopyWith<$Res> {
-  factory _$$StoolapValue_TextImplCopyWith(
-    _$StoolapValue_TextImpl value,
-    $Res Function(_$StoolapValue_TextImpl) then,
-  ) = __$$StoolapValue_TextImplCopyWithImpl<$Res>;
+  factory _$$StoolapValue_TextImplCopyWith(_$StoolapValue_TextImpl value,
+          $Res Function(_$StoolapValue_TextImpl) then) =
+      __$$StoolapValue_TextImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
@@ -436,24 +449,23 @@ abstract class _$$StoolapValue_TextImplCopyWith<$Res> {
 class __$$StoolapValue_TextImplCopyWithImpl<$Res>
     extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_TextImpl>
     implements _$$StoolapValue_TextImplCopyWith<$Res> {
-  __$$StoolapValue_TextImplCopyWithImpl(
-    _$StoolapValue_TextImpl _value,
-    $Res Function(_$StoolapValue_TextImpl) _then,
-  ) : super(_value, _then);
+  __$$StoolapValue_TextImplCopyWithImpl(_$StoolapValue_TextImpl _value,
+      $Res Function(_$StoolapValue_TextImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of StoolapValue
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$StoolapValue_TextImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$StoolapValue_TextImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -488,9 +500,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
   @pragma('vm:prefer-inline')
   _$$StoolapValue_TextImplCopyWith<_$StoolapValue_TextImpl> get copyWith =>
       __$$StoolapValue_TextImplCopyWithImpl<_$StoolapValue_TextImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -499,6 +509,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     required TResult Function(double field0) float,
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
+    required TResult Function(String field0) json,
     required TResult Function() null_,
   }) {
     return text(field0);
@@ -511,6 +522,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     TResult? Function(double field0)? float,
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
+    TResult? Function(String field0)? json,
     TResult? Function()? null_,
   }) {
     return text?.call(field0);
@@ -523,6 +535,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     TResult Function(double field0)? float,
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
+    TResult Function(String field0)? json,
     TResult Function()? null_,
     required TResult orElse(),
   }) {
@@ -539,6 +552,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     required TResult Function(StoolapValue_Float value) float,
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
+    required TResult Function(StoolapValue_Json value) json,
     required TResult Function(StoolapValue_Null value) null_,
   }) {
     return text(this);
@@ -551,6 +565,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     TResult? Function(StoolapValue_Float value)? float,
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
+    TResult? Function(StoolapValue_Json value)? json,
     TResult? Function(StoolapValue_Null value)? null_,
   }) {
     return text?.call(this);
@@ -563,6 +578,7 @@ class _$StoolapValue_TextImpl extends StoolapValue_Text {
     TResult Function(StoolapValue_Float value)? float,
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
+    TResult Function(StoolapValue_Json value)? json,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) {
@@ -589,10 +605,9 @@ abstract class StoolapValue_Text extends StoolapValue {
 
 /// @nodoc
 abstract class _$$StoolapValue_VectorImplCopyWith<$Res> {
-  factory _$$StoolapValue_VectorImplCopyWith(
-    _$StoolapValue_VectorImpl value,
-    $Res Function(_$StoolapValue_VectorImpl) then,
-  ) = __$$StoolapValue_VectorImplCopyWithImpl<$Res>;
+  factory _$$StoolapValue_VectorImplCopyWith(_$StoolapValue_VectorImpl value,
+          $Res Function(_$StoolapValue_VectorImpl) then) =
+      __$$StoolapValue_VectorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Float32List field0});
 }
@@ -601,24 +616,23 @@ abstract class _$$StoolapValue_VectorImplCopyWith<$Res> {
 class __$$StoolapValue_VectorImplCopyWithImpl<$Res>
     extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_VectorImpl>
     implements _$$StoolapValue_VectorImplCopyWith<$Res> {
-  __$$StoolapValue_VectorImplCopyWithImpl(
-    _$StoolapValue_VectorImpl _value,
-    $Res Function(_$StoolapValue_VectorImpl) _then,
-  ) : super(_value, _then);
+  __$$StoolapValue_VectorImplCopyWithImpl(_$StoolapValue_VectorImpl _value,
+      $Res Function(_$StoolapValue_VectorImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of StoolapValue
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$StoolapValue_VectorImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                  as Float32List,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$StoolapValue_VectorImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Float32List,
+    ));
   }
 }
 
@@ -654,9 +668,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
   @pragma('vm:prefer-inline')
   _$$StoolapValue_VectorImplCopyWith<_$StoolapValue_VectorImpl> get copyWith =>
       __$$StoolapValue_VectorImplCopyWithImpl<_$StoolapValue_VectorImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -665,6 +677,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     required TResult Function(double field0) float,
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
+    required TResult Function(String field0) json,
     required TResult Function() null_,
   }) {
     return vector(field0);
@@ -677,6 +690,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     TResult? Function(double field0)? float,
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
+    TResult? Function(String field0)? json,
     TResult? Function()? null_,
   }) {
     return vector?.call(field0);
@@ -689,6 +703,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     TResult Function(double field0)? float,
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
+    TResult Function(String field0)? json,
     TResult Function()? null_,
     required TResult orElse(),
   }) {
@@ -705,6 +720,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     required TResult Function(StoolapValue_Float value) float,
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
+    required TResult Function(StoolapValue_Json value) json,
     required TResult Function(StoolapValue_Null value) null_,
   }) {
     return vector(this);
@@ -717,6 +733,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     TResult? Function(StoolapValue_Float value)? float,
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
+    TResult? Function(StoolapValue_Json value)? json,
     TResult? Function(StoolapValue_Null value)? null_,
   }) {
     return vector?.call(this);
@@ -729,6 +746,7 @@ class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
     TResult Function(StoolapValue_Float value)? float,
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
+    TResult Function(StoolapValue_Json value)? json,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) {
@@ -754,21 +772,186 @@ abstract class StoolapValue_Vector extends StoolapValue {
 }
 
 /// @nodoc
+abstract class _$$StoolapValue_JsonImplCopyWith<$Res> {
+  factory _$$StoolapValue_JsonImplCopyWith(_$StoolapValue_JsonImpl value,
+          $Res Function(_$StoolapValue_JsonImpl) then) =
+      __$$StoolapValue_JsonImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String field0});
+}
+
+/// @nodoc
+class __$$StoolapValue_JsonImplCopyWithImpl<$Res>
+    extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_JsonImpl>
+    implements _$$StoolapValue_JsonImplCopyWith<$Res> {
+  __$$StoolapValue_JsonImplCopyWithImpl(_$StoolapValue_JsonImpl _value,
+      $Res Function(_$StoolapValue_JsonImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$StoolapValue_JsonImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StoolapValue_JsonImpl extends StoolapValue_Json {
+  const _$StoolapValue_JsonImpl(this.field0) : super._();
+
+  @override
+  final String field0;
+
+  @override
+  String toString() {
+    return 'StoolapValue.json(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StoolapValue_JsonImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StoolapValue_JsonImplCopyWith<_$StoolapValue_JsonImpl> get copyWith =>
+      __$$StoolapValue_JsonImplCopyWithImpl<_$StoolapValue_JsonImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int field0) integer,
+    required TResult Function(double field0) float,
+    required TResult Function(String field0) text,
+    required TResult Function(Float32List field0) vector,
+    required TResult Function(String field0) json,
+    required TResult Function() null_,
+  }) {
+    return json(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int field0)? integer,
+    TResult? Function(double field0)? float,
+    TResult? Function(String field0)? text,
+    TResult? Function(Float32List field0)? vector,
+    TResult? Function(String field0)? json,
+    TResult? Function()? null_,
+  }) {
+    return json?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int field0)? integer,
+    TResult Function(double field0)? float,
+    TResult Function(String field0)? text,
+    TResult Function(Float32List field0)? vector,
+    TResult Function(String field0)? json,
+    TResult Function()? null_,
+    required TResult orElse(),
+  }) {
+    if (json != null) {
+      return json(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StoolapValue_Integer value) integer,
+    required TResult Function(StoolapValue_Float value) float,
+    required TResult Function(StoolapValue_Text value) text,
+    required TResult Function(StoolapValue_Vector value) vector,
+    required TResult Function(StoolapValue_Json value) json,
+    required TResult Function(StoolapValue_Null value) null_,
+  }) {
+    return json(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StoolapValue_Integer value)? integer,
+    TResult? Function(StoolapValue_Float value)? float,
+    TResult? Function(StoolapValue_Text value)? text,
+    TResult? Function(StoolapValue_Vector value)? vector,
+    TResult? Function(StoolapValue_Json value)? json,
+    TResult? Function(StoolapValue_Null value)? null_,
+  }) {
+    return json?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StoolapValue_Integer value)? integer,
+    TResult Function(StoolapValue_Float value)? float,
+    TResult Function(StoolapValue_Text value)? text,
+    TResult Function(StoolapValue_Vector value)? vector,
+    TResult Function(StoolapValue_Json value)? json,
+    TResult Function(StoolapValue_Null value)? null_,
+    required TResult orElse(),
+  }) {
+    if (json != null) {
+      return json(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StoolapValue_Json extends StoolapValue {
+  const factory StoolapValue_Json(final String field0) =
+      _$StoolapValue_JsonImpl;
+  const StoolapValue_Json._() : super._();
+
+  String get field0;
+
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StoolapValue_JsonImplCopyWith<_$StoolapValue_JsonImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$StoolapValue_NullImplCopyWith<$Res> {
-  factory _$$StoolapValue_NullImplCopyWith(
-    _$StoolapValue_NullImpl value,
-    $Res Function(_$StoolapValue_NullImpl) then,
-  ) = __$$StoolapValue_NullImplCopyWithImpl<$Res>;
+  factory _$$StoolapValue_NullImplCopyWith(_$StoolapValue_NullImpl value,
+          $Res Function(_$StoolapValue_NullImpl) then) =
+      __$$StoolapValue_NullImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$StoolapValue_NullImplCopyWithImpl<$Res>
     extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_NullImpl>
     implements _$$StoolapValue_NullImplCopyWith<$Res> {
-  __$$StoolapValue_NullImplCopyWithImpl(
-    _$StoolapValue_NullImpl _value,
-    $Res Function(_$StoolapValue_NullImpl) _then,
-  ) : super(_value, _then);
+  __$$StoolapValue_NullImplCopyWithImpl(_$StoolapValue_NullImpl _value,
+      $Res Function(_$StoolapValue_NullImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of StoolapValue
   /// with the given fields replaced by the non-null parameter values.
@@ -800,6 +983,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     required TResult Function(double field0) float,
     required TResult Function(String field0) text,
     required TResult Function(Float32List field0) vector,
+    required TResult Function(String field0) json,
     required TResult Function() null_,
   }) {
     return null_();
@@ -812,6 +996,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     TResult? Function(double field0)? float,
     TResult? Function(String field0)? text,
     TResult? Function(Float32List field0)? vector,
+    TResult? Function(String field0)? json,
     TResult? Function()? null_,
   }) {
     return null_?.call();
@@ -824,6 +1009,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     TResult Function(double field0)? float,
     TResult Function(String field0)? text,
     TResult Function(Float32List field0)? vector,
+    TResult Function(String field0)? json,
     TResult Function()? null_,
     required TResult orElse(),
   }) {
@@ -840,6 +1026,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     required TResult Function(StoolapValue_Float value) float,
     required TResult Function(StoolapValue_Text value) text,
     required TResult Function(StoolapValue_Vector value) vector,
+    required TResult Function(StoolapValue_Json value) json,
     required TResult Function(StoolapValue_Null value) null_,
   }) {
     return null_(this);
@@ -852,6 +1039,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     TResult? Function(StoolapValue_Float value)? float,
     TResult? Function(StoolapValue_Text value)? text,
     TResult? Function(StoolapValue_Vector value)? vector,
+    TResult? Function(StoolapValue_Json value)? json,
     TResult? Function(StoolapValue_Null value)? null_,
   }) {
     return null_?.call(this);
@@ -864,6 +1052,7 @@ class _$StoolapValue_NullImpl extends StoolapValue_Null {
     TResult Function(StoolapValue_Float value)? float,
     TResult Function(StoolapValue_Text value)? text,
     TResult Function(StoolapValue_Vector value)? vector,
+    TResult Function(StoolapValue_Json value)? json,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
   }) {

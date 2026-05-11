@@ -1257,7 +1257,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust_lib_rust"
+name = "rust_lib_stoolap_flutter"
 version = "0.1.0"
 dependencies = [
  "anyhow",
