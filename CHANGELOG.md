@@ -1,3 +1,9 @@
+## 1.1.0
+
+* **Benchmark Verification**: Added empirical performance benchmarks (286x speedup vs SQLite).
+* **Documentation**: Updated README with official pub.dev links and reference URLs.
+* **Version Bump**: Bumped to 1.1.0 for stable release candidate.
+
 ## 1.0.0
 
 * **Stable Release**: Officially production-ready with 100% feature coverage.

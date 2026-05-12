@@ -7,6 +7,7 @@
 Stoolap is a high-performance, embedded SQL database written entirely in Rust. It brings enterprise-grade features like MVCC transactions, parallel execution, and native vector search directly to your Flutter applications.
 
 **Official Reference:** [https://stoolap.io/](https://stoolap.io/)
+**Pub.dev:** [https://pub.dev/packages/stoolap_flutter](https://pub.dev/packages/stoolap_flutter)
 
 ---
 
@@ -39,7 +40,7 @@ Add `stoolap_flutter` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  stoolap_flutter: ^0.8.0
+  stoolap_flutter: ^1.1.0
 ```
 
 ### 2. Initialization
@@ -129,6 +130,38 @@ StreamBuilder<List<StoolapRow>>(
   },
 );
 ```
+
+## Performance & Benchmarks ⚡
+
+Stoolap is engineered for high-performance mobile and edge workloads. Unlike single-threaded databases, it leverages **Rayon** for automatic query parallelization and **SIMD** (NEON/AVX) for lightning-fast vector math.
+
+### Real-World Performance (vs SQLite & DuckDB)
+
+*Official benchmarks performed on Apple Silicon using identical 10k row workloads. Source: [Stoolap Official Benchmarks](https://github.com/stoolap/stoolap/blob/main/BENCHMARKS.md).*
+
+| Operation | **Stoolap** | SQLite | DuckDB | Speedup (vs SQLite) |
+| :--- | :---: | :---: | :---: | :---: |
+| **COUNT DISTINCT** | **0.37 µs** | 105.98 µs | 219.91 µs | **286x** |
+| **Subquery Compare** | **5.52 µs** | 1424.07 µs | 293.51 µs | **258x** |
+| **Aggregation (GROUP BY)** | **48.81 µs** | 1403.39 µs | 104.32 µs | **29x** |
+| **SELECT by ID** | **0.12 µs** | 0.21 µs | 145.55 µs | **1.7x** |
+| **Vector Search (k-NN)** | **4ms** | N/A | N/A | **Native** |
+
+### Mobile Performance Breakdown
+
+| Feature | **Stoolap (Rust)** | SQLite (C) | Hive (Dart) |
+| :--- | :--- | :--- | :--- |
+| **Parallelism** | **Automatic (Multi-core)** | Single-threaded | Single-threaded |
+| **Concurrency** | **MVCC (Readers don't block)** | Lock-based | Lock-based |
+| **Vector Index** | **Native HNSW** | ✗ | ✗ |
+| **Optimizer** | **Cost-Based (PostgreSQL-style)** | Rule-Based | ✗ |
+
+### Why is Stoolap faster?
+
+1.  **Pure Rust Performance:** Compiled with LTO and `opt-level = 3` for mobile ARM64.
+2.  **Snapshot Isolation (MVCC):** High-throughput concurrent reads and writes without contention.
+3.  **Adaptive Query Execution:** The optimizer learns from actual data distributions to choose the fastest plan.
+4.  **Hardware Acceleration:** Direct use of ARM NEON instructions for vector distance metrics.
 
 ---
 
