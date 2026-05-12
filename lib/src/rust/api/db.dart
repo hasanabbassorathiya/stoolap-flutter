@@ -16,45 +16,64 @@ abstract class DefaultStreamSinkString implements RustOpaqueInterface {}
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StoolapDb>>
 abstract class StoolapDb implements RustOpaqueInterface {
+  /// Executes a batch of SQL statements efficiently.
   Future<void> batchExecute({required List<String> sqls});
 
+  /// Explicitly begins a transaction.
   Future<void> begin();
 
+  /// Clones the database handle, creating a new connection with independent transaction state.
   Future<StoolapDb> cloneHandle();
 
+  /// Commits the active transaction.
   Future<void> commit();
 
+  /// Executes a SQL statement with parameters.
   Future<void> execute(
       {required String sql, required List<StoolapValue> params});
 
+  /// Executes a statement and returns results (e.g., for RETURNING clause).
   Future<List<StoolapRow>> executeWithResults(
       {required String sql, required List<StoolapValue> params});
 
+  /// Returns the execution plan and profiling info for a SQL statement.
   Future<String> explain(
       {required String sql, required List<StoolapValue> params});
 
+  /// Opens a connection to a database specified by the DSN.
   static Future<StoolapDb> open({required String dsn}) =>
       RustLib.instance.api.crateApiDbStoolapDbOpen(dsn: dsn);
 
+  /// Executes a PRAGMA command to configure or inspect the database engine.
   Future<List<StoolapRow>> pragma({required String name, String? value});
 
+  /// Queries the database and returns a list of rows.
   Future<List<StoolapRow>> query(
       {required String sql, required List<StoolapValue> params});
 
+  /// Releases a named savepoint.
   Future<void> releaseSavepoint({required String name});
 
+  /// Rolls back the active transaction.
   Future<void> rollback();
 
+  /// Rolls back to a named savepoint.
   Future<void> rollbackToSavepoint({required String name});
 
+  /// Creates a named savepoint.
   Future<void> savepoint({required String name});
 
+  /// Sets up a stream for internal engine logs.
   static Future<void> setupLogStream({required DefaultStreamSinkString sink}) =>
       RustLib.instance.api.crateApiDbStoolapDbSetupLogStream(sink: sink);
 }
 
+/// A single row returned from a SQL query.
 class StoolapRow {
+  /// Names of the columns in the row
   final List<String> columns;
+
+  /// Values in the row corresponding to the columns
   final List<StoolapValue> values;
 
   const StoolapRow({
@@ -78,29 +97,46 @@ class StoolapRow {
 sealed class StoolapValue with _$StoolapValue {
   const StoolapValue._();
 
+  /// 64-bit signed integer
   const factory StoolapValue.integer(
     PlatformInt64 field0,
   ) = StoolapValue_Integer;
+
+  /// 64-bit floating point
   const factory StoolapValue.float(
     double field0,
   ) = StoolapValue_Float;
+
+  /// UTF-8 text string
   const factory StoolapValue.text(
     String field0,
   ) = StoolapValue_Text;
+
+  /// Boolean value
   const factory StoolapValue.boolean(
     bool field0,
   ) = StoolapValue_Boolean;
+
+  /// Native vector for semantic search
   const factory StoolapValue.vector(
     Float32List field0,
   ) = StoolapValue_Vector;
+
+  /// JSON data
   const factory StoolapValue.json(
     String field0,
   ) = StoolapValue_Json;
+
+  /// UTC Timestamp in milliseconds since epoch
   const factory StoolapValue.timestamp(
     PlatformInt64 field0,
   ) = StoolapValue_Timestamp;
+
+  /// Date (days since epoch)
   const factory StoolapValue.date(
     PlatformInt64 field0,
   ) = StoolapValue_Date;
+
+  /// Database NULL
   const factory StoolapValue.null_() = StoolapValue_Null;
 }

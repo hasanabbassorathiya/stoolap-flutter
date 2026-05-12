@@ -1283,58 +1283,71 @@ class StoolapDbImpl extends RustOpaque implements StoolapDb {
         RustLib.instance.api.rust_arc_decrement_strong_count_StoolapDbPtr,
   );
 
+  /// Executes a batch of SQL statements efficiently.
   Future<void> batchExecute({required List<String> sqls}) =>
       RustLib.instance.api
           .crateApiDbStoolapDbBatchExecute(that: this, sqls: sqls);
 
+  /// Explicitly begins a transaction.
   Future<void> begin() => RustLib.instance.api.crateApiDbStoolapDbBegin(
         that: this,
       );
 
+  /// Clones the database handle, creating a new connection with independent transaction state.
   Future<StoolapDb> cloneHandle() =>
       RustLib.instance.api.crateApiDbStoolapDbCloneHandle(
         that: this,
       );
 
+  /// Commits the active transaction.
   Future<void> commit() => RustLib.instance.api.crateApiDbStoolapDbCommit(
         that: this,
       );
 
+  /// Executes a SQL statement with parameters.
   Future<void> execute(
           {required String sql, required List<StoolapValue> params}) =>
       RustLib.instance.api
           .crateApiDbStoolapDbExecute(that: this, sql: sql, params: params);
 
+  /// Executes a statement and returns results (e.g., for RETURNING clause).
   Future<List<StoolapRow>> executeWithResults(
           {required String sql, required List<StoolapValue> params}) =>
       RustLib.instance.api.crateApiDbStoolapDbExecuteWithResults(
           that: this, sql: sql, params: params);
 
+  /// Returns the execution plan and profiling info for a SQL statement.
   Future<String> explain(
           {required String sql, required List<StoolapValue> params}) =>
       RustLib.instance.api
           .crateApiDbStoolapDbExplain(that: this, sql: sql, params: params);
 
+  /// Executes a PRAGMA command to configure or inspect the database engine.
   Future<List<StoolapRow>> pragma({required String name, String? value}) =>
       RustLib.instance.api
           .crateApiDbStoolapDbPragma(that: this, name: name, value: value);
 
+  /// Queries the database and returns a list of rows.
   Future<List<StoolapRow>> query(
           {required String sql, required List<StoolapValue> params}) =>
       RustLib.instance.api
           .crateApiDbStoolapDbQuery(that: this, sql: sql, params: params);
 
+  /// Releases a named savepoint.
   Future<void> releaseSavepoint({required String name}) => RustLib.instance.api
       .crateApiDbStoolapDbReleaseSavepoint(that: this, name: name);
 
+  /// Rolls back the active transaction.
   Future<void> rollback() => RustLib.instance.api.crateApiDbStoolapDbRollback(
         that: this,
       );
 
+  /// Rolls back to a named savepoint.
   Future<void> rollbackToSavepoint({required String name}) =>
       RustLib.instance.api
           .crateApiDbStoolapDbRollbackToSavepoint(that: this, name: name);
 
+  /// Creates a named savepoint.
   Future<void> savepoint({required String name}) =>
       RustLib.instance.api.crateApiDbStoolapDbSavepoint(that: this, name: name);
 }

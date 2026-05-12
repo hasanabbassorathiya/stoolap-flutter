@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,79 +9,45 @@ part of 'db.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$StoolapValue {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) integer,
-    required TResult Function(double field0) float,
-    required TResult Function(String field0) text,
-    required TResult Function(bool field0) boolean,
-    required TResult Function(Float32List field0) vector,
-    required TResult Function(String field0) json,
-    required TResult Function(int field0) timestamp,
-    required TResult Function(int field0) date,
-    required TResult Function() null_,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? integer,
-    TResult? Function(double field0)? float,
-    TResult? Function(String field0)? text,
-    TResult? Function(bool field0)? boolean,
-    TResult? Function(Float32List field0)? vector,
-    TResult? Function(String field0)? json,
-    TResult? Function(int field0)? timestamp,
-    TResult? Function(int field0)? date,
-    TResult? Function()? null_,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? integer,
-    TResult Function(double field0)? float,
-    TResult Function(String field0)? text,
-    TResult Function(bool field0)? boolean,
-    TResult Function(Float32List field0)? vector,
-    TResult Function(String field0)? json,
-    TResult Function(int field0)? timestamp,
-    TResult Function(int field0)? date,
-    TResult Function()? null_,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StoolapValue_Integer value) integer,
-    required TResult Function(StoolapValue_Float value) float,
-    required TResult Function(StoolapValue_Text value) text,
-    required TResult Function(StoolapValue_Boolean value) boolean,
-    required TResult Function(StoolapValue_Vector value) vector,
-    required TResult Function(StoolapValue_Json value) json,
-    required TResult Function(StoolapValue_Timestamp value) timestamp,
-    required TResult Function(StoolapValue_Date value) date,
-    required TResult Function(StoolapValue_Null value) null_,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StoolapValue_Integer value)? integer,
-    TResult? Function(StoolapValue_Float value)? float,
-    TResult? Function(StoolapValue_Text value)? text,
-    TResult? Function(StoolapValue_Boolean value)? boolean,
-    TResult? Function(StoolapValue_Vector value)? vector,
-    TResult? Function(StoolapValue_Json value)? json,
-    TResult? Function(StoolapValue_Timestamp value)? timestamp,
-    TResult? Function(StoolapValue_Date value)? date,
-    TResult? Function(StoolapValue_Null value)? null_,
-  }) =>
-      throw _privateConstructorUsedError;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is StoolapValue);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'StoolapValue()';
+  }
+}
+
+/// @nodoc
+class $StoolapValueCopyWith<$Res> {
+  $StoolapValueCopyWith(StoolapValue _, $Res Function(StoolapValue) __);
+}
+
+/// Adds pattern-matching-related methods to [StoolapValue].
+extension StoolapValuePatterns on StoolapValue {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StoolapValue_Integer value)? integer,
@@ -94,244 +60,400 @@ mixin _$StoolapValue {
     TResult Function(StoolapValue_Date value)? date,
     TResult Function(StoolapValue_Null value)? null_,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $StoolapValueCopyWith<$Res> {
-  factory $StoolapValueCopyWith(
-          StoolapValue value, $Res Function(StoolapValue) then) =
-      _$StoolapValueCopyWithImpl<$Res, StoolapValue>;
-}
-
-/// @nodoc
-class _$StoolapValueCopyWithImpl<$Res, $Val extends StoolapValue>
-    implements $StoolapValueCopyWith<$Res> {
-  _$StoolapValueCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$StoolapValue_IntegerImplCopyWith<$Res> {
-  factory _$$StoolapValue_IntegerImplCopyWith(_$StoolapValue_IntegerImpl value,
-          $Res Function(_$StoolapValue_IntegerImpl) then) =
-      __$$StoolapValue_IntegerImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int field0});
-}
-
-/// @nodoc
-class __$$StoolapValue_IntegerImplCopyWithImpl<$Res>
-    extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_IntegerImpl>
-    implements _$$StoolapValue_IntegerImplCopyWith<$Res> {
-  __$$StoolapValue_IntegerImplCopyWithImpl(_$StoolapValue_IntegerImpl _value,
-      $Res Function(_$StoolapValue_IntegerImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field0 = null,
   }) {
-    return _then(_$StoolapValue_IntegerImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    final _that = this;
+    switch (_that) {
+      case StoolapValue_Integer() when integer != null:
+        return integer(_that);
+      case StoolapValue_Float() when float != null:
+        return float(_that);
+      case StoolapValue_Text() when text != null:
+        return text(_that);
+      case StoolapValue_Boolean() when boolean != null:
+        return boolean(_that);
+      case StoolapValue_Vector() when vector != null:
+        return vector(_that);
+      case StoolapValue_Json() when json != null:
+        return json(_that);
+      case StoolapValue_Timestamp() when timestamp != null:
+        return timestamp(_that);
+      case StoolapValue_Date() when date != null:
+        return date(_that);
+      case StoolapValue_Null() when null_ != null:
+        return null_(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StoolapValue_Integer value) integer,
+    required TResult Function(StoolapValue_Float value) float,
+    required TResult Function(StoolapValue_Text value) text,
+    required TResult Function(StoolapValue_Boolean value) boolean,
+    required TResult Function(StoolapValue_Vector value) vector,
+    required TResult Function(StoolapValue_Json value) json,
+    required TResult Function(StoolapValue_Timestamp value) timestamp,
+    required TResult Function(StoolapValue_Date value) date,
+    required TResult Function(StoolapValue_Null value) null_,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case StoolapValue_Integer():
+        return integer(_that);
+      case StoolapValue_Float():
+        return float(_that);
+      case StoolapValue_Text():
+        return text(_that);
+      case StoolapValue_Boolean():
+        return boolean(_that);
+      case StoolapValue_Vector():
+        return vector(_that);
+      case StoolapValue_Json():
+        return json(_that);
+      case StoolapValue_Timestamp():
+        return timestamp(_that);
+      case StoolapValue_Date():
+        return date(_that);
+      case StoolapValue_Null():
+        return null_(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StoolapValue_Integer value)? integer,
+    TResult? Function(StoolapValue_Float value)? float,
+    TResult? Function(StoolapValue_Text value)? text,
+    TResult? Function(StoolapValue_Boolean value)? boolean,
+    TResult? Function(StoolapValue_Vector value)? vector,
+    TResult? Function(StoolapValue_Json value)? json,
+    TResult? Function(StoolapValue_Timestamp value)? timestamp,
+    TResult? Function(StoolapValue_Date value)? date,
+    TResult? Function(StoolapValue_Null value)? null_,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case StoolapValue_Integer() when integer != null:
+        return integer(_that);
+      case StoolapValue_Float() when float != null:
+        return float(_that);
+      case StoolapValue_Text() when text != null:
+        return text(_that);
+      case StoolapValue_Boolean() when boolean != null:
+        return boolean(_that);
+      case StoolapValue_Vector() when vector != null:
+        return vector(_that);
+      case StoolapValue_Json() when json != null:
+        return json(_that);
+      case StoolapValue_Timestamp() when timestamp != null:
+        return timestamp(_that);
+      case StoolapValue_Date() when date != null:
+        return date(_that);
+      case StoolapValue_Null() when null_ != null:
+        return null_(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PlatformInt64 field0)? integer,
+    TResult Function(double field0)? float,
+    TResult Function(String field0)? text,
+    TResult Function(bool field0)? boolean,
+    TResult Function(Float32List field0)? vector,
+    TResult Function(String field0)? json,
+    TResult Function(PlatformInt64 field0)? timestamp,
+    TResult Function(PlatformInt64 field0)? date,
+    TResult Function()? null_,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case StoolapValue_Integer() when integer != null:
+        return integer(_that.field0);
+      case StoolapValue_Float() when float != null:
+        return float(_that.field0);
+      case StoolapValue_Text() when text != null:
+        return text(_that.field0);
+      case StoolapValue_Boolean() when boolean != null:
+        return boolean(_that.field0);
+      case StoolapValue_Vector() when vector != null:
+        return vector(_that.field0);
+      case StoolapValue_Json() when json != null:
+        return json(_that.field0);
+      case StoolapValue_Timestamp() when timestamp != null:
+        return timestamp(_that.field0);
+      case StoolapValue_Date() when date != null:
+        return date(_that.field0);
+      case StoolapValue_Null() when null_ != null:
+        return null_();
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PlatformInt64 field0) integer,
+    required TResult Function(double field0) float,
+    required TResult Function(String field0) text,
+    required TResult Function(bool field0) boolean,
+    required TResult Function(Float32List field0) vector,
+    required TResult Function(String field0) json,
+    required TResult Function(PlatformInt64 field0) timestamp,
+    required TResult Function(PlatformInt64 field0) date,
+    required TResult Function() null_,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case StoolapValue_Integer():
+        return integer(_that.field0);
+      case StoolapValue_Float():
+        return float(_that.field0);
+      case StoolapValue_Text():
+        return text(_that.field0);
+      case StoolapValue_Boolean():
+        return boolean(_that.field0);
+      case StoolapValue_Vector():
+        return vector(_that.field0);
+      case StoolapValue_Json():
+        return json(_that.field0);
+      case StoolapValue_Timestamp():
+        return timestamp(_that.field0);
+      case StoolapValue_Date():
+        return date(_that.field0);
+      case StoolapValue_Null():
+        return null_();
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PlatformInt64 field0)? integer,
+    TResult? Function(double field0)? float,
+    TResult? Function(String field0)? text,
+    TResult? Function(bool field0)? boolean,
+    TResult? Function(Float32List field0)? vector,
+    TResult? Function(String field0)? json,
+    TResult? Function(PlatformInt64 field0)? timestamp,
+    TResult? Function(PlatformInt64 field0)? date,
+    TResult? Function()? null_,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case StoolapValue_Integer() when integer != null:
+        return integer(_that.field0);
+      case StoolapValue_Float() when float != null:
+        return float(_that.field0);
+      case StoolapValue_Text() when text != null:
+        return text(_that.field0);
+      case StoolapValue_Boolean() when boolean != null:
+        return boolean(_that.field0);
+      case StoolapValue_Vector() when vector != null:
+        return vector(_that.field0);
+      case StoolapValue_Json() when json != null:
+        return json(_that.field0);
+      case StoolapValue_Timestamp() when timestamp != null:
+        return timestamp(_that.field0);
+      case StoolapValue_Date() when date != null:
+        return date(_that.field0);
+      case StoolapValue_Null() when null_ != null:
+        return null_();
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$StoolapValue_IntegerImpl extends StoolapValue_Integer {
-  const _$StoolapValue_IntegerImpl(this.field0) : super._();
+class StoolapValue_Integer extends StoolapValue {
+  const StoolapValue_Integer(this.field0) : super._();
 
-  @override
-  final int field0;
+  final PlatformInt64 field0;
 
-  @override
-  String toString() {
-    return 'StoolapValue.integer(field0: $field0)';
-  }
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $StoolapValue_IntegerCopyWith<StoolapValue_Integer> get copyWith =>
+      _$StoolapValue_IntegerCopyWithImpl<StoolapValue_Integer>(
+          this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StoolapValue_IntegerImpl &&
+            other is StoolapValue_Integer &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$StoolapValue_IntegerImplCopyWith<_$StoolapValue_IntegerImpl>
-      get copyWith =>
-          __$$StoolapValue_IntegerImplCopyWithImpl<_$StoolapValue_IntegerImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) integer,
-    required TResult Function(double field0) float,
-    required TResult Function(String field0) text,
-    required TResult Function(bool field0) boolean,
-    required TResult Function(Float32List field0) vector,
-    required TResult Function(String field0) json,
-    required TResult Function(int field0) timestamp,
-    required TResult Function(int field0) date,
-    required TResult Function() null_,
-  }) {
-    return integer(field0);
+  String toString() {
+    return 'StoolapValue.integer(field0: $field0)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? integer,
-    TResult? Function(double field0)? float,
-    TResult? Function(String field0)? text,
-    TResult? Function(bool field0)? boolean,
-    TResult? Function(Float32List field0)? vector,
-    TResult? Function(String field0)? json,
-    TResult? Function(int field0)? timestamp,
-    TResult? Function(int field0)? date,
-    TResult? Function()? null_,
-  }) {
-    return integer?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? integer,
-    TResult Function(double field0)? float,
-    TResult Function(String field0)? text,
-    TResult Function(bool field0)? boolean,
-    TResult Function(Float32List field0)? vector,
-    TResult Function(String field0)? json,
-    TResult Function(int field0)? timestamp,
-    TResult Function(int field0)? date,
-    TResult Function()? null_,
-    required TResult orElse(),
-  }) {
-    if (integer != null) {
-      return integer(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StoolapValue_Integer value) integer,
-    required TResult Function(StoolapValue_Float value) float,
-    required TResult Function(StoolapValue_Text value) text,
-    required TResult Function(StoolapValue_Boolean value) boolean,
-    required TResult Function(StoolapValue_Vector value) vector,
-    required TResult Function(StoolapValue_Json value) json,
-    required TResult Function(StoolapValue_Timestamp value) timestamp,
-    required TResult Function(StoolapValue_Date value) date,
-    required TResult Function(StoolapValue_Null value) null_,
-  }) {
-    return integer(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StoolapValue_Integer value)? integer,
-    TResult? Function(StoolapValue_Float value)? float,
-    TResult? Function(StoolapValue_Text value)? text,
-    TResult? Function(StoolapValue_Boolean value)? boolean,
-    TResult? Function(StoolapValue_Vector value)? vector,
-    TResult? Function(StoolapValue_Json value)? json,
-    TResult? Function(StoolapValue_Timestamp value)? timestamp,
-    TResult? Function(StoolapValue_Date value)? date,
-    TResult? Function(StoolapValue_Null value)? null_,
-  }) {
-    return integer?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StoolapValue_Integer value)? integer,
-    TResult Function(StoolapValue_Float value)? float,
-    TResult Function(StoolapValue_Text value)? text,
-    TResult Function(StoolapValue_Boolean value)? boolean,
-    TResult Function(StoolapValue_Vector value)? vector,
-    TResult Function(StoolapValue_Json value)? json,
-    TResult Function(StoolapValue_Timestamp value)? timestamp,
-    TResult Function(StoolapValue_Date value)? date,
-    TResult Function(StoolapValue_Null value)? null_,
-    required TResult orElse(),
-  }) {
-    if (integer != null) {
-      return integer(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StoolapValue_Integer extends StoolapValue {
-  const factory StoolapValue_Integer(final int field0) =
-      _$StoolapValue_IntegerImpl;
-  const StoolapValue_Integer._() : super._();
-
-  int get field0;
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StoolapValue_IntegerImplCopyWith<_$StoolapValue_IntegerImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StoolapValue_FloatImplCopyWith<$Res> {
-  factory _$$StoolapValue_FloatImplCopyWith(_$StoolapValue_FloatImpl value,
-          $Res Function(_$StoolapValue_FloatImpl) then) =
-      __$$StoolapValue_FloatImplCopyWithImpl<$Res>;
+abstract mixin class $StoolapValue_IntegerCopyWith<$Res>
+    implements $StoolapValueCopyWith<$Res> {
+  factory $StoolapValue_IntegerCopyWith(StoolapValue_Integer value,
+          $Res Function(StoolapValue_Integer) _then) =
+      _$StoolapValue_IntegerCopyWithImpl;
+  @useResult
+  $Res call({PlatformInt64 field0});
+}
+
+/// @nodoc
+class _$StoolapValue_IntegerCopyWithImpl<$Res>
+    implements $StoolapValue_IntegerCopyWith<$Res> {
+  _$StoolapValue_IntegerCopyWithImpl(this._self, this._then);
+
+  final StoolapValue_Integer _self;
+  final $Res Function(StoolapValue_Integer) _then;
+
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(StoolapValue_Integer(
+      null == field0
+          ? _self.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as PlatformInt64,
+    ));
+  }
+}
+
+/// @nodoc
+
+class StoolapValue_Float extends StoolapValue {
+  const StoolapValue_Float(this.field0) : super._();
+
+  final double field0;
+
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $StoolapValue_FloatCopyWith<StoolapValue_Float> get copyWith =>
+      _$StoolapValue_FloatCopyWithImpl<StoolapValue_Float>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is StoolapValue_Float &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @override
+  String toString() {
+    return 'StoolapValue.float(field0: $field0)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $StoolapValue_FloatCopyWith<$Res>
+    implements $StoolapValueCopyWith<$Res> {
+  factory $StoolapValue_FloatCopyWith(
+          StoolapValue_Float value, $Res Function(StoolapValue_Float) _then) =
+      _$StoolapValue_FloatCopyWithImpl;
   @useResult
   $Res call({double field0});
 }
 
 /// @nodoc
-class __$$StoolapValue_FloatImplCopyWithImpl<$Res>
-    extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_FloatImpl>
-    implements _$$StoolapValue_FloatImplCopyWith<$Res> {
-  __$$StoolapValue_FloatImplCopyWithImpl(_$StoolapValue_FloatImpl _value,
-      $Res Function(_$StoolapValue_FloatImpl) _then)
-      : super(_value, _then);
+class _$StoolapValue_FloatCopyWithImpl<$Res>
+    implements $StoolapValue_FloatCopyWith<$Res> {
+  _$StoolapValue_FloatCopyWithImpl(this._self, this._then);
+
+  final StoolapValue_Float _self;
+  final $Res Function(StoolapValue_Float) _then;
 
   /// Create a copy of StoolapValue
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$StoolapValue_FloatImpl(
+    return _then(StoolapValue_Float(
       null == field0
-          ? _value.field0
+          ? _self.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as double,
     ));
@@ -340,183 +462,62 @@ class __$$StoolapValue_FloatImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StoolapValue_FloatImpl extends StoolapValue_Float {
-  const _$StoolapValue_FloatImpl(this.field0) : super._();
+class StoolapValue_Text extends StoolapValue {
+  const StoolapValue_Text(this.field0) : super._();
 
-  @override
-  final double field0;
+  final String field0;
 
-  @override
-  String toString() {
-    return 'StoolapValue.float(field0: $field0)';
-  }
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $StoolapValue_TextCopyWith<StoolapValue_Text> get copyWith =>
+      _$StoolapValue_TextCopyWithImpl<StoolapValue_Text>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StoolapValue_FloatImpl &&
+            other is StoolapValue_Text &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$StoolapValue_FloatImplCopyWith<_$StoolapValue_FloatImpl> get copyWith =>
-      __$$StoolapValue_FloatImplCopyWithImpl<_$StoolapValue_FloatImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) integer,
-    required TResult Function(double field0) float,
-    required TResult Function(String field0) text,
-    required TResult Function(bool field0) boolean,
-    required TResult Function(Float32List field0) vector,
-    required TResult Function(String field0) json,
-    required TResult Function(int field0) timestamp,
-    required TResult Function(int field0) date,
-    required TResult Function() null_,
-  }) {
-    return float(field0);
+  String toString() {
+    return 'StoolapValue.text(field0: $field0)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? integer,
-    TResult? Function(double field0)? float,
-    TResult? Function(String field0)? text,
-    TResult? Function(bool field0)? boolean,
-    TResult? Function(Float32List field0)? vector,
-    TResult? Function(String field0)? json,
-    TResult? Function(int field0)? timestamp,
-    TResult? Function(int field0)? date,
-    TResult? Function()? null_,
-  }) {
-    return float?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? integer,
-    TResult Function(double field0)? float,
-    TResult Function(String field0)? text,
-    TResult Function(bool field0)? boolean,
-    TResult Function(Float32List field0)? vector,
-    TResult Function(String field0)? json,
-    TResult Function(int field0)? timestamp,
-    TResult Function(int field0)? date,
-    TResult Function()? null_,
-    required TResult orElse(),
-  }) {
-    if (float != null) {
-      return float(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StoolapValue_Integer value) integer,
-    required TResult Function(StoolapValue_Float value) float,
-    required TResult Function(StoolapValue_Text value) text,
-    required TResult Function(StoolapValue_Boolean value) boolean,
-    required TResult Function(StoolapValue_Vector value) vector,
-    required TResult Function(StoolapValue_Json value) json,
-    required TResult Function(StoolapValue_Timestamp value) timestamp,
-    required TResult Function(StoolapValue_Date value) date,
-    required TResult Function(StoolapValue_Null value) null_,
-  }) {
-    return float(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StoolapValue_Integer value)? integer,
-    TResult? Function(StoolapValue_Float value)? float,
-    TResult? Function(StoolapValue_Text value)? text,
-    TResult? Function(StoolapValue_Boolean value)? boolean,
-    TResult? Function(StoolapValue_Vector value)? vector,
-    TResult? Function(StoolapValue_Json value)? json,
-    TResult? Function(StoolapValue_Timestamp value)? timestamp,
-    TResult? Function(StoolapValue_Date value)? date,
-    TResult? Function(StoolapValue_Null value)? null_,
-  }) {
-    return float?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StoolapValue_Integer value)? integer,
-    TResult Function(StoolapValue_Float value)? float,
-    TResult Function(StoolapValue_Text value)? text,
-    TResult Function(StoolapValue_Boolean value)? boolean,
-    TResult Function(StoolapValue_Vector value)? vector,
-    TResult Function(StoolapValue_Json value)? json,
-    TResult Function(StoolapValue_Timestamp value)? timestamp,
-    TResult Function(StoolapValue_Date value)? date,
-    TResult Function(StoolapValue_Null value)? null_,
-    required TResult orElse(),
-  }) {
-    if (float != null) {
-      return float(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StoolapValue_Float extends StoolapValue {
-  const factory StoolapValue_Float(final double field0) =
-      _$StoolapValue_FloatImpl;
-  const StoolapValue_Float._() : super._();
-
-  double get field0;
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StoolapValue_FloatImplCopyWith<_$StoolapValue_FloatImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StoolapValue_TextImplCopyWith<$Res> {
-  factory _$$StoolapValue_TextImplCopyWith(_$StoolapValue_TextImpl value,
-          $Res Function(_$StoolapValue_TextImpl) then) =
-      __$$StoolapValue_TextImplCopyWithImpl<$Res>;
+abstract mixin class $StoolapValue_TextCopyWith<$Res>
+    implements $StoolapValueCopyWith<$Res> {
+  factory $StoolapValue_TextCopyWith(
+          StoolapValue_Text value, $Res Function(StoolapValue_Text) _then) =
+      _$StoolapValue_TextCopyWithImpl;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$StoolapValue_TextImplCopyWithImpl<$Res>
-    extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_TextImpl>
-    implements _$$StoolapValue_TextImplCopyWith<$Res> {
-  __$$StoolapValue_TextImplCopyWithImpl(_$StoolapValue_TextImpl _value,
-      $Res Function(_$StoolapValue_TextImpl) _then)
-      : super(_value, _then);
+class _$StoolapValue_TextCopyWithImpl<$Res>
+    implements $StoolapValue_TextCopyWith<$Res> {
+  _$StoolapValue_TextCopyWithImpl(this._self, this._then);
+
+  final StoolapValue_Text _self;
+  final $Res Function(StoolapValue_Text) _then;
 
   /// Create a copy of StoolapValue
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$StoolapValue_TextImpl(
+    return _then(StoolapValue_Text(
       null == field0
-          ? _value.field0
+          ? _self.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -525,183 +526,63 @@ class __$$StoolapValue_TextImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StoolapValue_TextImpl extends StoolapValue_Text {
-  const _$StoolapValue_TextImpl(this.field0) : super._();
+class StoolapValue_Boolean extends StoolapValue {
+  const StoolapValue_Boolean(this.field0) : super._();
 
-  @override
-  final String field0;
+  final bool field0;
 
-  @override
-  String toString() {
-    return 'StoolapValue.text(field0: $field0)';
-  }
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $StoolapValue_BooleanCopyWith<StoolapValue_Boolean> get copyWith =>
+      _$StoolapValue_BooleanCopyWithImpl<StoolapValue_Boolean>(
+          this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StoolapValue_TextImpl &&
+            other is StoolapValue_Boolean &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$StoolapValue_TextImplCopyWith<_$StoolapValue_TextImpl> get copyWith =>
-      __$$StoolapValue_TextImplCopyWithImpl<_$StoolapValue_TextImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) integer,
-    required TResult Function(double field0) float,
-    required TResult Function(String field0) text,
-    required TResult Function(bool field0) boolean,
-    required TResult Function(Float32List field0) vector,
-    required TResult Function(String field0) json,
-    required TResult Function(int field0) timestamp,
-    required TResult Function(int field0) date,
-    required TResult Function() null_,
-  }) {
-    return text(field0);
+  String toString() {
+    return 'StoolapValue.boolean(field0: $field0)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? integer,
-    TResult? Function(double field0)? float,
-    TResult? Function(String field0)? text,
-    TResult? Function(bool field0)? boolean,
-    TResult? Function(Float32List field0)? vector,
-    TResult? Function(String field0)? json,
-    TResult? Function(int field0)? timestamp,
-    TResult? Function(int field0)? date,
-    TResult? Function()? null_,
-  }) {
-    return text?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? integer,
-    TResult Function(double field0)? float,
-    TResult Function(String field0)? text,
-    TResult Function(bool field0)? boolean,
-    TResult Function(Float32List field0)? vector,
-    TResult Function(String field0)? json,
-    TResult Function(int field0)? timestamp,
-    TResult Function(int field0)? date,
-    TResult Function()? null_,
-    required TResult orElse(),
-  }) {
-    if (text != null) {
-      return text(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StoolapValue_Integer value) integer,
-    required TResult Function(StoolapValue_Float value) float,
-    required TResult Function(StoolapValue_Text value) text,
-    required TResult Function(StoolapValue_Boolean value) boolean,
-    required TResult Function(StoolapValue_Vector value) vector,
-    required TResult Function(StoolapValue_Json value) json,
-    required TResult Function(StoolapValue_Timestamp value) timestamp,
-    required TResult Function(StoolapValue_Date value) date,
-    required TResult Function(StoolapValue_Null value) null_,
-  }) {
-    return text(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StoolapValue_Integer value)? integer,
-    TResult? Function(StoolapValue_Float value)? float,
-    TResult? Function(StoolapValue_Text value)? text,
-    TResult? Function(StoolapValue_Boolean value)? boolean,
-    TResult? Function(StoolapValue_Vector value)? vector,
-    TResult? Function(StoolapValue_Json value)? json,
-    TResult? Function(StoolapValue_Timestamp value)? timestamp,
-    TResult? Function(StoolapValue_Date value)? date,
-    TResult? Function(StoolapValue_Null value)? null_,
-  }) {
-    return text?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StoolapValue_Integer value)? integer,
-    TResult Function(StoolapValue_Float value)? float,
-    TResult Function(StoolapValue_Text value)? text,
-    TResult Function(StoolapValue_Boolean value)? boolean,
-    TResult Function(StoolapValue_Vector value)? vector,
-    TResult Function(StoolapValue_Json value)? json,
-    TResult Function(StoolapValue_Timestamp value)? timestamp,
-    TResult Function(StoolapValue_Date value)? date,
-    TResult Function(StoolapValue_Null value)? null_,
-    required TResult orElse(),
-  }) {
-    if (text != null) {
-      return text(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StoolapValue_Text extends StoolapValue {
-  const factory StoolapValue_Text(final String field0) =
-      _$StoolapValue_TextImpl;
-  const StoolapValue_Text._() : super._();
-
-  String get field0;
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StoolapValue_TextImplCopyWith<_$StoolapValue_TextImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StoolapValue_BooleanImplCopyWith<$Res> {
-  factory _$$StoolapValue_BooleanImplCopyWith(_$StoolapValue_BooleanImpl value,
-          $Res Function(_$StoolapValue_BooleanImpl) then) =
-      __$$StoolapValue_BooleanImplCopyWithImpl<$Res>;
+abstract mixin class $StoolapValue_BooleanCopyWith<$Res>
+    implements $StoolapValueCopyWith<$Res> {
+  factory $StoolapValue_BooleanCopyWith(StoolapValue_Boolean value,
+          $Res Function(StoolapValue_Boolean) _then) =
+      _$StoolapValue_BooleanCopyWithImpl;
   @useResult
   $Res call({bool field0});
 }
 
 /// @nodoc
-class __$$StoolapValue_BooleanImplCopyWithImpl<$Res>
-    extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_BooleanImpl>
-    implements _$$StoolapValue_BooleanImplCopyWith<$Res> {
-  __$$StoolapValue_BooleanImplCopyWithImpl(_$StoolapValue_BooleanImpl _value,
-      $Res Function(_$StoolapValue_BooleanImpl) _then)
-      : super(_value, _then);
+class _$StoolapValue_BooleanCopyWithImpl<$Res>
+    implements $StoolapValue_BooleanCopyWith<$Res> {
+  _$StoolapValue_BooleanCopyWithImpl(this._self, this._then);
+
+  final StoolapValue_Boolean _self;
+  final $Res Function(StoolapValue_Boolean) _then;
 
   /// Create a copy of StoolapValue
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$StoolapValue_BooleanImpl(
+    return _then(StoolapValue_Boolean(
       null == field0
-          ? _value.field0
+          ? _self.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
@@ -710,184 +591,63 @@ class __$$StoolapValue_BooleanImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StoolapValue_BooleanImpl extends StoolapValue_Boolean {
-  const _$StoolapValue_BooleanImpl(this.field0) : super._();
+class StoolapValue_Vector extends StoolapValue {
+  const StoolapValue_Vector(this.field0) : super._();
 
-  @override
-  final bool field0;
+  final Float32List field0;
 
-  @override
-  String toString() {
-    return 'StoolapValue.boolean(field0: $field0)';
-  }
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $StoolapValue_VectorCopyWith<StoolapValue_Vector> get copyWith =>
+      _$StoolapValue_VectorCopyWithImpl<StoolapValue_Vector>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StoolapValue_BooleanImpl &&
-            (identical(other.field0, field0) || other.field0 == field0));
+            other is StoolapValue_Vector &&
+            const DeepCollectionEquality().equals(other.field0, field0));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, field0);
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StoolapValue_BooleanImplCopyWith<_$StoolapValue_BooleanImpl>
-      get copyWith =>
-          __$$StoolapValue_BooleanImplCopyWithImpl<_$StoolapValue_BooleanImpl>(
-              this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) integer,
-    required TResult Function(double field0) float,
-    required TResult Function(String field0) text,
-    required TResult Function(bool field0) boolean,
-    required TResult Function(Float32List field0) vector,
-    required TResult Function(String field0) json,
-    required TResult Function(int field0) timestamp,
-    required TResult Function(int field0) date,
-    required TResult Function() null_,
-  }) {
-    return boolean(field0);
+  String toString() {
+    return 'StoolapValue.vector(field0: $field0)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? integer,
-    TResult? Function(double field0)? float,
-    TResult? Function(String field0)? text,
-    TResult? Function(bool field0)? boolean,
-    TResult? Function(Float32List field0)? vector,
-    TResult? Function(String field0)? json,
-    TResult? Function(int field0)? timestamp,
-    TResult? Function(int field0)? date,
-    TResult? Function()? null_,
-  }) {
-    return boolean?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? integer,
-    TResult Function(double field0)? float,
-    TResult Function(String field0)? text,
-    TResult Function(bool field0)? boolean,
-    TResult Function(Float32List field0)? vector,
-    TResult Function(String field0)? json,
-    TResult Function(int field0)? timestamp,
-    TResult Function(int field0)? date,
-    TResult Function()? null_,
-    required TResult orElse(),
-  }) {
-    if (boolean != null) {
-      return boolean(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StoolapValue_Integer value) integer,
-    required TResult Function(StoolapValue_Float value) float,
-    required TResult Function(StoolapValue_Text value) text,
-    required TResult Function(StoolapValue_Boolean value) boolean,
-    required TResult Function(StoolapValue_Vector value) vector,
-    required TResult Function(StoolapValue_Json value) json,
-    required TResult Function(StoolapValue_Timestamp value) timestamp,
-    required TResult Function(StoolapValue_Date value) date,
-    required TResult Function(StoolapValue_Null value) null_,
-  }) {
-    return boolean(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StoolapValue_Integer value)? integer,
-    TResult? Function(StoolapValue_Float value)? float,
-    TResult? Function(StoolapValue_Text value)? text,
-    TResult? Function(StoolapValue_Boolean value)? boolean,
-    TResult? Function(StoolapValue_Vector value)? vector,
-    TResult? Function(StoolapValue_Json value)? json,
-    TResult? Function(StoolapValue_Timestamp value)? timestamp,
-    TResult? Function(StoolapValue_Date value)? date,
-    TResult? Function(StoolapValue_Null value)? null_,
-  }) {
-    return boolean?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StoolapValue_Integer value)? integer,
-    TResult Function(StoolapValue_Float value)? float,
-    TResult Function(StoolapValue_Text value)? text,
-    TResult Function(StoolapValue_Boolean value)? boolean,
-    TResult Function(StoolapValue_Vector value)? vector,
-    TResult Function(StoolapValue_Json value)? json,
-    TResult Function(StoolapValue_Timestamp value)? timestamp,
-    TResult Function(StoolapValue_Date value)? date,
-    TResult Function(StoolapValue_Null value)? null_,
-    required TResult orElse(),
-  }) {
-    if (boolean != null) {
-      return boolean(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StoolapValue_Boolean extends StoolapValue {
-  const factory StoolapValue_Boolean(final bool field0) =
-      _$StoolapValue_BooleanImpl;
-  const StoolapValue_Boolean._() : super._();
-
-  bool get field0;
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StoolapValue_BooleanImplCopyWith<_$StoolapValue_BooleanImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StoolapValue_VectorImplCopyWith<$Res> {
-  factory _$$StoolapValue_VectorImplCopyWith(_$StoolapValue_VectorImpl value,
-          $Res Function(_$StoolapValue_VectorImpl) then) =
-      __$$StoolapValue_VectorImplCopyWithImpl<$Res>;
+abstract mixin class $StoolapValue_VectorCopyWith<$Res>
+    implements $StoolapValueCopyWith<$Res> {
+  factory $StoolapValue_VectorCopyWith(
+          StoolapValue_Vector value, $Res Function(StoolapValue_Vector) _then) =
+      _$StoolapValue_VectorCopyWithImpl;
   @useResult
   $Res call({Float32List field0});
 }
 
 /// @nodoc
-class __$$StoolapValue_VectorImplCopyWithImpl<$Res>
-    extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_VectorImpl>
-    implements _$$StoolapValue_VectorImplCopyWith<$Res> {
-  __$$StoolapValue_VectorImplCopyWithImpl(_$StoolapValue_VectorImpl _value,
-      $Res Function(_$StoolapValue_VectorImpl) _then)
-      : super(_value, _then);
+class _$StoolapValue_VectorCopyWithImpl<$Res>
+    implements $StoolapValue_VectorCopyWith<$Res> {
+  _$StoolapValue_VectorCopyWithImpl(this._self, this._then);
+
+  final StoolapValue_Vector _self;
+  final $Res Function(StoolapValue_Vector) _then;
 
   /// Create a copy of StoolapValue
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$StoolapValue_VectorImpl(
+    return _then(StoolapValue_Vector(
       null == field0
-          ? _value.field0
+          ? _self.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as Float32List,
     ));
@@ -896,184 +656,62 @@ class __$$StoolapValue_VectorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StoolapValue_VectorImpl extends StoolapValue_Vector {
-  const _$StoolapValue_VectorImpl(this.field0) : super._();
+class StoolapValue_Json extends StoolapValue {
+  const StoolapValue_Json(this.field0) : super._();
 
-  @override
-  final Float32List field0;
+  final String field0;
 
-  @override
-  String toString() {
-    return 'StoolapValue.vector(field0: $field0)';
-  }
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $StoolapValue_JsonCopyWith<StoolapValue_Json> get copyWith =>
+      _$StoolapValue_JsonCopyWithImpl<StoolapValue_Json>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StoolapValue_VectorImpl &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            other is StoolapValue_Json &&
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StoolapValue_VectorImplCopyWith<_$StoolapValue_VectorImpl> get copyWith =>
-      __$$StoolapValue_VectorImplCopyWithImpl<_$StoolapValue_VectorImpl>(
-          this, _$identity);
+  int get hashCode => Object.hash(runtimeType, field0);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) integer,
-    required TResult Function(double field0) float,
-    required TResult Function(String field0) text,
-    required TResult Function(bool field0) boolean,
-    required TResult Function(Float32List field0) vector,
-    required TResult Function(String field0) json,
-    required TResult Function(int field0) timestamp,
-    required TResult Function(int field0) date,
-    required TResult Function() null_,
-  }) {
-    return vector(field0);
+  String toString() {
+    return 'StoolapValue.json(field0: $field0)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? integer,
-    TResult? Function(double field0)? float,
-    TResult? Function(String field0)? text,
-    TResult? Function(bool field0)? boolean,
-    TResult? Function(Float32List field0)? vector,
-    TResult? Function(String field0)? json,
-    TResult? Function(int field0)? timestamp,
-    TResult? Function(int field0)? date,
-    TResult? Function()? null_,
-  }) {
-    return vector?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? integer,
-    TResult Function(double field0)? float,
-    TResult Function(String field0)? text,
-    TResult Function(bool field0)? boolean,
-    TResult Function(Float32List field0)? vector,
-    TResult Function(String field0)? json,
-    TResult Function(int field0)? timestamp,
-    TResult Function(int field0)? date,
-    TResult Function()? null_,
-    required TResult orElse(),
-  }) {
-    if (vector != null) {
-      return vector(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StoolapValue_Integer value) integer,
-    required TResult Function(StoolapValue_Float value) float,
-    required TResult Function(StoolapValue_Text value) text,
-    required TResult Function(StoolapValue_Boolean value) boolean,
-    required TResult Function(StoolapValue_Vector value) vector,
-    required TResult Function(StoolapValue_Json value) json,
-    required TResult Function(StoolapValue_Timestamp value) timestamp,
-    required TResult Function(StoolapValue_Date value) date,
-    required TResult Function(StoolapValue_Null value) null_,
-  }) {
-    return vector(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StoolapValue_Integer value)? integer,
-    TResult? Function(StoolapValue_Float value)? float,
-    TResult? Function(StoolapValue_Text value)? text,
-    TResult? Function(StoolapValue_Boolean value)? boolean,
-    TResult? Function(StoolapValue_Vector value)? vector,
-    TResult? Function(StoolapValue_Json value)? json,
-    TResult? Function(StoolapValue_Timestamp value)? timestamp,
-    TResult? Function(StoolapValue_Date value)? date,
-    TResult? Function(StoolapValue_Null value)? null_,
-  }) {
-    return vector?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StoolapValue_Integer value)? integer,
-    TResult Function(StoolapValue_Float value)? float,
-    TResult Function(StoolapValue_Text value)? text,
-    TResult Function(StoolapValue_Boolean value)? boolean,
-    TResult Function(StoolapValue_Vector value)? vector,
-    TResult Function(StoolapValue_Json value)? json,
-    TResult Function(StoolapValue_Timestamp value)? timestamp,
-    TResult Function(StoolapValue_Date value)? date,
-    TResult Function(StoolapValue_Null value)? null_,
-    required TResult orElse(),
-  }) {
-    if (vector != null) {
-      return vector(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StoolapValue_Vector extends StoolapValue {
-  const factory StoolapValue_Vector(final Float32List field0) =
-      _$StoolapValue_VectorImpl;
-  const StoolapValue_Vector._() : super._();
-
-  Float32List get field0;
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StoolapValue_VectorImplCopyWith<_$StoolapValue_VectorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StoolapValue_JsonImplCopyWith<$Res> {
-  factory _$$StoolapValue_JsonImplCopyWith(_$StoolapValue_JsonImpl value,
-          $Res Function(_$StoolapValue_JsonImpl) then) =
-      __$$StoolapValue_JsonImplCopyWithImpl<$Res>;
+abstract mixin class $StoolapValue_JsonCopyWith<$Res>
+    implements $StoolapValueCopyWith<$Res> {
+  factory $StoolapValue_JsonCopyWith(
+          StoolapValue_Json value, $Res Function(StoolapValue_Json) _then) =
+      _$StoolapValue_JsonCopyWithImpl;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$StoolapValue_JsonImplCopyWithImpl<$Res>
-    extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_JsonImpl>
-    implements _$$StoolapValue_JsonImplCopyWith<$Res> {
-  __$$StoolapValue_JsonImplCopyWithImpl(_$StoolapValue_JsonImpl _value,
-      $Res Function(_$StoolapValue_JsonImpl) _then)
-      : super(_value, _then);
+class _$StoolapValue_JsonCopyWithImpl<$Res>
+    implements $StoolapValue_JsonCopyWith<$Res> {
+  _$StoolapValue_JsonCopyWithImpl(this._self, this._then);
+
+  final StoolapValue_Json _self;
+  final $Res Function(StoolapValue_Json) _then;
 
   /// Create a copy of StoolapValue
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$StoolapValue_JsonImpl(
+    return _then(StoolapValue_Json(
       null == field0
-          ? _value.field0
+          ? _self.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -1082,671 +720,151 @@ class __$$StoolapValue_JsonImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StoolapValue_JsonImpl extends StoolapValue_Json {
-  const _$StoolapValue_JsonImpl(this.field0) : super._();
+class StoolapValue_Timestamp extends StoolapValue {
+  const StoolapValue_Timestamp(this.field0) : super._();
 
-  @override
-  final String field0;
+  final PlatformInt64 field0;
 
-  @override
-  String toString() {
-    return 'StoolapValue.json(field0: $field0)';
-  }
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $StoolapValue_TimestampCopyWith<StoolapValue_Timestamp> get copyWith =>
+      _$StoolapValue_TimestampCopyWithImpl<StoolapValue_Timestamp>(
+          this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StoolapValue_JsonImpl &&
+            other is StoolapValue_Timestamp &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StoolapValue_JsonImplCopyWith<_$StoolapValue_JsonImpl> get copyWith =>
-      __$$StoolapValue_JsonImplCopyWithImpl<_$StoolapValue_JsonImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) integer,
-    required TResult Function(double field0) float,
-    required TResult Function(String field0) text,
-    required TResult Function(bool field0) boolean,
-    required TResult Function(Float32List field0) vector,
-    required TResult Function(String field0) json,
-    required TResult Function(int field0) timestamp,
-    required TResult Function(int field0) date,
-    required TResult Function() null_,
-  }) {
-    return json(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? integer,
-    TResult? Function(double field0)? float,
-    TResult? Function(String field0)? text,
-    TResult? Function(bool field0)? boolean,
-    TResult? Function(Float32List field0)? vector,
-    TResult? Function(String field0)? json,
-    TResult? Function(int field0)? timestamp,
-    TResult? Function(int field0)? date,
-    TResult? Function()? null_,
-  }) {
-    return json?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? integer,
-    TResult Function(double field0)? float,
-    TResult Function(String field0)? text,
-    TResult Function(bool field0)? boolean,
-    TResult Function(Float32List field0)? vector,
-    TResult Function(String field0)? json,
-    TResult Function(int field0)? timestamp,
-    TResult Function(int field0)? date,
-    TResult Function()? null_,
-    required TResult orElse(),
-  }) {
-    if (json != null) {
-      return json(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StoolapValue_Integer value) integer,
-    required TResult Function(StoolapValue_Float value) float,
-    required TResult Function(StoolapValue_Text value) text,
-    required TResult Function(StoolapValue_Boolean value) boolean,
-    required TResult Function(StoolapValue_Vector value) vector,
-    required TResult Function(StoolapValue_Json value) json,
-    required TResult Function(StoolapValue_Timestamp value) timestamp,
-    required TResult Function(StoolapValue_Date value) date,
-    required TResult Function(StoolapValue_Null value) null_,
-  }) {
-    return json(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StoolapValue_Integer value)? integer,
-    TResult? Function(StoolapValue_Float value)? float,
-    TResult? Function(StoolapValue_Text value)? text,
-    TResult? Function(StoolapValue_Boolean value)? boolean,
-    TResult? Function(StoolapValue_Vector value)? vector,
-    TResult? Function(StoolapValue_Json value)? json,
-    TResult? Function(StoolapValue_Timestamp value)? timestamp,
-    TResult? Function(StoolapValue_Date value)? date,
-    TResult? Function(StoolapValue_Null value)? null_,
-  }) {
-    return json?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StoolapValue_Integer value)? integer,
-    TResult Function(StoolapValue_Float value)? float,
-    TResult Function(StoolapValue_Text value)? text,
-    TResult Function(StoolapValue_Boolean value)? boolean,
-    TResult Function(StoolapValue_Vector value)? vector,
-    TResult Function(StoolapValue_Json value)? json,
-    TResult Function(StoolapValue_Timestamp value)? timestamp,
-    TResult Function(StoolapValue_Date value)? date,
-    TResult Function(StoolapValue_Null value)? null_,
-    required TResult orElse(),
-  }) {
-    if (json != null) {
-      return json(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StoolapValue_Json extends StoolapValue {
-  const factory StoolapValue_Json(final String field0) =
-      _$StoolapValue_JsonImpl;
-  const StoolapValue_Json._() : super._();
-
-  String get field0;
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StoolapValue_JsonImplCopyWith<_$StoolapValue_JsonImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$StoolapValue_TimestampImplCopyWith<$Res> {
-  factory _$$StoolapValue_TimestampImplCopyWith(
-          _$StoolapValue_TimestampImpl value,
-          $Res Function(_$StoolapValue_TimestampImpl) then) =
-      __$$StoolapValue_TimestampImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int field0});
-}
-
-/// @nodoc
-class __$$StoolapValue_TimestampImplCopyWithImpl<$Res>
-    extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_TimestampImpl>
-    implements _$$StoolapValue_TimestampImplCopyWith<$Res> {
-  __$$StoolapValue_TimestampImplCopyWithImpl(
-      _$StoolapValue_TimestampImpl _value,
-      $Res Function(_$StoolapValue_TimestampImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$StoolapValue_TimestampImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$StoolapValue_TimestampImpl extends StoolapValue_Timestamp {
-  const _$StoolapValue_TimestampImpl(this.field0) : super._();
-
-  @override
-  final int field0;
 
   @override
   String toString() {
     return 'StoolapValue.timestamp(field0: $field0)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StoolapValue_TimestampImpl &&
-            (identical(other.field0, field0) || other.field0 == field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, field0);
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StoolapValue_TimestampImplCopyWith<_$StoolapValue_TimestampImpl>
-      get copyWith => __$$StoolapValue_TimestampImplCopyWithImpl<
-          _$StoolapValue_TimestampImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) integer,
-    required TResult Function(double field0) float,
-    required TResult Function(String field0) text,
-    required TResult Function(bool field0) boolean,
-    required TResult Function(Float32List field0) vector,
-    required TResult Function(String field0) json,
-    required TResult Function(int field0) timestamp,
-    required TResult Function(int field0) date,
-    required TResult Function() null_,
-  }) {
-    return timestamp(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? integer,
-    TResult? Function(double field0)? float,
-    TResult? Function(String field0)? text,
-    TResult? Function(bool field0)? boolean,
-    TResult? Function(Float32List field0)? vector,
-    TResult? Function(String field0)? json,
-    TResult? Function(int field0)? timestamp,
-    TResult? Function(int field0)? date,
-    TResult? Function()? null_,
-  }) {
-    return timestamp?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? integer,
-    TResult Function(double field0)? float,
-    TResult Function(String field0)? text,
-    TResult Function(bool field0)? boolean,
-    TResult Function(Float32List field0)? vector,
-    TResult Function(String field0)? json,
-    TResult Function(int field0)? timestamp,
-    TResult Function(int field0)? date,
-    TResult Function()? null_,
-    required TResult orElse(),
-  }) {
-    if (timestamp != null) {
-      return timestamp(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StoolapValue_Integer value) integer,
-    required TResult Function(StoolapValue_Float value) float,
-    required TResult Function(StoolapValue_Text value) text,
-    required TResult Function(StoolapValue_Boolean value) boolean,
-    required TResult Function(StoolapValue_Vector value) vector,
-    required TResult Function(StoolapValue_Json value) json,
-    required TResult Function(StoolapValue_Timestamp value) timestamp,
-    required TResult Function(StoolapValue_Date value) date,
-    required TResult Function(StoolapValue_Null value) null_,
-  }) {
-    return timestamp(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StoolapValue_Integer value)? integer,
-    TResult? Function(StoolapValue_Float value)? float,
-    TResult? Function(StoolapValue_Text value)? text,
-    TResult? Function(StoolapValue_Boolean value)? boolean,
-    TResult? Function(StoolapValue_Vector value)? vector,
-    TResult? Function(StoolapValue_Json value)? json,
-    TResult? Function(StoolapValue_Timestamp value)? timestamp,
-    TResult? Function(StoolapValue_Date value)? date,
-    TResult? Function(StoolapValue_Null value)? null_,
-  }) {
-    return timestamp?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StoolapValue_Integer value)? integer,
-    TResult Function(StoolapValue_Float value)? float,
-    TResult Function(StoolapValue_Text value)? text,
-    TResult Function(StoolapValue_Boolean value)? boolean,
-    TResult Function(StoolapValue_Vector value)? vector,
-    TResult Function(StoolapValue_Json value)? json,
-    TResult Function(StoolapValue_Timestamp value)? timestamp,
-    TResult Function(StoolapValue_Date value)? date,
-    TResult Function(StoolapValue_Null value)? null_,
-    required TResult orElse(),
-  }) {
-    if (timestamp != null) {
-      return timestamp(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StoolapValue_Timestamp extends StoolapValue {
-  const factory StoolapValue_Timestamp(final int field0) =
-      _$StoolapValue_TimestampImpl;
-  const StoolapValue_Timestamp._() : super._();
-
-  int get field0;
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StoolapValue_TimestampImplCopyWith<_$StoolapValue_TimestampImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StoolapValue_DateImplCopyWith<$Res> {
-  factory _$$StoolapValue_DateImplCopyWith(_$StoolapValue_DateImpl value,
-          $Res Function(_$StoolapValue_DateImpl) then) =
-      __$$StoolapValue_DateImplCopyWithImpl<$Res>;
+abstract mixin class $StoolapValue_TimestampCopyWith<$Res>
+    implements $StoolapValueCopyWith<$Res> {
+  factory $StoolapValue_TimestampCopyWith(StoolapValue_Timestamp value,
+          $Res Function(StoolapValue_Timestamp) _then) =
+      _$StoolapValue_TimestampCopyWithImpl;
   @useResult
-  $Res call({int field0});
+  $Res call({PlatformInt64 field0});
 }
 
 /// @nodoc
-class __$$StoolapValue_DateImplCopyWithImpl<$Res>
-    extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_DateImpl>
-    implements _$$StoolapValue_DateImplCopyWith<$Res> {
-  __$$StoolapValue_DateImplCopyWithImpl(_$StoolapValue_DateImpl _value,
-      $Res Function(_$StoolapValue_DateImpl) _then)
-      : super(_value, _then);
+class _$StoolapValue_TimestampCopyWithImpl<$Res>
+    implements $StoolapValue_TimestampCopyWith<$Res> {
+  _$StoolapValue_TimestampCopyWithImpl(this._self, this._then);
+
+  final StoolapValue_Timestamp _self;
+  final $Res Function(StoolapValue_Timestamp) _then;
 
   /// Create a copy of StoolapValue
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$StoolapValue_DateImpl(
+    return _then(StoolapValue_Timestamp(
       null == field0
-          ? _value.field0
+          ? _self.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
+              as PlatformInt64,
     ));
   }
 }
 
 /// @nodoc
 
-class _$StoolapValue_DateImpl extends StoolapValue_Date {
-  const _$StoolapValue_DateImpl(this.field0) : super._();
+class StoolapValue_Date extends StoolapValue {
+  const StoolapValue_Date(this.field0) : super._();
 
-  @override
-  final int field0;
+  final PlatformInt64 field0;
 
-  @override
-  String toString() {
-    return 'StoolapValue.date(field0: $field0)';
-  }
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $StoolapValue_DateCopyWith<StoolapValue_Date> get copyWith =>
+      _$StoolapValue_DateCopyWithImpl<StoolapValue_Date>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StoolapValue_DateImpl &&
+            other is StoolapValue_Date &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StoolapValue_DateImplCopyWith<_$StoolapValue_DateImpl> get copyWith =>
-      __$$StoolapValue_DateImplCopyWithImpl<_$StoolapValue_DateImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) integer,
-    required TResult Function(double field0) float,
-    required TResult Function(String field0) text,
-    required TResult Function(bool field0) boolean,
-    required TResult Function(Float32List field0) vector,
-    required TResult Function(String field0) json,
-    required TResult Function(int field0) timestamp,
-    required TResult Function(int field0) date,
-    required TResult Function() null_,
-  }) {
-    return date(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? integer,
-    TResult? Function(double field0)? float,
-    TResult? Function(String field0)? text,
-    TResult? Function(bool field0)? boolean,
-    TResult? Function(Float32List field0)? vector,
-    TResult? Function(String field0)? json,
-    TResult? Function(int field0)? timestamp,
-    TResult? Function(int field0)? date,
-    TResult? Function()? null_,
-  }) {
-    return date?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? integer,
-    TResult Function(double field0)? float,
-    TResult Function(String field0)? text,
-    TResult Function(bool field0)? boolean,
-    TResult Function(Float32List field0)? vector,
-    TResult Function(String field0)? json,
-    TResult Function(int field0)? timestamp,
-    TResult Function(int field0)? date,
-    TResult Function()? null_,
-    required TResult orElse(),
-  }) {
-    if (date != null) {
-      return date(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StoolapValue_Integer value) integer,
-    required TResult Function(StoolapValue_Float value) float,
-    required TResult Function(StoolapValue_Text value) text,
-    required TResult Function(StoolapValue_Boolean value) boolean,
-    required TResult Function(StoolapValue_Vector value) vector,
-    required TResult Function(StoolapValue_Json value) json,
-    required TResult Function(StoolapValue_Timestamp value) timestamp,
-    required TResult Function(StoolapValue_Date value) date,
-    required TResult Function(StoolapValue_Null value) null_,
-  }) {
-    return date(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StoolapValue_Integer value)? integer,
-    TResult? Function(StoolapValue_Float value)? float,
-    TResult? Function(StoolapValue_Text value)? text,
-    TResult? Function(StoolapValue_Boolean value)? boolean,
-    TResult? Function(StoolapValue_Vector value)? vector,
-    TResult? Function(StoolapValue_Json value)? json,
-    TResult? Function(StoolapValue_Timestamp value)? timestamp,
-    TResult? Function(StoolapValue_Date value)? date,
-    TResult? Function(StoolapValue_Null value)? null_,
-  }) {
-    return date?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StoolapValue_Integer value)? integer,
-    TResult Function(StoolapValue_Float value)? float,
-    TResult Function(StoolapValue_Text value)? text,
-    TResult Function(StoolapValue_Boolean value)? boolean,
-    TResult Function(StoolapValue_Vector value)? vector,
-    TResult Function(StoolapValue_Json value)? json,
-    TResult Function(StoolapValue_Timestamp value)? timestamp,
-    TResult Function(StoolapValue_Date value)? date,
-    TResult Function(StoolapValue_Null value)? null_,
-    required TResult orElse(),
-  }) {
-    if (date != null) {
-      return date(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StoolapValue_Date extends StoolapValue {
-  const factory StoolapValue_Date(final int field0) = _$StoolapValue_DateImpl;
-  const StoolapValue_Date._() : super._();
-
-  int get field0;
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StoolapValue_DateImplCopyWith<_$StoolapValue_DateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$StoolapValue_NullImplCopyWith<$Res> {
-  factory _$$StoolapValue_NullImplCopyWith(_$StoolapValue_NullImpl value,
-          $Res Function(_$StoolapValue_NullImpl) then) =
-      __$$StoolapValue_NullImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StoolapValue_NullImplCopyWithImpl<$Res>
-    extends _$StoolapValueCopyWithImpl<$Res, _$StoolapValue_NullImpl>
-    implements _$$StoolapValue_NullImplCopyWith<$Res> {
-  __$$StoolapValue_NullImplCopyWithImpl(_$StoolapValue_NullImpl _value,
-      $Res Function(_$StoolapValue_NullImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of StoolapValue
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$StoolapValue_NullImpl extends StoolapValue_Null {
-  const _$StoolapValue_NullImpl() : super._();
-
   @override
   String toString() {
-    return 'StoolapValue.null_()';
+    return 'StoolapValue.date(field0: $field0)';
   }
+}
+
+/// @nodoc
+abstract mixin class $StoolapValue_DateCopyWith<$Res>
+    implements $StoolapValueCopyWith<$Res> {
+  factory $StoolapValue_DateCopyWith(
+          StoolapValue_Date value, $Res Function(StoolapValue_Date) _then) =
+      _$StoolapValue_DateCopyWithImpl;
+  @useResult
+  $Res call({PlatformInt64 field0});
+}
+
+/// @nodoc
+class _$StoolapValue_DateCopyWithImpl<$Res>
+    implements $StoolapValue_DateCopyWith<$Res> {
+  _$StoolapValue_DateCopyWithImpl(this._self, this._then);
+
+  final StoolapValue_Date _self;
+  final $Res Function(StoolapValue_Date) _then;
+
+  /// Create a copy of StoolapValue
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(StoolapValue_Date(
+      null == field0
+          ? _self.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as PlatformInt64,
+    ));
+  }
+}
+
+/// @nodoc
+
+class StoolapValue_Null extends StoolapValue {
+  const StoolapValue_Null() : super._();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StoolapValue_NullImpl);
+        (other.runtimeType == runtimeType && other is StoolapValue_Null);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) integer,
-    required TResult Function(double field0) float,
-    required TResult Function(String field0) text,
-    required TResult Function(bool field0) boolean,
-    required TResult Function(Float32List field0) vector,
-    required TResult Function(String field0) json,
-    required TResult Function(int field0) timestamp,
-    required TResult Function(int field0) date,
-    required TResult Function() null_,
-  }) {
-    return null_();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? integer,
-    TResult? Function(double field0)? float,
-    TResult? Function(String field0)? text,
-    TResult? Function(bool field0)? boolean,
-    TResult? Function(Float32List field0)? vector,
-    TResult? Function(String field0)? json,
-    TResult? Function(int field0)? timestamp,
-    TResult? Function(int field0)? date,
-    TResult? Function()? null_,
-  }) {
-    return null_?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? integer,
-    TResult Function(double field0)? float,
-    TResult Function(String field0)? text,
-    TResult Function(bool field0)? boolean,
-    TResult Function(Float32List field0)? vector,
-    TResult Function(String field0)? json,
-    TResult Function(int field0)? timestamp,
-    TResult Function(int field0)? date,
-    TResult Function()? null_,
-    required TResult orElse(),
-  }) {
-    if (null_ != null) {
-      return null_();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(StoolapValue_Integer value) integer,
-    required TResult Function(StoolapValue_Float value) float,
-    required TResult Function(StoolapValue_Text value) text,
-    required TResult Function(StoolapValue_Boolean value) boolean,
-    required TResult Function(StoolapValue_Vector value) vector,
-    required TResult Function(StoolapValue_Json value) json,
-    required TResult Function(StoolapValue_Timestamp value) timestamp,
-    required TResult Function(StoolapValue_Date value) date,
-    required TResult Function(StoolapValue_Null value) null_,
-  }) {
-    return null_(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StoolapValue_Integer value)? integer,
-    TResult? Function(StoolapValue_Float value)? float,
-    TResult? Function(StoolapValue_Text value)? text,
-    TResult? Function(StoolapValue_Boolean value)? boolean,
-    TResult? Function(StoolapValue_Vector value)? vector,
-    TResult? Function(StoolapValue_Json value)? json,
-    TResult? Function(StoolapValue_Timestamp value)? timestamp,
-    TResult? Function(StoolapValue_Date value)? date,
-    TResult? Function(StoolapValue_Null value)? null_,
-  }) {
-    return null_?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StoolapValue_Integer value)? integer,
-    TResult Function(StoolapValue_Float value)? float,
-    TResult Function(StoolapValue_Text value)? text,
-    TResult Function(StoolapValue_Boolean value)? boolean,
-    TResult Function(StoolapValue_Vector value)? vector,
-    TResult Function(StoolapValue_Json value)? json,
-    TResult Function(StoolapValue_Timestamp value)? timestamp,
-    TResult Function(StoolapValue_Date value)? date,
-    TResult Function(StoolapValue_Null value)? null_,
-    required TResult orElse(),
-  }) {
-    if (null_ != null) {
-      return null_(this);
-    }
-    return orElse();
+  String toString() {
+    return 'StoolapValue.null_()';
   }
 }
 
-abstract class StoolapValue_Null extends StoolapValue {
-  const factory StoolapValue_Null() = _$StoolapValue_NullImpl;
-  const StoolapValue_Null._() : super._();
-}
+// dart format on
