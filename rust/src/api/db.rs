@@ -1,6 +1,7 @@
 use stoolap::{Database, Value};
 use anyhow::Result;
-use std::sync::Arc;
+use crate::frb_generated::StreamSink;
+use chrono::{TimeZone, Utc};
 
 /// An opaque handle to a Stoolap database connection.
 #[flutter_rust_bridge::frb(opaque)]
@@ -43,6 +44,7 @@ pub struct StoolapRow {
 impl StoolapDb {
     /// Opens a connection to a database specified by the DSN.
     pub fn open(dsn: String) -> Result<StoolapDb> {
+        let dsn = if dsn == ":memory:" { "memory://".to_string() } else { dsn };
         let db = Database::open(&dsn)?;
         Ok(StoolapDb { inner: db })
     }
@@ -54,22 +56,22 @@ impl StoolapDb {
 
     fn convert_params(params: Vec<StoolapValue>) -> Vec<Value> {
         params.into_iter().map(|p| match p {
-            StoolapValue::Integer(i) => Value::Integer(i),
-            StoolapValue::Float(f) => Value::Float(f),
-            StoolapValue::Text(s) => Value::Text(s.into()),
-            StoolapValue::Boolean(b) => Value::Boolean(b),
-            StoolapValue::Vector(v) => Value::Vector(v.into()),
-            StoolapValue::Json(j) => Value::Json(j.into()),
-            StoolapValue::Timestamp(t) => Value::Timestamp(chrono::DateTime::from_timestamp_millis(t).unwrap().into()),
-            StoolapValue::Date(d) => Value::Date(d),
-            StoolapValue::Null => Value::Null(stoolap::DataType::Text), // Simplified default
+            StoolapValue::Integer(i) => Value::integer(i),
+            StoolapValue::Float(f) => Value::float(f),
+            StoolapValue::Text(s) => Value::text(s),
+            StoolapValue::Boolean(b) => Value::boolean(b),
+            StoolapValue::Vector(v) => Value::vector(v),
+            StoolapValue::Json(j) => Value::json(j),
+            StoolapValue::Timestamp(t) => Value::timestamp(chrono::Utc.timestamp_millis_opt(t).unwrap().into()),
+            StoolapValue::Date(d) => Value::integer(d),
+            StoolapValue::Null => Value::null_unknown(),
         }).collect()
     }
 
     /// Executes a SQL statement with parameters.
     pub fn execute(&self, sql: String, params: Vec<StoolapValue>) -> Result<()> {
         let stoolap_params = Self::convert_params(params);
-        self.inner.execute(&sql, &stoolap_params)?;
+        self.inner.execute(&sql, stoolap_params.as_slice())?;
         Ok(())
     }
 
@@ -85,23 +87,41 @@ impl StoolapDb {
     pub fn query(&self, sql: String, params: Vec<StoolapValue>) -> Result<Vec<StoolapRow>> {
         let stoolap_params = Self::convert_params(params);
         let mut results = Vec::new();
-        for row in self.inner.query(&sql, &stoolap_params)? {
+        // Updated: query takes params as tuple or slice, assuming dereferencing or removal of &
+        for row in self.inner.query(&sql, &*stoolap_params)? {
             let row = row?;
-            let columns: Vec<String> = row.columns().iter().map(|c| c.name().to_string()).collect();
+            // Updated: access columns and values using new API
+            let columns: Vec<String> = row.columns().iter().map(|c| c.to_string()).collect();
             let mut values = Vec::new();
             for i in 0..columns.len() {
-                let val = row.get_raw(i).unwrap();
+                // Updated: use get_value to get reference to Value
+                let val = row.get_value(i);
                 values.push(match val {
-                    Value::Integer(i) => StoolapValue::Integer(*i),
-                    Value::Float(f) => StoolapValue::Float(*f),
-                    Value::Text(s) => StoolapValue::Text(s.to_string()),
-                    Value::Boolean(b) => StoolapValue::Boolean(*b),
-                    Value::Vector(v) => StoolapValue::Vector(v.to_vec()),
-                    Value::Json(j) => StoolapValue::Json(j.to_string()),
-                    Value::Timestamp(t) => StoolapValue::Timestamp(t.timestamp_millis()),
-                    Value::Date(d) => StoolapValue::Date(*d),
-                    Value::Null(_) => StoolapValue::Null,
-                    _ => StoolapValue::Text(format!("{:?}", val)),
+                    Some(Value::Integer(i)) => StoolapValue::Integer(*i),
+                    Some(Value::Float(f)) => StoolapValue::Float(*f),
+                    Some(Value::Text(s)) => StoolapValue::Text(s.to_string()),
+                    Some(Value::Boolean(b)) => StoolapValue::Boolean(*b),
+                    // Updated: use Value constructor methods
+                    Some(v) => match v {
+                        Value::Integer(i) => StoolapValue::Integer(*i),
+                        Value::Float(f) => StoolapValue::Float(*f),
+                        Value::Text(s) => StoolapValue::Text(s.to_string()),
+                        Value::Boolean(b) => StoolapValue::Boolean(*b),
+                        Value::Timestamp(t) => StoolapValue::Timestamp(t.timestamp_millis()),
+                        _ => {
+                            if let Some(vec) = v.as_vector_f32() {
+                                StoolapValue::Vector(vec.to_vec())
+                            } else if let Some(json) = v.as_json() {
+                                StoolapValue::Json(json.to_string())
+                            } else if let Some(d) = v.as_int64() {
+                                // Assuming Date is represented as an integer (days since epoch)
+                                StoolapValue::Date(d)
+                            } else {
+                                StoolapValue::Null
+                            }
+                        }
+                    },
+                    None => StoolapValue::Null,
                 });
             }
             results.push(StoolapRow { columns, values });
@@ -149,13 +169,15 @@ impl StoolapDb {
         self.query(sql, vec![])
     }
 
+    /*
     /// Sets up a stream for internal engine logs.
-    pub fn setup_log_stream(sink: flutter_rust_bridge::DefaultStreamSink<String>) -> Result<()> {
+    pub fn setup_log_stream(sink: flutter_rust_bridge::StreamSink<String>) -> Result<()> {
         std::thread::spawn(move || {
             let _ = sink.add("Stoolap Rust engine logger initialized".to_string());
         });
         Ok(())
     }
+    */
 
     /// Executes a statement and returns results (e.g., for RETURNING clause).
     pub fn execute_with_results(&self, sql: String, params: Vec<StoolapValue>) -> Result<Vec<StoolapRow>> {

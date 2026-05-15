@@ -11,9 +11,6 @@ part 'db.freezed.dart';
 // These functions are ignored because they are not marked as `pub`: `convert_params`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`, `fmt`
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DefaultStreamSink < String >>>
-abstract class DefaultStreamSinkString implements RustOpaqueInterface {}
-
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StoolapDb>>
 abstract class StoolapDb implements RustOpaqueInterface {
   /// Executes a batch of SQL statements efficiently.
@@ -62,10 +59,6 @@ abstract class StoolapDb implements RustOpaqueInterface {
 
   /// Creates a named savepoint.
   Future<void> savepoint({required String name});
-
-  /// Sets up a stream for internal engine logs.
-  static Future<void> setupLogStream({required DefaultStreamSinkString sink}) =>
-      RustLib.instance.api.crateApiDbStoolapDbSetupLogStream(sink: sink);
 }
 
 /// A single row returned from a SQL query.

@@ -99,7 +99,17 @@ class StoolapDatabase {
   /// Returns a list of all user-defined tables in the database.
   Future<List<String>> tables() async {
     final results = await query("SHOW TABLES");
-    return results.map((r) => r.values[0].toString()).toList();
+    return results.map((r) => r.values[0].when(
+      integer: (v) => v.toString(),
+      float: (v) => v.toString(),
+      text: (v) => v,
+      boolean: (v) => v.toString(),
+      vector: (v) => v.toString(),
+      json: (v) => v,
+      timestamp: (v) => v.toString(),
+      date: (v) => v.toString(),
+      null_: () => 'null',
+    )).toList();
   }
 
   /// Returns a [Stream] of query results that automatically updates when data changes.

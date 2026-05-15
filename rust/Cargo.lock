@@ -1261,6 +1261,7 @@ name = "rust_lib_stoolap_flutter"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "chrono",
  "flutter_rust_bridge",
  "once_cell",
  "serde",
