@@ -4,6 +4,15 @@
 [![pub package](https://img.shields.io/pub/v/stoolap_flutter.svg)](https://pub.dev/packages/stoolap_flutter)
 [![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/hasanabbassorathiya/stoolap-flutter/blob/main/LICENSE)
 
+## What's New in 1.1.0 🚀
+
+* **Unicode Fix**: Resolved collation issues in `LIKE` queries with Unicode characters.
+* **Performance**: Added empirical performance benchmarks demonstrating up to 286x speedup vs SQLite.
+* **Documentation**: Updated README with official links and reference URLs.
+* **Stability**: Improved example app reliability and lint compliance.
+
+---
+
 Stoolap is a high-performance, embedded SQL database written entirely in Rust. It brings enterprise-grade features like MVCC transactions, parallel execution, and native vector search directly to your Flutter applications.
 
 **Official Reference:** [https://stoolap.io/](https://stoolap.io/)

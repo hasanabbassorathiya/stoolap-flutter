@@ -81,7 +81,7 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
       // FEATURE: Handle Cloning
       // Each clone has independent transaction state but shared data.
       final backgroundDb = await _db.clone();
-      // use backgroundDb for secondary tasks...
+      debugPrint('Background clone created: $backgroundDb');
 
       // FEATURE: Basic SQL Execution
       // Create tables for our different features
@@ -128,13 +128,19 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
       "INSERT INTO notes (content, category) VALUES ('Batch 1', 'Work')",
       "INSERT INTO notes (content, category) VALUES ('Batch 2', 'Personal')",
     ]);
-    ScaffoldMessenger.of(context).showSnackBar(const ApiResponseSnackBar(message: 'Batch Executed Successfully'));
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text('Batch Executed Successfully'),
+      behavior: SnackBarBehavior.floating,
+      duration: Duration(seconds: 3),
+    ));
   }
 
   // FEATURE: Schema Inspection
   // Inspect existing tables and database metadata.
   Future<void> _showTables() async {
     final tables = await _db.tables();
+    if (!mounted) return;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -161,10 +167,20 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
 
       await _db.execute('INSERT INTO notes (content) VALUES (?)', params: ['Tx Step 3']);
       await _db.commit();
-      ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Transaction Committed (Steps 1 & 3 applied)'));
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Transaction Committed (Steps 1 & 3 applied)'),
+        behavior: SnackBarBehavior.floating,
+        duration: Duration(seconds: 3),
+      ));
     } catch (e) {
       await _db.rollback();
-      ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Transaction Failed & Rolled Back: $e'));
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Transaction Failed & Rolled Back: $e'),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 3),
+      ));
     }
   }
 
@@ -177,7 +193,12 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
     final results = await _db.query('SELECT data FROM metadata ORDER BY id DESC LIMIT 1');
     if (results.isNotEmpty) {
       final data = results.first.values[0];
-      ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Retrieved JSON: $data'));
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Retrieved JSON: $data'),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 3),
+      ));
     }
   }
 
@@ -199,7 +220,12 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
 
     if (results.isNotEmpty) {
       final topMatch = results.first.values[0]; // text column
-      ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Top Semantic Match: $topMatch'));
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Top Semantic Match: $topMatch'),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 3),
+      ));
     }
   }
 
@@ -216,13 +242,19 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
     ''');
 
     final output = results.map((r) => r.values[0]).join(', ');
-    ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Recursive CTE output: $output'));
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Recursive CTE output: $output'),
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(seconds: 3),
+    ));
   }
 
   // FEATURE: Query Profiling via EXPLAIN
   // Use EXPLAIN ANALYZE to inspect how the Stoolap optimizer plans and executes your query.
   Future<void> _explainQuery() async {
     final plan = await _db.explain('SELECT * FROM notes WHERE category = ?', params: ['General']);
+    if (!mounted) return;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -242,8 +274,47 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
     );
     if (results.isNotEmpty) {
       final id = results.first.values[0];
-      ScaffoldMessenger.of(context).showSnackBar(ApiResponseSnackBar(message: 'Inserted with ID: $id'));
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Inserted with ID: $id'),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 3),
+      ));
     }
+  }
+
+  // FEATURE: Unicode Handling
+  // Stoolap supports custom collations for case-insensitive Unicode searches.
+  Future<void> _unicodeDemo() async {
+    await _db.execute('CREATE TABLE IF NOT EXISTS uni (val TEXT)');
+    await _db.execute('INSERT INTO uni (val) VALUES (?)', params: ['Ñame']);
+
+    final results = await _db.query(
+      "SELECT * FROM uni WHERE COLLATE(val, 'NOCASE') = COLLATE(?, 'NOCASE')",
+      params: ['ñame'],
+    );
+
+    if (results.isNotEmpty) {
+      final match = results.first.values[0];
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Unicode Match Found: $match'),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 3),
+      ));
+    }
+  }
+
+  // FEATURE: Engine Tuning
+  // Use PRAGMA to tune engine behavior.
+  Future<void> _runPragmaDemo() async {
+    await _db.pragma('cache_size', '10000');
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text('Cache Size Configured'),
+      behavior: SnackBarBehavior.floating,
+      duration: Duration(seconds: 3),
+    ));
   }
 
   @override
@@ -261,6 +332,7 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
           IconButton(icon: const Icon(Icons.analytics), onPressed: _explainQuery, tooltip: 'Explain Query'),
           IconButton(icon: const Icon(Icons.reply), onPressed: _addAndReturn, tooltip: 'Insert Returning'),
           IconButton(icon: const Icon(Icons.settings), onPressed: _runPragmaDemo, tooltip: 'Pragma Demo'),
+          IconButton(icon: const Icon(Icons.language), onPressed: _unicodeDemo, tooltip: 'Unicode Demo'),
           IconButton(icon: const Icon(Icons.code), onPressed: _jsonDemo, tooltip: 'JSON Demo'),
           IconButton(icon: const Icon(Icons.psychology), onPressed: _semanticSearch, tooltip: 'Semantic Search'),
           IconButton(icon: const Icon(Icons.layers), onPressed: _runRecursiveCTE, tooltip: 'Recursive CTE'),
@@ -280,7 +352,7 @@ class _StoolapShowcasePageState extends State<StoolapShowcasePage> {
             ),
           Container(
             padding: const EdgeInsets.all(8),
-            color: Colors.blueGrey.withOpacity(0.2),
+            color: Colors.blueGrey.withValues(alpha: 0.2),
             child: const Text(
               "DEMO: Reactive 'Live Queries'. Add a note to see the list below update instantly without manual re-fetch.",
               textAlign: TextAlign.center,
