@@ -1,3 +1,7 @@
+## 1.1.1
+
+* **Maintenance**: Updated changelog and documentation for version 1.1.1.
+
 ## 1.1.0
 
 * **Unicode Fix**: Resolved collation issues in `LIKE` queries with Unicode characters.
